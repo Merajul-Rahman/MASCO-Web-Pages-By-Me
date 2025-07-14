@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Vehicle Servicing – Data Entry</title>
+<style>
+  :root{
+    --accent:#0069d9;--accent-dark:#0052aa;
+    --bg:#f2f6fa;--card:#ffffff;--text:#1e293b;--radius:.55rem
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.45;
+    height:100vh;display:flex;flex-direction:column
+  }
+  h1{color:var(--accent);text-align:center;
+    padding:1.2rem 0 .4rem;
+    font-size:clamp(1.5rem,2vw+1rem,2.2rem)}
+  form{
+    flex:1;
+    width:100%;
+    background:var(--card);
+    padding: 0px 2rem;
+    display:grid;
+    gap:0rem
+  }
+  .row{
+    display:grid;
+    gap:.8rem;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr))
+}
+  label{
+    display:block;font-weight:500;margin-bottom:.3rem}
+  input,select{
+    width:100%;
+    padding:.3rem .65rem;
+    font:inherit;
+    border:1px solid #cbd5e1;border-radius:.4rem;transition:border-color .15s;background:#fff
+  }
+  input:focus,select:focus{outline:none;border-color:var(--accent)}
+  .radio-row{display:flex;justify-content:center;gap:1.2rem}
+  .radio-row input{margin-right:.38rem}
+  .hidden{display:none}.animate-in{animation:fadeIn .25s ease-out}
+  .btn-area{text-align:center;margin-top:.2rem}
+  button{
+    background:var(--accent);color:#fff;border:none;padding:.75rem 2rem;font-weight:600;font-size:1rem;
+    border-radius:var(--radius);cursor:pointer;transition:background .2s,transform .1s
+  }
+  button:hover{background:var(--accent-dark)}button:active{transform:translateY(1px)}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<h1>Vehicle Servicing – Data Entry</h1>
+
+<form id="servicingForm">
+  <!-- Servicing type -->
+  <div class="radio-row">
+    <label><input type="radio" name="servicingType" value="Scheduled" checked> Scheduled</label>
+    <label><input type="radio" name="servicingType" value="Emergency"> On&nbsp;Emergency</label>
+  </div>
+
+  <!-- Vehicle info -->
+  <div class="row">
+    <div>
+      <label for="reg">Registration&nbsp;Number</label>
+      <select id="reg" required>
+        <option hidden value="">Select a vehicle</option>
+        <option>Dhaka-Metro-Cha-51-2514</option>
+        <option>Dhaka-Metro-Cha-51-3142</option>
+        <option>Dhaka-Metro-Cha-51-4277</option>
+      </select>
+    </div>
+    <div>
+      <label for="shortCode">Short&nbsp;Code</label>
+      <input type="text" id="shortCode" placeholder="e.g. DMC-2514" required>
+    </div>
+  </div>
+
+  <!-- Proposed Date (conditional) + Area + Details -->
+  <div class="row">
+    <div id="proposedWrapper">
+      <label for="proposedDate">Proposed&nbsp;Date</label>
+      <input type="date" id="proposedDate">
+    </div>
+    <div>
+      <label for="area">Servicing&nbsp;Area</label>
+      <select id="area" required>
+        <option value="">Select area</option>
+        <option>AC</option><option>Engine</option><option>Body</option>
+      </select>
+    </div>
+    <div>
+      <label for="details">Servicing&nbsp;Details</label>
+      <input type="text" id="details" placeholder="Describe task briefly">
+    </div>
+  </div>
+
+  <!-- Actual servicing -->
+  <div class="row">
+    <div>
+      <label for="servicingDate">Servicing&nbsp;Date</label>
+      <input type="date" id="servicingDate">
+    </div>
+    <div>
+      <label for="servicingBy">Serviced&nbsp;By</label>
+      <select id="servicingBy">
+        <option value="">Select</option>
+        <option value="Internal">Internal</option>
+        <option value="Outer">Outer</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Outer-only -->
+  <div id="outerFields" class="row hidden">
+    <div><label for="parts">Parts&nbsp;Name</label><input type="text" id="parts" placeholder="e.g. Oil filter"></div>
+    <div><label for="cost">Cost&nbsp;Amount</label><input type="number" id="cost" min="0" step="1" placeholder="৳"></div>
+    <div><label for="file">Upload&nbsp;File</label><input type="file" id="file"></div>
+  </div>
+
+  <div class="btn-area"><button type="submit">Save&nbsp;Servicing&nbsp;Info</button></div>
+</form>
+
+<script>
+const proposedWrapper=document.getElementById('proposedWrapper'),
+      proposedDate   =document.getElementById('proposedDate'),
+      servicingBySel =document.getElementById('servicingBy'),
+      outerFields    =document.getElementById('outerFields');
+
+document.querySelectorAll('input[name="servicingType"]').forEach(r=>{
+  r.addEventListener('change',e=>{
+    const sch=e.target.value==='Scheduled';
+    proposedWrapper.classList.toggle('hidden',!sch);
+    if(sch)proposedWrapper.classList.add('animate-in'); else proposedDate.value='';
+  });
+});
+window.addEventListener('DOMContentLoaded',()=>proposedWrapper.classList.remove('hidden'));
+
+servicingBySel.addEventListener('change',e=>{
+  const out=e.target.value==='Outer';
+  outerFields.classList.toggle('hidden',!out);
+  if(out)outerFields.classList.add('animate-in');
+});
+
+document.getElementById('servicingForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Servicing information saved (demo)');
+});
+</script>
+
+</body>
+</html>

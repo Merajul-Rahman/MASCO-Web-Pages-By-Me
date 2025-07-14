@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASOS Photo Shoot Sample</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0
+        }
+
+        input[type=checkbox] {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            -o-appearance: none;
+            outline: none;
+            content: none;
+            margin: none;
+            width: 20px;
+            height: 9px;
+            
+        }
+
+            input[type=checkbox]:before {
+                font-family: "FontAwesome";
+                /* content: "\2713"; */
+                content: "\f00c";
+                /* content: "✓"; */
+                font-size: 10px;
+                color: transparent !important;
+                /* background: #fef2e0; */
+                display: block;
+                width: 20px;
+                height: 9px;
+                border: 1px solid black;
+            }
+
+            input[type=checkbox]:checked:before {
+                color: black !important;
+            }
+        .main_wrap {
+            font-size: 9px;
+            /* margin: 100px 0; */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        p {
+            margin: 0
+        }
+
+        .print_box {
+            /** 100mm **/
+            width: 100mm;
+            margin: 0 auto;
+            /** 175mm **/
+            height: 141mm;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 0px 13px;
+        }
+
+        .section_1 {
+            padding-top: 37px;
+            padding-bottom: 0px;
+            display:block;
+            align-items: center;
+            /*justify-content: space-between;*/
+        }
+
+            .section_1 .left.info {
+                width: 49%;
+                /* padding: 0 8px; */
+            }
+
+        .section_1 img {
+            width: 68px;
+            display: block;
+            margin-left: 0px;
+            margin-right: 0px;
+
+
+        }
+
+        input {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            /*text-align: center;*/
+            font-size: 11px;
+            size: 100%;
+
+        }
+        .remarksinput{
+            outline: none;
+            border-bottom: dotted;
+            background:transparent;
+            padding: 0;
+            /*text-align: center;*/
+            font-size: 11px;
+            size: 100%;
+
+        }
+        .depinput {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            /*text-align: center;*/
+            font-size: 9px;
+            width: 74px;
+
+        }
+
+        .section_1 .left p {
+            color: red;
+            padding-top: 5px;
+        }
+
+        .section_1 .right input {
+            width: 100%;
+            border-bottom: 1px dotted #333;
+        }
+
+        /*.section_1 table td {
+            padding: 3px 0;
+        }*/
+
+        
+        .comment_box {
+            display: flex;
+            border-bottom: 1px dashed #333;
+            padding: 2.45px 0;
+        }
+
+            .comment_box .input {
+                flex: 1;
+            }
+
+                .comment_box .input input {
+                    width: 100%;
+                }
+
+        .btn-box {
+            display: flex;
+            justify-content: center;
+        }
+
+        .print {
+            /* position: absolute;
+            bottom: -55px; */
+            margin: 20px 0;
+            padding: 8px 15px;
+            background-color: green;
+            color: white;
+            display: flex;
+            align-self: center;
+        }
+
+        @media print {
+            .btn-box {
+                display: none;
+            }
+
+            .print_box {
+                /** 100mm **/
+                width: 100mm;
+                margin: 0 auto;
+                /** 175mm **/
+                height: 141mm;
+                background: #fff;
+                border: 1px solid #ccc;
+                padding: 0px 13px;
+            }
+            body {-webkit-print-color-adjust: exact;}
+        }
+        th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            height: 5mm;
+            
+        }
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 11px;
+            table-layout: fixed;
+            font-weight: 550;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main_wrap">
+        <div class="print_box">
+            <div class="section_1">
+                
+                <table width=100% border="1">
+                    <tr align="center">
+                        <td width="60px">SUPPLIER</td>
+                        <td width="210PX" colspan="4" rowspan="2"><h1>SAMPLE CARD</h1></td>
+                        <td width="78px">CUSTOMER</td>
+                    </tr>
+                    <tr align="center">
+                        <td width="60px" style="height: 32px;">ECHO SOURCING</td>
+                        <td style="font-size: 6.5px;" width="78px"><img src="asos.svg" alt="ASOS Logo">discover fashion online</td>
+
+                    </tr>
+                </table>
+                <hr width="0px" style="height:5px">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="60px">DATE</td>
+                        <td width="108px" colspan="2"><input style="width: 105px;" type="text"></td>
+                        <td width="56px">SEASON</td>
+                        <td width="124px" colspan="2"><input  style="width: 120px;" type="text"></td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:3px">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="112px" style="font-size: 10px;" colspan="2">CUSTOMER REFERENCE</td>
+                        <td width="234px" colspan="2"><input style="width: 225px;"  type="text"></td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:5px">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="112px" colspan="2">MERRET ID NUMBER</td>
+                        <td width="234px" colspan="2"><input  style="width: 225px;" type="text"></td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:3px">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="112px" colspan="2">STYLE DESCRIPTION</td>
+                        <td width="234px" colspan="2"><input style="width: 225px;" type="text"></td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:3px;">
+                <table>
+                    <tr align="center">
+                        <td bgcolor="#525446" style="height: 143px" width="348px" height="143px" colspan="6"><p style="font-size:30px"><b>PHOTO SHOOT SAMPLE</b></p></td>
+
+                    </tr>
+                </table>
+                <hr width="0px" style="height:3px;">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="112px" colspan="2">CONFORMITY</td>
+                        <td align="center" width="56px">YES</td>
+                        <td align="center" width="56px">NO</td>
+                        <td align="center" width="124px">COMMENTS</td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:3px;">
+                <table width="100%" border="1">
+                    <tr>
+                        <td width="112px" colspan="2">FABRIC</td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="124px"><input style="width: 120px;"  type="text"></td>
+                    </tr>
+                    <tr>
+                        <td width="112px" colspan="2">COLOUR</td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="124px"><input style="width: 120px;"  type="text"></td>
+                    </tr>
+                    <tr>
+                        <td width="112px" colspan="2">TREATMENT</td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="124px"><input style="width: 120px;"  type="text"></td>
+                    </tr>
+                    <tr>
+                        <td width="112px" colspan="2">ACCESSORIES</td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="124px"><input style="width: 120px;"  type="text"></td>
+                    </tr>
+                
+                    <tr>
+                        <td width="112px" colspan="2">MEASUREMENTS</td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="56px"><input type="checkbox" name="" id=""></td>
+                        <td align="center" width="124px"><input style="width: 120px;"  type="text"></td>
+                    </tr>
+                </table>
+                <hr width="0px" style="height:5px;">
+                <p style="font-size: 11px;">Remarks <input type="text" style="width: 300px; border: bottom 1px;"> <br>
+                <input type="text" style="width: 91.5mm; border-bottom:2px dotted;" size="58px"> <br>
+                <input type="text" style="width: 91.5mm; border-bottom:2px dotted;" size="58px"> <br> </p>
+                <br width="0px" style="height:2px;">
+                <p style="font-size: 11px">CHECKED BY: <input  style="width: 265px;"  type="text"> </p>
+
+
+        </div>
+
+        <div class="btn-box">
+            <button class="print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masco Employee Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="Home.html" class="logo">
+      <img src="logo-main.png" alt="Logo">
+    </a>
+    <a href="Home.html" class="logo" style="style="margin-left: 6rem;">
+      <h1>MASCO GROUP</h1>
+    </a>
+    
+    <div class="nav-buttons">
+      <button id="sidebarToggle"><i class="fa fa-bars"></i></button>
+      <a href="/Home/LogOut"><i class="fa fa-power-off pr-2"></i> Logout</a>
+    </div>
+  </nav>
+
+  <!-- Page Content Wrapper -->
+  <div class="page-wrapper">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="text-center">
+        <h4>Previous Pages</h4>
+        <hr />
+        <div class="links" id="links">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+      <div id="card-container" style="grid-template-columns: auto auto auto auto; column-gap: 3rem; row-gap: 3rem; ">
+        <!-- Cards will be injected here -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+      const cardContainer = document.getElementById("card-container");
+
+  // Get menu type from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const menu = urlParams.get("menu");
+
+  // Define submenus for each main menu
+  const menus = {
+    requisition: [
+      { icon: "fas fa-plane-departure text-3xl mb-4 block", title: "Leave Apply", link: "#" },
+      { icon: "fas fa-file-invoice-dollar text-3xl mb-4 block", title: "Convence & Lunch Bill", link: "#" },
+      { icon: "fas fa-user-clock text-3xl mb-4 block", title: "Hourly Leave Apply", link: "#" },
+      { icon: "fas fa-store text-3xl mb-4 block", title: "Self Store Requisition", link: "#" },
+      { icon: "fas fa-car text-3xl mb-4 block", title: "Vehicle Requisition", link: "#" },
+      { icon: "fas fa-sign-out-alt text-3xl mb-4 block", title: "Resignation Apply", link: "#" }
+    ],
+    hris: [
+      { icon: "fas fa-id-badge text-3xl mb-4 block", title: "Personal Human Resource Info.", link: "#" },
+      { icon: "fas fa-download text-3xl mb-4 block", title: "Personal Documents Download", link: "#" }
+    ],
+    hrinfo: [
+      { icon: "fas fa-users text-3xl mb-4 block", title: "Employee Communication Portal", link: "#" },
+      { icon: "fas fa-user-tie text-3xl mb-4 block", title: "Promoted Employee List", link: "#" },
+      { icon: "fas fa-file-download text-3xl mb-4 block", title: "HR Documents Download", link: "#" },
+      { icon: "fas fa-clipboard-list text-3xl mb-4 block", title: "Notice Pannel", link: "#" }
+    ]
+  };
+
+  // Render cards based on selected menu
+  const selectedCards = menus[menu] || [];
+  selectedCards.forEach(card => {
+    const cardHTML = `
+      <a href="${card.link}" class="custom-card">
+        <i class="${card.icon}"></i>
+        <div>${card.title}</div>
+      </a>
+    `;
+    cardContainer.insertAdjacentHTML('beforeend', cardHTML);
+  });
+
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("mainContent");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      mainContent.classList.toggle("shifted");
+    });
+
+    // Optional: ensure sidebar is hidden on load
+    sidebar.classList.remove("open");
+
+    // Capitalize first letter
+    const capitalizedTitle = menu ? menu.charAt(0).toUpperCase() + menu.slice(1) : "SubMenu";
+
+    // Update browser tab title
+    document.title = `${capitalizedTitle} | MASCO Employee Portal`;
+  </script>
+</body>
+</html>

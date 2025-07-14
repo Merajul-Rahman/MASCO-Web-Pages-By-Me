@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Card</title>
+</head>
+<body>
+
+    <div id="cardprint" style=" width: 78mm; height: 60mm; margin: 0px;"></div>
+    <button style="display: block;"  id="button" onclick="generate()">Generate</button>
+    <button style="display:block;" id="button" onclick="printCard()">Print Card</button>
+    <a href="" ></a>
+    <script>
+        function printCard() {
+            let buttons = document.getElementsByTagName("button");
+            Array.from(buttons).forEach(button => {
+                button.style.display = "none";
+            });
+
+            window.print();
+        }
+    </script>
+<script>
+    let company = "Knitting", g_FBarcodeGernationId = 4286967, buyer = "Target (Australia)", job = "MIL-BB5876-01-25", order = 3155591, machineID="845AA";
+    let result = {
+        Unit:"Knitting",
+        ItemName: "DIAGONAL FLEECE(3 Butt)",
+        FabSize: "220",
+        DiaxGG: "36*24",
+        FinishedDia: "76",
+        StichLen: "4.70, 1.60, 2.80",
+        Specification: "KH(100%Ctn)-30/1", 
+        Colors: "Lt. White Blue",
+        FeederType: "HF",
+        Lots: "24KH246167+ 24KH246167 + 24KH246167",
+        Gwt: "275.2",
+        Brands: "Nam Dinh+Nam Dinh+Nam Dinh"
+    }
+var bcode = '<div id="iddivpdf" style="width: 78mm; height: 56mm; margin-top: 0px; margin-right: 0px; margin-left: 0px;">' +
+    '<table style="border-collapse: collapse; width: 78mm; table-layout: fixed; font-size: 10px;">'+
+        '<colgroup>' +
+                '<col style="width: 26mm;">'+
+                '<col style="width: 16mm;">'+
+                '<col style="width: 12mm;">'+  
+                '<col style="width: 24mm;">' +
+                ' </colgroup>'+
+        '<tr style="border-bottom: none;">' +
+            '<td rowspan = "3" style="border-bottom: none; border-top: 1px solid black; border-left:1px solid black; border-right:1px solid black; vertical-align: top; text-align: center;">'+
+                '<img src="data:image/png;base64,' + result.b64img + '" style="height: 20mm; width: 25mm; display: block; margin: auto;">' +
+            '</td>'+
+            '<td rowspan = "2" style=" border-bottom: none; border-top: 1px solid black; border-left:1px solid black; border-right:1px solid black; padding-left: 1px; text-align: center; font-weight: bold;">B:'+
+                 buyer +  
+            '</td>' +
+            '<td rowspan = "2" style="border-bottom: none; border-top: 1px solid black; border-left:1px solid black; border-right:1px solid black; padding-left: 1px; text-align: center;">' +
+                'G.wt: <strong><font size="3">'+result.Gwt+'</font></strong> Kg' +
+            '</td>' +
+            '<td  id="gwaight" style="border-bottom: none; border-top: 1px solid black; border-left:1px solid black; border-right:1px solid black; padding-left: 1px; text-align: center; font-size:22px; font-weight:bold;">'+g_FBarcodeGernationId+'</td>' +
+        '</tr>' +
+        
+        '<tr style="border-bottom: none;">' +
+            '<td style="border-bottom: none; border-top: 1px solid black; border-left:1px solid black; border-right:1px solid black; vertical-align: center; text-align: center; font-weight:bold; font-size:18px;">'+
+                result.Unit+
+            '</td>'+
+        '</tr>' +
+
+        '<tr style="height: 6mm;">'+
+                '<td id="jobno" colspan="2" style="border: 1px solid black; padding-left: 2px; vertical-align: top;">' +
+                    '<div style="height: 7mm; max-height: 7mm; overflow: hidden; display: block;">J: ' + job +'</div>'+
+                '</td>' +
+                '<td id="orderno" style="border: 1px solid black; padding-left: 2px; vertical-align: top;">'+
+                    '<div style="height: 6mm; max-height: 6mm; overflow: hidden; display: block;">M/C: ' + machineID +'</div>'+
+                '</td>'+
+            '</tr>'+
+            '<tr style="height: 6mm;">'+
+                '<td id="fabric" colspan="3" style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 7mm; max-height: 7mm; overflow: hidden; display: block;">Fab: ' + result.ItemName + '</div>'+
+                '</td>'+
+                '<td id="mch" style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 6mm; max-height: 6mm; overflow: hidden; display: block;">GSM: ' + result.FabSize +'</div>'+
+                '</td>'+
+            '</tr>'+
+            '<tr style="height: 12mm;">'+
+                '<td id="yarn" colspan="4" style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 12mm; max-height: 12mm; overflow: hidden; display: block;">Y: ' + result.Specification +'</div>'+
+                '</td>'+
+            '</tr>'+
+            '<tr style="height: 6.05mm;">'+
+                '<td style="border: 1px solid black; padding-left: 2px; vertical-align: top;">'+
+                    '<div style="height: 6.05mm; max-height: 6.05mm; overflow: hidden; display: block;">D*G: ' + result.DiaxGG +'</div>'+
+                '</td>'+
+                '<td style="border: 1px solid black; padding-left: 2px; vertical-align: top;">'+
+                    '<div style="height: 6.05mm; max-height: 6.05mm; overflow: hidden; display: block;">FD : ' + result.FinishedDia +'</div>'+
+                '</td>'+
+                '<td style="border: 1px solid black; padding-left: 2px; vertical-align: top;">'+
+                    '<div style="height: 6.05mm; max-height: 6.05mm; overflow: hidden; display: block;">'+ result.FeederType +'</div>'+
+                '</td>'+
+                '<td style="border: 1px solid black; padding-left: 2px; vertical-align: top;">'+
+                    '<div style="height: 6.05mm; max-height: 6.05mm; overflow: hidden; display: block;">SL: ' + result.StichLen + '</div>'+
+                '</td>'+
+            '</tr>'+
+            '<tr style="height: 10mm;">'+
+                '<td style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 10mm; max-height: 10mm; overflow: hidden; display: block;">Clr.: ' + result.Colors +'</div>'+
+                '</td>'+
+                '<td colspan="2" style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 10mm; max-height: 10mm; overflow: hidden; display: block;">Lot: ' + result.Lots +'</div>'+
+                '</td>'+
+                '<td style="border: 1px solid black; padding-left: 1px; vertical-align: top;">'+
+                    '<div style="height: 10mm; max-height: 10mm; overflow: hidden; display: block;">Br: ' + result.Brands +'</div>'+
+                '</td>'+
+            '</tr>'+
+        '</table>'+
+    '</div>'+
+'</div>';
+
+
+    function generate(){
+        document.getElementById("cardprint").innerHTML=bcode;
+    }
+</script>
+
+</body>
+</html>

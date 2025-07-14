@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        /* Ensure dialog and table are responsive */
+        #iddivpdf {
+            width: 100%;
+            max-width: 85mm;
+            height: auto;
+            font-size: 0.90em;
+            margin: 3px 1px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        td {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .ui-dialog {
+            max-width: 400px;
+        }
+
+        /* Ensure buttons align properly */
+        .ui-dialog-buttonpane {
+            text-align: center;
+        }
+
+        .btn {
+            margin: 5px;
+            padding: 5px 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="barcodeDialog" class= "ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable" tabindex="-1" role="dialog" aria-describedby="ui-id-5" aria-labelledby="ui-id-6" style="height: auto; width: 370px; top: 157.5px; left: 574.5px; display: block;">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span id="ui-id-6" class="ui-dialog-title">Barcode Preview</span>
+            <button type="button" class="ui-dialog-titlebar-close"></button>
+        </div>
+        <div id="ui-id-5" class="ui-dialog-content ui-widget-content" style="display: block; width: auto; min-height: 0px; max-height: none; height: 280.3px;"></div>
+            <div id="iddivpdf">
+                <div class="margin_bottom_5" style="text-align: center; font-size: 0.90em; margin-bottom: 2px;">
+                    <img class="center-block margin_bottom_5" style="height: 20px; width: 40px;" src="">
+                    <strong>Masco Industries Ltd.</strong>
+                    <span style="margin-left: 5px; font-size: 1.3em;">
+                        <strong>4286967</strong>
+                    </span>
+                </div>
+                <table border="1">
+                    <tr>
+                        <td id="buyer">B: Auchan</td>
+                        <td id="jobno">J: MIL-BB1848-01-24</td>
+                        <td id="gwaight">G.wt: 33 Kg</td>
+                    </tr>
+                    <tr>
+                        <td id="fabric">Fab: S/J</td>
+                        <td id="gsm">GSM: 140</td>
+                        <td id="mch">M/C: 053</td>
+                    </tr>
+                    <tr>
+                        <td id="buyer" colspan="3" style="white-space: normal;">
+                            Y: wiudsgbvjbdsjjhadvssvhcvjjhsvjhdsvchjwiudsgbvjbdsjjhadvssvhcvjjhsvjhdsvchj
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>D*G:36*24</td>
+                        <td>FD : 76</td>
+                        <td>SL:2.80</td>
+                    </tr>
+                    <tr>
+                        <td>Clr.:Lt. White</td>
+                        <td>Lot:III4-11(W)</td>
+                        <td>Br:Nam Dinh</td>
+                    </tr>
+                </table>
+            </div>
+        </div>    
+    </div>
+
+    <button id="openDialog" class="btn">Open Barcode Preview</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#barcodeDialog").dialog({
+                autoOpen: false,
+                modal: true,
+                width: 'auto',
+                height: 'auto',
+                resizable: false,
+                draggable: true,
+                open: function () {
+                    $(".ui-dialog-titlebar-close").html("&times;"); // Close button symbol
+                }
+            });
+
+            $("#openDialog").click(function () {
+                prompt("Hello");
+                $("#barcodeDialog").dialog("open");
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+ 
+
+<div id="cardprint" style="width: 75mm; height: 60mm; font-size: 0.90em; margin-top: 3px; margin-right: 1px; margin-left: 1px;">
+    <table style="width: 75mm; table-layout: fixed; font-size: 11px;">
+        <tr>
+            <td style="width: 25%; text-align: center;">
+                <img src="Screenshot_1.png" style="height: 60px; width: 75px; display: block; margin: auto;">
+            </td>
+            <td style="text-align: center; font-weight: bold;">
+                MIL(Knit)
+            </td>
+            <td style="text-align: center; font-weight: bold;">
+                4286967
+            </td>
+            <td id="gwaight" style="text-align: center;">
+                G.wt: 33 Kg
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <table style="border-collapse: collapse; width: 75mm; table-layout: fixed; font-size: 11px;">
+            <tr>
+                <td id="buyer" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    B: Auchan Target Australia Behhfes
+                </td>
+                <td id="jobno" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    J: MIL-BB1848-01-24
+                </td>
+                <td id="orderno" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    O: 569188 HJshj HS sh shfeks dh
+                </td>
+            </tr>
+            <tr>
+                <td id="fabric" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    Fab: S/J
+                </td>
+                <td id="gsm" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    GSM: 140
+                </td>
+                <td id="mch" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    M/C: 053
+                </td>
+            </tr>
+            <tr>
+                <td id="yarn" colspan="3" style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    Y: hjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjha dvssvhcvjj
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    D*G: 36*24
+                </td>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    FD : 76
+                </td>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    SL: 2.80
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    Clr.: Lt. White
+                </td>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    Lot: III4-11(W)
+                </td>
+                <td style="border: 1px solid black; padding: 2px; vertical-align: top; word-wrap: break-word; white-space: normal;">
+                    Br: Nam Dinh
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

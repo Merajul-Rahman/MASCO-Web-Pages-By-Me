@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and borders don't affect element size */
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+table {
+    margin: auto; /* Center the table */
+    width: 98%; /* Use percentages to avoid horizontal overflow */
+    padding: 0 1%;
+    border-collapse: collapse; /* Ensure table fits within parent */
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 5px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+input {
+    width: 99%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+
+.gradient-bar {
+    background: linear-gradient(to right, #5a8ba0, #31506d);
+    height: 50px;
+    width: 100%; /* Use percentage instead of vw */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    margin: 2vw, auto;
+    max-width: 1200px; /* Prevent container from being too wide */
+}
+
+.header {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a4a4a;
+    border-bottom: 2px solid #8ce1d0;
+    padding-bottom: 5px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.radio-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.radio-buttons label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #4a4a4a;
+}
+
+.radio-buttons input[type="radio"] {
+    accent-color: #34c3aa;
+    width: 18px;
+    height: 18px;
+}
+
+.modal-dialog, .modal-body, .modal-content {
+    width: 98%; /* Replace vw with % */
+    margin: auto;
+    padding: 0 1%;
+}
+
+.btn, .plus {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover, .plus:hover {
+    background-color: #45a049;
+}
+
+.refbtn, .duplicate {
+    background-color: #68a6e9;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.refbtn:hover, .duplicate:hover {
+    background-color: #49d3e9;
+}
+
+.clbtn, .minus {
+    background-color: #d60b0b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clbtn:hover, .minus:hover {
+    background-color: #9f0c0cc3;
+}
+
+.btn-load {
+    padding: 8px 16px;
+    background-color: #34c3aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-load:hover {
+    background-color: #28a18c;
+}
+
+.content{
+    display: none;
+}
+
+.modal-dialog{
+    width: 98vw;
+    margin: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.modal-body, .modal-content
+{
+    width: 98vw;
+}

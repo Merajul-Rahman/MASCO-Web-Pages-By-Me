@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Entry</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add full viewport height to body */
+        body {
+            min-height: 100vh;
+        }
+
+        /* Center the content */
+        .centered-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;  /* To stack h1 and content-box */
+        }
+
+        .content-box {
+            border: 1px solid darkgray;
+            border-radius: 10px;
+            box-shadow: azure;
+            width: 70%;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            width: 100%;
+        }
+
+        .row.d-flex .col-md-6 {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control {
+            margin-left: 10px;
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .action-buttons button {
+            margin: 0 5px;
+        }
+
+        .highlighted-row {
+            background-color: #ffeb3b; /* Yellow highlight */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-container">
+        <h1>Dynamic Content Entry</h1>
+        <div class="content-box">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h3>Content Type</h3>
+                </div>
+                <div class="col-md-6">
+                    <select name="contentType" id="contentType" class="form-control">
+                        <option>Select Content Type</option>
+                        <option value="text">Text</option>
+                        <option value="image">Image/Banner</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input field (hidden by default) -->
+            <div class="row mb-3" id="textInput" style="display: none;">
+                <div class="col-md-6 ">
+                    <h4>Enter Text</h4>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="dynamicText" id="dynamicText" class="form-control">
+                </div>
+            </div>
+
+            <!-- Image/Banner input field (hidden by default) -->
+            <div class="row mb-3" id="imageInput" style="display: none;">
+                <div class="col-md-6">
+                    <h4>Select Image/Banner</h4>
+                </div>
+                <div class="col-md-6">
+                    <input type="file" name="dynamicFile" id="dynamicFile" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h3>Select Priority</h3>
+                </div>
+                <div class="col-md-6">
+                    <select name="priority" id="priority" class="form-control">
+                        <option value="">Select Priority</option>
+                    </select>
+                </div>
+            </div>
+        
+            <!-- Centered checkbox and label -->
+            <div class="row mb-3 justify-content-center">
+                <div class="col-md-6 d-flex justify-content-center">
+                    <input type="checkbox" name="isActive" id="isActive">
+                    <h4 class="ml-2">Is Active</h4>
+                </div>
+            </div>
+
+            <!-- Submit button (to add the row to the table) -->
+            <div class="row mb-3 justify-content-center">
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100" id="addRowBtn">Save</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-secondary w-100" id="refreshBtn">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table to display dynamic entries -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Action</th>
+                <th>Content Type</th>
+                <th>Content</th>
+                <th>Priority</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Dynamic rows will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Get the content type select element
+        const contentTypeSelect = document.getElementById("contentType");
+        // Get the elements for text input and image input
+        const textInput = document.getElementById("textInput");
+        const imageInput = document.getElementById("imageInput");
+
+        // Get the priority select element
+        const prioritySelect = document.getElementById("priority");
+
+        // Function to generate dynamic options for priority
+        function generatePriorityOptions() {
+            for (let i = 1; i <= 100; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                prioritySelect.appendChild(option);
+            }
+        }
+
+        // Call the function to generate priority options
+        generatePriorityOptions();
+
+        // Add an event listener for when the content type changes
+        contentTypeSelect.addEventListener("change", function() {
+            // Hide both input fields initially
+            textInput.style.display = "none";
+            imageInput.style.display = "none";
+
+            // Show the correct input field based on the selection
+            if (this.value === "text") {
+                textInput.style.display = "flex";  // Show text input field
+            } else if (this.value === "image") {
+                imageInput.style.display = "flex";  // Show image input field
+            }
+        });
+
+        let editedRow = null; // To store the reference to the row being edited
+
+        // Function to add a row to the table or update an existing row
+        document.getElementById("addRowBtn").addEventListener("click", function() {
+            const contentType = contentTypeSelect.value;
+            const dynamicText = document.getElementById("dynamicText").value;
+            const dynamicFile = document.getElementById("dynamicFile").files[0]?.name || '';
+            const priority = prioritySelect.value;
+            const isActive = document.getElementById("isActive").checked ? 'Active' : 'Inactive';
+
+            if (contentType && priority) {
+                const tableBody = document.getElementById("tableBody");
+                const rowCount = tableBody.rows.length + 1;
+
+                if (editedRow) {
+                    // Update the existing row
+                    editedRow.cells[2].textContent = contentType;
+                    editedRow.cells[3].textContent = contentType === 'text' ? dynamicText : dynamicFile;
+                    editedRow.cells[4].textContent = priority;
+                    editedRow.cells[5].textContent = isActive;
+
+                    // Reset the edited row reference
+                    editedRow.classList.remove("highlighted-row");
+                    editedRow = null;
+                } else {
+                    // Add a new row
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${rowCount}</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-warning btn-sm" onclick="editRow(this)">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                        </td>
+                        <td>${contentType}</td>
+                        <td>${contentType === 'text' ? dynamicText : dynamicFile}</td>
+                        <td>${priority}</td>
+                        <td>${isActive}</td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+
+                // Clear the input fields after saving
+                contentTypeSelect.value = "Select Content Type";
+                document.getElementById("dynamicText").value = '';
+                document.getElementById("dynamicFile").value = '';
+                prioritySelect.value = '';
+                document.getElementById("isActive").checked = false;
+                textInput.style.display = 'none';
+                imageInput.style.display = 'none';
+            } else {
+                alert("Please select content type and priority.");
+            }
+        });
+
+        // Function to edit a row
+        function editRow(button) {
+            const row = button.closest("tr");
+            row.classList.add("highlighted-row"); // Highlight the row
+
+            // Populate the input fields with row data for editing
+            const contentType = row.cells[2].textContent;
+            const content = row.cells[3].textContent;
+            const priority = row.cells[4].textContent;
+            const status = row.cells[5].textContent === 'Active';
+
+            contentTypeSelect.value = contentType;
+            if (contentType === 'text') {
+                document.getElementById("dynamicText").value = content;
+                textInput.style.display = 'flex';
+                imageInput.style.display = 'none';
+            } else if (contentType === 'image') {
+                document.getElementById("dynamicFile").value = content;
+                textInput.style.display = 'none';
+                imageInput.style.display = 'flex';
+            }
+            prioritySelect.value = priority;
+            document.getElementById("isActive").checked = status;
+
+            // Set the edited row reference
+            editedRow = row;
+        }
+
+        // Function to delete a row
+        function deleteRow(button) {
+            const row = button.closest("tr");
+            row.remove();
+        }
+
+        // Function to refresh the page (clear all inputs and reset the table)
+        document.getElementById("refreshBtn").addEventListener("click", function() {
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = '';  // Clear all rows
+
+            contentTypeSelect.value = "Select Content Type";
+            document.getElementById("dynamicText").value = '';
+            document.getElementById("dynamicFile").value = '';
+            prioritySelect.value = '';
+            document.getElementById("isActive").checked = false;
+            textInput.style.display = 'none';
+            imageInput.style.display = 'none';
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

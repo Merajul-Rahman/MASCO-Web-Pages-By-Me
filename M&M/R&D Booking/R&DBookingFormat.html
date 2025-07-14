@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page type-1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and borders don't affect element size */
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+table {
+    margin: auto; /* Center the table */
+    width: 98%; /* Use percentages to avoid horizontal overflow */
+    padding: 0 1%;
+    border-collapse: collapse; /* Ensure table fits within parent */
+}
+
+th, td {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 4px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+input[type="text"],input[type="date"],input[type="number"] ,select {
+    width: 99%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+
+.gradient-bar {
+    background: linear-gradient(to right, #5a8ba0, #31506d);
+    height: 50px;
+    width: 100%; /* Use percentage instead of vw */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    margin: 2vw, auto;
+    max-width: 1200px; /* Prevent container from being too wide */
+}
+
+.header {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a4a4a;
+    border-bottom: 2px solid #8ce1d0;
+    padding-bottom: 5px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.radio-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.radio-buttons label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #4a4a4a;
+}
+
+.radio-buttons input[type="radio"] {
+    accent-color: #34c3aa;
+    width: 18px;
+    height: 18px;
+}
+
+.modal-dialog, .modal-body, .modal-content {
+    width: 98%; /* Replace vw with % */
+    margin: auto;
+    padding: 0 1%;
+}
+
+.btn, .plus {
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover, .plus:hover {
+    background-color: #45a049;
+}
+
+.refbtn, .duplicate {
+    background-color: #68a6e9;
+    color: white;
+    padding: 7px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.refbtn:hover, .duplicate:hover {
+    background-color: #49d3e9;
+}
+
+.clbtn, .minus {
+    background-color: #d60b0b;
+    color: white;
+    padding: 7px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clbtn:hover, .minus:hover {
+    background-color: #9f0c0cc3;
+}
+
+.btn-load {
+    padding: 8px 16px;
+    background-color: #34c3aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-load:hover {
+    background-color: #28a18c;
+}
+
+.content{
+    display: none;
+}
+
+.modal-dialog{
+    width: 98vw;
+    margin: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.modal-body, .modal-content
+{
+    width: 98vw;
+}
+
+.yplus
+{
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+}
+.yminus
+{
+    background-color: #d60b0b;
+    color: white;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+}
+.yduplicate
+{
+    background-color: #34c3aa;
+    color: white;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+</style>
+
+</head>
+<body>
+    <div class="gradient-bar">
+        <!-- Add your content here -->
+        <img src="MascoLogo.png" alt="Logo" style="margin-right: 10px;">
+        <span>MASCO GROUP</span>
+    </div>
+
+    <div class="container">
+        
+        <div class="header">R&D Booking</div>
+        
+        <div class="d-flex justify-content-center radio-buttons">
+            <label>
+                <input type="radio" name="bookingType" value="newBooking" onclick="toggleContent('newBooking')">
+                New Booking
+            </label>
+            <label>
+                <input type="radio" name="bookingType" value="reviseBooking" onclick="toggleContent('reviseBooking')">
+                Revise Booking
+            </label>
+        </div>
+    </div>
+        <br>
+        <div id="reviseBookingContent" class="content">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="style">Style:</label>
+                    <select id="style">
+                        <option value="" disabled selected>Select style</option>
+                        <option value="style1">Style 1</option>
+                        <option value="style2">Style 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tracking">Tracking:</label>
+                    <select id="tracking">
+                        <option value="" disabled selected>Select tracking</option>
+                        <option value="track1">Track 1</option>
+                        <option value="track2">Track 2</option>
+                    </select>
+                </div>
+                <button class="btn-load" onclick="load()">Load</button>
+            </div>
+        </div>
+        
+        <div id="newBookingContent" class="content">
+            <table id="basicInfoTable">
+                <tr>
+                    <th>MASCO Ref.:</th>
+                    <td colspan="3"><input type="text" id="rndNo"></td>
+                    <th>Development Motive:</th>
+                    <th>
+                        <select id="developmentMotive">
+                            <option value="research">Research</option>
+                            <option value="innovation">Innovation</option>
+                            <option value="newness">Newness</option>
+                            <option value="strategic_co_creation">Strategic Co-Creation</option>
+                            <option value="cost_driven_co_creation">Cost Driven Co-Creation</option>
+                            <option value="improvisational_co_creation">Improvisational Co-Creation</option>
+                            <option value="sustainability">Sustainability</option>
+                            <option value="process_development">Process Development</option>
+                            <option value="cost_minimization">Cost Minimization</option>
+                        </select>                        
+                    </th>
+                    <th>Development Type</th>
+                    <th>
+                        <select id="developmentType">
+                            <option value="first_development">First Development</option>
+                            <option value="reproduction">Reproduction</option>
+                            <option value="proto_sample">Proto Sample (Prototype Sample)</option>
+                            <option value="fit_sample">Fit Sample</option>
+                            <option value="size_set_sample">Size Set Sample</option>
+                            <option value="salesman_sample">Salesman Sample (SMS)</option>
+                            <option value="pre_production_sample">Pre-Production Sample (PP Sample)</option>
+                            <option value="counter_sample">Counter Sample</option>
+                            <option value="red_seal_sample">Red Seal Sample</option>
+                            <option value="gold_seal_sample">Gold Seal Sample</option>
+                            <option value="shipment_sample">Shipment Sample</option>
+                            <option value="wash_test_sample">Wash Test Sample</option>
+                            <option value="photo_sample">Photo Sample</option>
+                            <option value="top_sample">TOP Sample (Top of Production Sample)</option>
+                            <option value="digital_garment_sample">Digital Garment Sample</option>
+                            <option value="showroom_sample">Showroom Sample</option>
+                            <option value="show_sample">Show Sample</option>
+                            <option value="production_sample">Production Sample</option>
+                            <option value="gpt_sample">GPT Sample</option>
+                            <option value="lab_dip_sample">Lab-Dip Sample</option>
+                            <option value="handloom_sample">Handloom Sample</option>
+                            <option value="strike_off_sample">Strike Off Sample</option>
+                            <option value="development_sample">Development Sample</option>
+                            <option value="photoshoot_sample">Photoshoot Sample</option>
+                            <option value="red_tag_sample">Red Tag Sample</option>
+                            <option value="sealed_sample">Sealed Sample</option>
+                            <option value="garment_production_testing_sample">Garment Production Testing (GPT) Sample</option>
+                        </select>                        
+                    </th>
+                </tr>
+                <tr>
+                    <th>ERP Tracking:</th>
+                    <td colspan="3"><input type="text" id="erp_tracking"></td>
+                    <th>Confirmation Date:</th>
+                    <td colspan="3"><input type="date" id="confirmation_date"></td>
+                </tr>
+                <tr>
+                    <th>Buyer:</th>
+                    <td colspan="3"><input type="text" id="buyer"></td>
+                    <th>F/ Fabric Delivery Date:</th>
+                    <td colspan="3"><input type="date" id="fabric_delivery_date"></td>
+                </tr>
+                <tr>
+                    <th>Style Name:</th>
+                    <td colspan="3"><input type="text" id="style_order_no"></td>
+                    <th>F/ Sample Delivery Date:</th>
+                    <td colspan="3"><input type="date" id="sample_delivery_date"></td>
+                </tr>
+                <tr>
+                    <th>Construction:</th>
+                    <td colspan="3"><input type="text" id="construction"></td>
+                    <th>Sample Quantity:</th>
+                    <td colspan="3"><input type="number" id="sample_quantity"></td>
+                </tr>
+                <tr>
+                    <th>Yarn Details:</th>
+                    <td colspan="3"><input type="text" id="yarn_details"></td>
+                    <th>Target Input Qty.:</th>
+                    <td colspan="3"><input type="number" id="target_input_qty"></td>
+                </tr>
+                <tr>
+                    <th>Knit m/c Detail:</th>
+                    <td colspan="3"><input type="text" id="knit_mc_detail"></td>
+                    <th>Gmts Consumption:</th>
+                    <td colspan="3"><input type="text" id="gmts_consumption"></td>
+                </tr>
+                <tr>
+                    <th>Garments Item:</th>
+                    <td colspan="3"><input type="text" id="garments_item"></td>
+                    <th>No of Sewing Functions:</th>
+                    <td colspan="3"><input type="number" id="sewing_functions"></td>
+                </tr>
+                <tr>
+                    <th>Print Type:</th>
+                    <td colspan="3"><input type="text" id="print_type"></td>
+                    <th>Embroidary:</th>
+                    <td><input type="text" id="embroidary"></td>
+                    <th>Types of Sewing m/cs:</th>
+                    <td><input type="text" id="sewing_machines"></td>
+                </tr>
+                <tr>
+                    <th>Input Target:</th>
+                    <td><input type="text" id="input_target"></td>
+                    <th>Print:</th>
+                    <td><input type="text" id="print"></td>
+                    <th>Wash:</th>
+                    <td colspan="3"><input type="text" id="wash"></td>
+                </tr>
+            </table>
+            
+            <div id="verticalscroll" style="width: 100%; overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
+                <table id="dynamicTable" style="width: max-content; min-width: max-content;">
+                    <tr>
+                        <th  colspan="3">Action</th>
+                        <th >MASCO Ref.:</th>
+                        <th >Fabric For</th>
+                        <th >Fabrication</th>
+                        <th >Yarn Details 
+                        </th>
+                        <th style="width: 6%;" >SL</th>
+                        <th style="width: 4%;" >GSM</th>
+                        <th >GG</th>
+                        <th style= "width: 6%;"><select style="width: 100%; word-wrap: break-word; overflow-wrap: break-word;" id="develomentType">
+                            <option value="diaOpen" selected>Fabric Dia (Open Width)</option>
+                            <option value="diaTube">Fabric Dia (Tube)</option>
+                        </select></th>
+                        <th >Dyeing Type</th>
+                        <th >Color</th>
+                        <th style="width: 4%;" >Qty</th>
+                        <th >Instructions / Remarks</th>
+                    </tr>
+                    <tr class="data-row">
+                        <td><button class="plus" onclick="addRow(this)">+</button></td>
+                        <td><button class="minus" onclick="removeRow(this)">-</button></td>
+                        <td><button class="duplicate" onclick="duplicateRow(this)">D</button></td>
+                        <td><input type="text" class="rndNo"></td>
+                        <td>
+                            <select id="fabricFor">
+                                <option value="body">Body</option>
+                                <option value="rib">Rib</option>
+                                <option value="collar">Collar</option>
+                                <option value="cuff">Cuff</option>
+                                <option value="neck">Neck</option>
+                                <option value="drawstring">Drawstring</option>
+                                <option value="twill_tape">Twill Tape</option>
+                                <option value="na">N/A</option>
+                            </select>
+                            
+                        </td>
+                        <td><input type="text" class="fabrication"></td>
+                        <td><table id="yarn_details_table">
+                            <tr class="Ydata-row">
+                                <td><button class="yplus" onclick="YaddRow(this)">+</button>
+                                    <button class="yminus" onclick="YremoveRow(this)">-</button></td>
+                                <td><input type="text" id="yarn_details1"></td>
+                            </tr>
+                        </table></td>
+                        <td>
+                            <table id="sl_table">
+                                <tr class="Sl_row">
+                                    <td><input type="text" class="sl"></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td><input type="text" class="gsm"></td>
+                        <td><input type="text" class="gg"></td>
+                        <td><input type="text" class="fab_dia"></td>
+                        <td>
+                            <select id="dyeingtype">
+                                <option value="Solid">Solid</option>
+                                <option value="Yarn Dyed">Yarn Dyed</option>
+                                <option value="Fiber Dyed">Fiber Dyed</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="color"></td>
+                        <td><input type="text" class="qty"></td>
+                        <td><input type="text" class="remarks"></td>
+                    </tr>
+                    <tr id="totalRow">
+                        <td colspan="11">Total</td>
+                        <td id="total_qty">0</td>
+                        <td colspan="4"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <table id="dyeingFinishingInstructionTable" style="border-collapse: collapse;">
+                <tr>
+                    <th style="width: 75%; text-align: center;" colspan="7">Dyeing/Finishing Instructions</th>
+                    <th style="width: 25%; text-align: center;">Dyeing/Finishing Remarks</th>
+                </tr>
+                <tr>
+                    <th id="pretreatment" style="min-width:190px; width: 190px;">Pre-Treatment</th>
+                    <td id="heatsetting">Heatsetting</td>
+                    <td><input type="checkbox" id="heatsettingNo">NO</td>
+                    <td><input type="checkbox" id="heatsettingTBC">TBC</td>
+                    <td><input type="checkbox" id="heatsettingAsSet">As Set</td>
+                    <td><input type="checkbox" id="heatsettingSetParameters">Set Parameters</td>
+                    <td>
+                        <input type="checkbox" id="heatsettingotherPtProcess">
+                        <select style="width: max-content;" id="otherPtProcess">
+                            <option disabled value="default">Select</option>
+                        </select>
+                    </td>
+                    <td rowspan="4" id="dyeingRemarks" style="height: 100%">
+                        <textarea style="height: 150px; width: 100%;"></textarea>
+                    </td>
+                </tr>
+                <tr id="lastin">
+                    <th style="min-width:190px; width: 190px;">Enzyme Treatment: *</th>
+                    <td><input type="checkbox" id="enzymeTreatmateNo">No Enzyme</td>
+                    <td colspan="2"><input type="checkbox" id="enzymeTreatmateLight">Light Enzyme</td>
+                    <td colspan="2"><input type="checkbox" id="enzymeTreatmateMedium">Medium Enzyme</td>
+                    <td><input type="checkbox" id="enzymeTreatmateHeavy">Heavy Enzyme</td>
+                </tr>
+                <tr id="processContainer">
+                    <th style="min-width:190px; width: 190px;">Process Instructions: *</th>
+                    <td id="processFields" colspan="6">
+                        <button class="add-btn" onclick="addProcessField()">+</button>
+                    </td>
+                </tr>
+                
+
+            </table>
+
+            <table id="specialInstructionTable">
+                <tr>
+                    <th style="width: 50%; text-align: center;" colspan="4">Special Instruction</th>
+                </tr>
+                <tr>
+                    <th>Batch Instruction</th>
+                    <td><input type="text" id="batch_instruction"></td>
+                    <th>Garments Wash</th>
+                    <td><input type="text" id="garments_wash"></td>
+                </tr>
+                <tr>
+                    <th>Fabrication Plan</th>
+                    <td><input type="text" id="fabrication_plan"></td>
+                    <th>Sewing Production / hr</th>
+                    <td><input type="text" id="sewing_production_hr"></td>
+                </tr>
+            </table>
+
+            <table id="additionalInfoTable">
+                <tr>
+                    <th colspan="4" style="text-align: center;">Fabric Quality Parameters</th>
+                    <th colspan="2" style="text-align: center;">Assigned Units</th>
+                </tr>
+
+                <tr>
+                    <th style="width: 15%;">Shrinkage Tolerance</th>
+                    <td style="width: 18%;"><input type="text" id="shrinkage_tolerance"></td>
+                    <th style="width: 15%;">Shade Matching Tolerance</th>
+                    <td style="width: 18%;"><input type="text" id="shade_matching_tolerance"></td>
+                    <th style="width: 15%;">Yarn Dyed by</th>
+                    <td style="width: 18%;"><input type="text" id="yarn_dyed_by"></td>
+                </tr>
+                <tr>
+                    <th>Final GSM on Garments</th>
+                    <td><input type="text" id="final_gsm_garments"></td>
+                    <th>Wash Fastness at 60º C</th>
+                    <td><input type="text" id="wash_fastness"></td>
+                    <th>Knitting By</th>
+                    <td>
+                        <select name="preparedBy" id="preparedBy">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Final GSM on Finish Fabric</th>
+                    <td><input type="text" id="final_gsm_finish_fabric"></td>
+                    <th>Wet Rubbing Fastness</th>
+                    <td><input type="text" id="wet_rubbing_fastness"></td>
+                    <th>Heat Set By</th>
+                    <td>
+                        <select name="preparedBy" id="preparedBy">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Type of Yarn</th>
+                    <td><input type="text" id="type_of_yarn"></td>
+                    <th>Dry Rubbing Fastness</th>
+                    <td><input type="text" id="dry_rubbing_fastness"></td>
+                    <th>Dyeing/Finish by</th>
+                    <td>
+                        <select name="preparedBy" id="preparedBy">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description of Fabric</th>
+                    <td><input type="text" id="description_of_fabric"></td>
+                    <th>Spirality of Fabric</th>
+                    <td><input type="text" id="spirality_of_fabric"></td>
+                    <th>Cutting by</th>
+                    <td><input type="text" id="delivery_to_buyer"></td>
+                </tr>
+                <tr>
+                    <th>Lt. Source of Shade Matching</th>
+                    <td><input type="text" id="lt_source_shade_matching"></td>
+                    <th>Pilling of Fabric</th>
+                    <td><input type="text" id="pilling_of_fabric"></td>
+                    <th>Delivery to Buyer</th>
+                    <td><input type="text" id="delivery_to_buyer"></td>
+                </tr>
+            </table>
+            <br>
+            <table id="attachmentTable" style="width: 100%; margin-top: 20px;" border="1">
+                <thead>
+                    <tr> 
+                        <th colspan="3" style="text-align: center;">Attachments</th>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%; text-align: center;">Action</th>
+                        <td style="width: 45%; text-align: center;">Attachment Type</th>
+                        <td style="width: 45%; text-align: center;">File</th>
+                    </tr>
+                </thead>
+                <tbody id="fileFields">
+                    <tr>
+                        <td style="text-align: center;">
+                            <button class="btn btn-sm btn-success" onclick="addFileField()">+</button>
+                            <button class="minus btn btn-sm btn-danger" onclick="removeFileField(this)">−</button>
+                        </td>
+                        <td>
+                            <select name="attachmentType" class="form-select" style="width: 100%;">
+                                <option value="-1">Select.......</option>
+                                <option value="FabricPic">Fabric Pic</option>
+                                <option value="Stickers">Stickers</option>
+                                <option value="KnittingBooking">Knitting Booking</option>
+                                <option value="SwatchPicwithAnalysisreport">Swatch Pic with Analysis Report</option>
+                                <option value="RNDBookingFile">RND Booking File</option>
+                                <option value="RNDDesignFile">RND Design File</option>
+                                <option value="PriceIdeaSheet">Price Idea Sheet (All costing info)</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="file" class="form-control file-input" style="width: 100%;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table id="">
+                <tr>
+                    <th>PREPARED BY</th>
+                    <th>CHECKED BY</th>
+                    <th>APPROVED BY</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="preparedBy" id="preparedBy">
+
+                        </select>
+                    </td>
+                    <td>
+                        <select name="checkeddBy" id="checkeddBy">
+
+                        </select>
+                    </td>
+                    <td>
+                        <select name="approveddBy" id="approveddBy">
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+        </div>
+        
+        
+    <!-- Save Button -->
+        <div class="d-flex justify-content-center">
+            <button class="btn mx-2" onclick="exportTablesToExcel()">Save</button>
+            <button class="refbtn mx-2" onclick="refresh()">Refresh</button>
+            <button class="clbtn mx-2" onclick="close()">Close</button>
+            <br>
+        </div>
+    </div>
+
+<script>
+    document.getElementById("heatsettingotherPtProcess").addEventListener("change", function () {
+    let table = document.getElementById("dyeingFinishingInstructionTable");
+    let heatsettingCell = document.getElementById("heatsetting");
+    let pretreatment =document.getElementById("pretreatment");
+    let remarks = document.getElementById("dyeingRemarks");
+    let lastrow = document.getElementById("lastin");
+    let existingRows = document.getElementById("OtherPtProc");
+    let setparameter =  document.getElementById("heatsettingSetParameters");
+
+    if (this.checked) {
+        if(existingRows)
+        {
+            existingRows.remove();
+        }
+        if(setparameter.checked)
+        {
+            let r1 = document.getElementById("Ptdr");
+            let newCell = document.createElement("td");
+            newCell.id = "OtherPtProc";
+            newCell.rowSpan = 4;
+            let input = document.createElement("input");
+            input.type = "text";
+            input.style.height = "100%";
+            newCell.appendChild(input);
+            r1.appendChild(newCell);
+        }
+        else{
+            heatsettingCell.rowSpan = 2;
+            pretreatment.rowSpan = 2;
+            remarks.rowSpan = 5;
+            let newRow = document.createElement("tr");
+            newRow.id ="otherPt";
+            newRow.innerHTML = `<td colspan = "4">
+                <input type="text" disabled></td>
+                <td><input type="text" id="otherPtprocessdetails"></td>`;
+            lastrow.parentElement.insertBefore(newRow,lastrow);
+        }
+    } else 
+    {
+        if(setparameter.checked)
+        {
+            let r1 = document.getElementById("Ptdr");
+            let td1 = document.getElementById("OtherPtProc");
+            r1.removeChild(td1);
+        }
+        else
+        {
+            let r = document.getElementById("otherPt");
+            r.remove();
+            heatsettingCell.rowSpan = 1;
+            pretreatment.rowSpan = 1;
+            remarks.rowSpan = 4;
+        }        
+    }
+});
+
+
+
+    document.getElementById("heatsettingSetParameters").addEventListener("change", function () {
+    let table = document.getElementById("dyeingFinishingInstructionTable");
+    let heatsettingCell = document.getElementById("heatsetting");
+    let pretreatment =document.getElementById("pretreatment");
+    let remarks = document.getElementById("dyeingRemarks");
+    let lastrow = document.getElementById("lastin");
+    let existingRows = document.getElementsByClassName("Ptdr");
+    
+
+    if (this.checked) {
+        if(existingRows.length>0)
+    {
+        existingRows.forEach(row => row.remove());
+    }
+        // Increase the rowspan of heatsetting
+        
+        heatsettingCell.rowSpan = 5;
+        pretreatment.rowSpan = 5;
+        remarks.rowSpan = 9;
+        let r1 = document.createElement('tr');
+        r1.className="Ptdr";
+        r1.id= "Ptdr";
+        r1.innerHTML =  `<td>Temperature</td>
+                        <td><input type="text" id="temperatur"></td>
+                        <td>Overfeed</td>
+                        <td><input type="text" id="overfeed"></td>`;
+        let r2 = document.createElement('tr');
+        r2.className="Ptdr";
+        r2.innerHTML =  `<td>Feeding</td>
+                        <td><input type="text" id="temperatur"></td>
+                        <td>Pinning</td>
+                        <td><input type="text" id="overfeed"></td>`;
+        let r3 = document.createElement('tr');
+        r3.className="Ptdr";
+        r3.innerHTML =  `<td>Padder Pressure</td>
+                        <td><input type="text" id="temperatur"></td>
+                        <td>Dia Set</td>
+                        <td><input type="text" id="overfeed"></td>`;
+        let r4 = document.createElement('tr');
+        r4.className="Ptdr";
+        r4.innerHTML =  `<td>Blower</td>
+                        <td><input type="text" id="temperatur"></td>
+                        <td>M/C Speed</td>
+                        <td><input type="text" id="overfeed"></td>`;
+        
+        
+        lastrow.parentElement.insertBefore(r1, lastrow);
+        lastrow.parentElement.insertBefore(r2, lastrow);
+        lastrow.parentElement.insertBefore(r3, lastrow);
+        lastrow.parentElement.insertBefore(r4, lastrow);
+        
+    } else {
+        if(existingRows.length>0)
+    {
+        Array.from(existingRows).forEach(row => row.remove());
+
+    }
+        heatsettingCell.rowSpan = 1;
+        pretreatment.rowSpan = 1;
+        remarks.rowSpan = 4;
+    }
+});
+
+
+function addFileField() {
+        const tableBody = document.getElementById("fileFields");
+        const newRow = document.createElement("tr");
+
+        newRow.innerHTML = `
+            <td style="text-align: center;">
+                <button class="btn btn-sm btn-success" onclick="addFileField()">+</button>
+                <button class="minus btn btn-sm btn-danger" onclick="removeFileField(this)">−</button>
+            </td>
+            <td>
+                <select name="attachmentType" class="form-select" style="width: 100%;">
+                    <option value="-1">Select.......</option>
+                    <option value="FabricPic">Fabric Pic</option>
+                    <option value="Stickers">Stickers</option>
+                    <option value="KnittingBooking">Knitting Booking</option>
+                    <option value="SwatchPicwithAnalysisreport">Swatch Pic with Analysis Report</option>
+                    <option value="RNDBookingFile">RND Booking File</option>
+                    <option value="RNDDesignFile">RND Design File</option>
+                    <option value="PriceIdeaSheet">Price Idea Sheet (All costing info)</option>
+                </select>
+            </td>
+            <td>
+                <input type="file" class="form-control file-input" style="width: 100%;">
+            </td>
+        `;
+
+        tableBody.appendChild(newRow);
+    }
+
+    function removeFileField(button) {
+        const row = button.closest("tr");
+        const tableBody = document.getElementById("fileFields");
+        if (tableBody.rows.length > 1) {
+            row.remove();
+        }
+    }
+
+function addProcessField() {
+            let container = document.getElementById("processFields");
+
+            // Create a new select element
+            let newcheckbox = document.createElement("input");
+            newcheckbox.type = "checkbox";
+            let newSelect = document.createElement("select");
+            newSelect.innerHTML = `
+                <option value="">Select Process</option>
+                <option value="Stenter">Stenter</option>
+                <option value="Dryer">Dryer</option>
+                <option value="Compacting">Compacting</option>
+                <option value="Brushing">Brushing</option>
+                <option value="Sueding">Sueding</option>
+                <option value="Shearing">Shearing</option>
+                <option value="Sanforizing">Sanforizing</option>
+                <option value="Washing">Washing</option>
+            `;
+            newSelect.style.width = "fit-content";
+
+            // Add a small margin between selects
+            newSelect.style.marginRight = "5px";
+
+            // Append the new select inside the same td
+            container.appendChild(newcheckbox);
+            container.appendChild(newSelect);
+        }
+
+
+    function submitForm() {
+        const inputs = document.querySelectorAll('.input-field');
+        let data = {};
+
+        inputs.forEach(input => {
+            if (input.type === 'text' || input.type === 'number' || input.type === 'date' || input.tagName === 'TEXTAREA') {
+                data[input.placeholder || input.type] = input.value;
+            }
+        });
+
+        console.log('Submitted Data:', data);
+        alert('Form Submitted! Check the console for data.');
+    }
+
+
+    // Function to add a new row before the total row
+    function addRow() {
+        const table = document.getElementById('dynamicTable');
+        const row = table.querySelector('.data-row');  // Get the first row with class 'data-row'
+        const newRow = row.cloneNode(true);  // Clone the row
+        
+        // Clear the input values in the cloned row
+        const inputs = newRow.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.value = '';  // Reset the values of inputs in the cloned row
+        });
+
+        // Insert the new row before the total row
+        const totalRow = document.getElementById('totalRow');
+        const tbody = table.querySelector('tbody');
+        if (tbody && totalRow) {
+            tbody.insertBefore(newRow, totalRow);  // Insert before the total row
+        }
+        // Add event listener for quantity inputs
+        document.querySelectorAll('.qty').forEach(input => {
+        input.addEventListener('input', updateTotal);
+        });
+        updateTotal();  // Update the total after adding a new row
+    }
+
+
+    function YaddRow(button) {
+    // Find the closest data row (master row)
+    let masterRow = button.closest(".data-row");
+
+    // Find the corresponding yarn_details_table and sl_table within this master row
+    let yarnTable = masterRow.querySelector("#yarn_details_table");
+    let slTable = masterRow.querySelector("#sl_table");
+
+    // Create a new row for yarn_details_table
+    let newYarnRow = document.createElement("tr");
+    newYarnRow.classList.add("Ydata-row");
+    newYarnRow.innerHTML = `
+        <td>
+            <button class="yplus" onclick="YaddRow(this)">+</button>
+            <button class="yminus" onclick="YremoveRow(this)">-</button>
+        </td>
+        <td><input type="text" class="yarn_details"></td>
+    `;
+
+    // Create a new row for sl_table
+    let newSlRow = document.createElement("tr");
+    newSlRow.classList.add("Sl_row");
+    newSlRow.innerHTML = `<td><input type="text" class="sl"></td>`;
+
+    // Append the new rows to the respective tables
+    yarnTable.appendChild(newYarnRow);
+    slTable.appendChild(newSlRow);
+}
+
+function YremoveRow(button) {
+    // Find the closest data row (master row)
+    let masterRow = button.closest(".data-row");
+
+    // Find the corresponding yarn_details_table and sl_table within this master row
+    let yarnTable = masterRow.querySelector("#yarn_details_table");
+    let slTable = masterRow.querySelector("#sl_table");
+
+    // Ensure at least one row remains (prevent deleting all rows)
+    if (yarnTable.rows.length > 1 && slTable.rows.length > 1) {
+        // Remove the clicked row from yarn_details_table
+        let currentRow = button.closest("tr");
+        currentRow.remove();
+
+        // Remove the last row from sl_table to maintain sync
+        slTable.deleteRow(-1);
+    } else {
+        alert("At least one row must remain.");
+    }
+}
+
+
+
+    // Function to remove the clicked row
+    function removeRow(button) {
+        const row = button.closest('tr');  // Get the closest tr to the clicked button
+        const table = document.getElementById('dynamicTable');
+        const tbody = table.querySelector('tbody');
+        
+        // Ensure there is more than one data row before the total row
+        const rows = tbody.querySelectorAll('.data-row');
+        // If there's more than one data row, allow removal
+        if (rows.length > 1) {  // More than one data row (the last one should not be removed)
+            tbody.removeChild(row);  // Remove the clicked row
+            updateTotal();  // Update the total after removing a row
+        }
+    }
+
+    // Function to duplicate the clicked row
+    function duplicateRow(button) {
+        const row = button.closest('tr');  // Get the closest tr to the clicked button
+        const newRow = row.cloneNode(true);  // Clone the row
+
+        // Insert the cloned row before the total row
+        const table = document.getElementById('dynamicTable');
+        const totalRow = document.getElementById('totalRow');
+        const tbody = table.querySelector('tbody');
+        if (tbody && totalRow) {
+            tbody.insertBefore(newRow, totalRow);  // Insert before the total row
+        }
+
+        // Add event listener for quantity inputs
+        document.querySelectorAll('.qty').forEach(input => {
+        input.addEventListener('input', updateTotal);
+    });
+        updateTotal();  // Update the total after duplicating a row
+    }
+
+    // Function to update the total quantity
+    function updateTotal() {
+        let total = 0;
+        let qtyInputs = document.querySelectorAll('.qty');
+        qtyInputs.forEach(input => {
+            if (!isNaN(input.value) && input.value !== "") {
+                total += parseFloat(input.value);
+            }
+        });
+        document.getElementById('total_qty').textContent = total;
+    }
+
+    // Ensure the total updates when user inputs a value in any .qty input field
+    document.querySelectorAll('.qty').forEach(input => {
+        input.addEventListener('input', updateTotal);
+    });
+    
+
+
+    function saveData() {
+        const allTables = document.querySelectorAll('table'); // Select all tables on the page
+        let data = '';
+
+        allTables.forEach(table => {
+            const rows = table.querySelectorAll('tr'); // Select all rows in the table
+
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input'); // Get all input fields in the row
+                const rowData = Array.from(inputs).map(input => input.value).join('\t'); // Join input values with tabs
+                if (rowData) {
+                    data += rowData + '\n'; // Add row data to the file
+                }
+            });
+
+            // Add a separator between tables to distinguish them
+            data += '\n' + '-'.repeat(50) + '\n';
+        });
+
+        // Create a Blob with the data and download it as a .txt file
+        const blob = new Blob([data], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'full_form_data.txt';  // File name for the download
+        link.click();
+    }
+
+
+    function exportTablesToExcel() {
+    const tables = [
+        document.getElementById('basicInfoTable'),
+        document.getElementById('dynamicTable'),
+        document.getElementById('additionalInfoTable'),
+        document.getElementById('specialInstructionTable')
+    ];
+
+    // Initialize a 2D array to hold the Excel data
+    let allData = [];
+    let currentRowIndex = 0;
+
+    tables.forEach((table) => {
+        const rows = table.querySelectorAll('tr');
+
+        rows.forEach((row) => {
+            const cells = row.querySelectorAll('th, td');
+            let currentRow = allData[currentRowIndex] || [];
+            let colIndex = 0;
+
+            cells.forEach((cell) => {
+                // Find the next available column
+                while (currentRow[colIndex] !== undefined) {
+                    colIndex++;
+                }
+
+                // Check if the cell contains an input field
+                const input = cell.querySelector('input');
+                const cellValue = input ? input.value : cell.innerText || cell.textContent;
+
+                // Add the cell content or input value to the current row
+                currentRow[colIndex] = cellValue;
+
+                // Handle `rowspan` and `colspan`
+                const rowspan = parseInt(cell.getAttribute('rowspan')) || 1;
+                const colspan = parseInt(cell.getAttribute('colspan')) || 1;
+
+                for (let i = 0; i < rowspan; i++) {
+                    for (let j = 0; j < colspan; j++) {
+                        if (i === 0 && j === 0) continue; // Skip the original cell
+                        if (!allData[currentRowIndex + i]) {
+                            allData[currentRowIndex + i] = [];
+                        }
+                        allData[currentRowIndex + i][colIndex + j] = ""; // Placeholder
+                    }
+                }
+
+                colIndex += colspan; // Move to the next column
+            });
+
+            allData[currentRowIndex] = currentRow;
+            currentRowIndex++;
+        });
+
+        // Add an empty row between tables for separation
+        allData.push([]);
+        currentRowIndex++;
+    });
+
+    // Create a worksheet from the collected data
+    const worksheet = XLSX.utils.aoa_to_sheet(allData);
+
+    // Create a workbook and append the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "CombinedSheet");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, 'ExportedTablesWithUserInput.xlsx');
+}
+
+
+
+
+
+    function toggleContent(selectedType) {
+            // Hide all contents
+            document.getElementById('newBookingContent').style.display = 'none';
+            document.getElementById('reviseBookingContent').style.display = 'none';
+
+            // Show the selected content
+            if (selectedType === 'newBooking') {
+                document.getElementById('newBookingContent').style.display = 'block';
+            } else if (selectedType === 'reviseBooking') {
+                document.getElementById('reviseBookingContent').style.display = 'block';
+            }
+        }
+    function load() {
+        // Hide all contents
+        document.getElementById('newBookingContent').style.display = 'block';
+        document.getElementById('reviseBookingContent').style.display = 'block';
+    }
+</script>
+
+
+
+
+</body>
+</html>

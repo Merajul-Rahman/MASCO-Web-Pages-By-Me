@@ -1,0 +1,450 @@
+<html
+    class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"
+    style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Digital Library Search Panel</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caprasimo&amp;family=Poppins:wght@300;400;500;600;700&amp;family=Rammetto+One&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+
+
+    <!-- select2 newly added 2023-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Poppins, sans-serif !important;
+            font-size: 14px;
+            overflow: hidden;
+            background: linear-gradient(90deg, rgba(219, 234, 254, 1) 0%, rgba(191, 219, 254, 1) 100%);
+        }
+
+        .nav {
+            align-items: center;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .group_name {
+            font-family: "Caprasimo", serif;
+            color: #000655;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .page-wrapper {
+            padding-top: 50px;
+            background: linear-gradient(90deg, rgba(219, 234, 254, 1) 0%, rgba(191, 219, 254, 1) 100%);
+            height: calc(100vh - 60px);
+        }
+
+
+        @media (min-width:640px) {
+            .group_name {
+                font-size: 40px;
+            }
+        }
+
+        @media (min-width:767px) {
+            .page-wrapper {
+                padding-top: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div style="width:55%;display:flex;justify-content:space-between;">
+            <a class="navbar-brand" href="/">
+                <img src="/Content/Images/MascoLogo.png" style="width: 2.4rem; background: white;">
+            </a>
+            <a href="/" class="logo">
+                <h1 class="group_name">MASCO GROUP</h1>
+            </a>
+        </div>
+        <div class="nav">
+
+            <button class="btn btn-sm btn-success" id="btnBackToPrevious" onclick="history.back(); return false;"><i
+                    class="fa fa-rotate-left mr-2"></i>Back</button>
+
+            <a class="nav-link waves-effect waves-light profile" href="#" id="download">
+                <label class="user_nm" style="padding-right: 10px;">Md. Merajul Rahman Shipon</label>
+                <img class="img-circle user-img" src="/Content/EmpImages/emp184321.jpg" style="border-radius: 50%">
+                <span class="caret"></span>
+            </a>
+            <a class="btn btn-sm btn-primary" href="/Home/LogOut"><i class="fa fa-power-off pr-2"></i> Logout</a>
+        </div>
+    </nav>
+    <!-- Page Content Wrapper -->
+    <div class="page-wrapper">
+        <!-- Main Content -->
+        <main class="main_content">
+
+            <div class="container-fluid body-content">
+                <style>
+                    .panel.panel-primary>.panel-heading {
+                        color: #FFFFFF;
+                        /*background: #009688 !important;*/
+                        /*background: #369dbc !important;*/
+                        background: #1f2751 !important;
+                        border-color: #369DBC !important;
+                    }
+
+                    .search_form {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .search_box {
+                        width: 550px;
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 20px;
+                        margin-bottom: 30px;
+                        border: 1px solid #1f2751;
+                    }
+
+                    .search_box .buttonfind {
+                        height: 100%;
+                        width: 100px;
+                        font-size: 16px;
+                        position: absolute;
+                        right: 0px;
+                        top: 0;
+                        border-right: 24px;
+                        border: none;
+                        background: #1e264f;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+
+                    .search_box .form-control {
+                        border-radius: 20px !important;
+                        padding-inline-start: 52px !important;
+                        padding: 8px;
+                    }
+
+                    .search_box .icon {
+                        position: absolute;
+                        top: 0;
+                        left: 0px;
+                        height: 100%;
+                        width: 45px;
+                        padding: 8px 16px;
+                        /*background: darksalmon;*/
+                        /*background: #56cbc0 !important;*/
+                        /*background: #369dbc !important;*/
+                        background-color: #e6e6e6cc;
+                        color: #1f2751;
+                    }
+
+                    .tbl_wrap {
+                        padding: 10px;
+                    }
+
+                    .tblHeader {
+                        /*background: #ffb39b;*/
+                        /*background: #b0ccd8;*/
+                        background: #1f2751;
+                        color: #fff;
+                    }
+                    table tr th,
+                    table tr td {
+                        font-size: 14px;
+                        vertical-align: middle !important;
+                    }
+
+                    table tbody tr:nth-child(even) {
+                        /*background-color: #dbeefd !important;*/
+                        background-color: #c3c4cd !important;
+                        /*background-color: #bbe3c9 !important;*/
+                    }
+
+                    table tbody tr:nth-child(odd) {
+                        background-color: #fff !important;
+                    }
+
+
+                    .tbl_wrap {
+                        position: relative;
+                        max-height: 650px;
+                        overflow-y: auto;
+                        padding-top: 0px !important;
+                    }
+
+                    .tblHeader {
+                        position: sticky;
+                        top: 0px;
+                        left: 0;
+                    }
+                </style>
+                <style>
+    .slider-container {
+        position: relative;
+        height: 100%;
+        width: 33%;
+        overflow: hidden;
+    }
+
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 32px;
+        color: white;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+    }
+
+    .slider-btn.left {
+        left: 10px;
+    }
+
+    .slider-btn.right {
+        right: 10px;
+    }
+
+    .slider-container:hover .slider-btn {
+        opacity: 1;
+    }
+
+    .slider-btn:hover {
+        color: #ddd;
+    }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        z-index: 2;
+    }
+
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #888;
+        cursor: pointer;
+    }
+</style>
+                <script src="/AppJs/DigitalLibrary.js"></script>
+
+                <div id="wait"
+                    style="display: none; width: 100px; height: 100px; border: 1px solid; border-radius: 6px; border-color: floralwhite; position: absolute; top: 50%; left: 50%">
+                    <img src="../../Content/Images/waiting.gif" width="100" height="80"><br><span
+                        style="text-align: center">Loading......</span>
+                </div>
+
+                <div class="panel panel-primary mt-3" style="margin-bottom: 20px;">
+                    <div class="panel panel-heading">Digital Library Search Engine</div>
+                    <div class="panel panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br>
+                                <form role="form" class="form-horizontal search_form" autocomplete="off">
+                                    <br>
+                                    <div class="search_box">
+                                        <input type="text" name="" id="groupName" class="form-control" min="3"
+                                            max="99999" placeholder="Type Here.....">
+                                        <div class="icon">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                        <input type="button" name="" id="btnSearch" class="buttonfind" value="Search">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row" style="height: 6%; background-color: antiquewhite; margin-bottom: 0.4%;">
+                            <h3 style="width: 100%;"> <marquee behavior="auto" direction="right">Lorem ipsum dolor sit amet consectetur ad </marquee></h3>
+                        </div>
+<div class="row" style="justify-content: space-between; height: 66%; background-color: #f0efd2; padding: 5px; margin: 0;">
+
+    <!-- Image Slider -->
+    <div class="slider-container" style="background-color: #1f2751;">
+        <div id="imageSlider" style="height: 100%; width: 100%; position: relative;">
+            <img src="https://images.unsplash.com/photo-1743445888873-7b989699663d?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute;" />
+            <img src="https://images.unsplash.com/photo-1750779940698-f24b28d76fd9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute; display: none;" />
+            <img src="https://images.unsplash.com/photo-1750801321932-3d3e3fcdfdcd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="image-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute; display: none;" />
+        </div>
+        <button class="slider-btn left" onclick="prevImage()">❮</button>
+        <button class="slider-btn right" onclick="nextImage()">❯</button>
+        <div id="imageDots" class="slider-dots"></div>
+    </div>
+
+    <!-- Video Slider -->
+    <div class="slider-container" style="background-color: #010413;">
+        <div id="videoSlider" style="height: 100%; width: 100%; position: relative;">
+            <video class="video-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute;" autoplay muted>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <video class="video-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute; display: none;" autoplay muted>
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            </video>
+            <video class="video-slide" style="width: 100%; height: 100%; object-fit: cover; position: absolute; display: none;" autoplay muted>
+                <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
+            </video>
+        </div>
+        <button class="slider-btn left" onclick="prevVideo()">❮</button>
+        <button class="slider-btn right" onclick="nextVideo()">❯</button>
+        <div id="videoDots" class="slider-dots"></div>
+    </div>
+
+   <!-- 33%-wide column that fills the viewport height -->
+<div style=" width:33%; overflow:hidden;">
+  <iframe src="https://1drv.ms/p/c/46e7fcb5cec68fef/IQTMJNUUlOGQQYEdLh4JFKCTAcy6Re_-9kAk4o8tou6H7D8" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+</div>
+
+
+</div>
+
+                        <div class="form-group" style="overflow-x:auto;">
+                            <div id="printSection" class="tbl_wrap">
+                                <table class="table table-bordered tblbody" id="dgLibrary"
+                                    style="overflow: scroll hidden; text-align: center; display: none;">
+                                    <thead class="tblHeader">
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Group Name</th>
+                                            <th>R&amp;D Number</th>
+                                            <th>FabricDetails</th>
+                                            <th>Technical Limitation</th>
+                                            <th>Image</th>
+                                            <!--<th>--> <!--</th> style='display:none;'-->
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <input type="hidden" value="" id="FDLId">
+                    </div>
+
+                </div>
+
+                <script>
+                    $('.owl-carousel').owlCarousel({
+                        items: 5,
+                        loop: true,
+                        margin: 10,
+                        autoplay: true,
+                        autoplayTimeout: 2000,
+                        autoplayHoverPause: true,
+                        responsive: {
+                            0: {
+                                items: 1
+                            },
+                            600: {
+                                items: 3
+                            },
+                            1000: {
+                                items: 5
+                            }
+                        }
+                    })
+                </script>
+
+            </div>
+
+        </main>
+    </div>
+  <script>
+    // ===== IMAGE SLIDER =====
+    let imageIndex = 0;
+    const imageSlides = document.querySelectorAll('.image-slide');
+    const imageDotsContainer = document.getElementById('imageDots');
+
+    function showImageSlide(index) {
+        imageSlides.forEach((img, i) => {
+            img.style.display = i === index ? 'block' : 'none';
+            imageDotsContainer.children[i].style.backgroundColor = i === index ? '#fff' : '#888';
+        });
+    }
+
+    function nextImage() {
+        imageIndex = (imageIndex + 1) % imageSlides.length;
+        showImageSlide(imageIndex);
+    }
+
+    function prevImage() {
+        imageIndex = (imageIndex - 1 + imageSlides.length) % imageSlides.length;
+        showImageSlide(imageIndex);
+    }
+
+    // Create dots for image slider
+    imageSlides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.style.cssText = 'width: 10px; height: 10px; border-radius: 50%; background: #888; cursor: pointer;';
+        dot.addEventListener('click', () => {
+            imageIndex = i;
+            showImageSlide(imageIndex);
+        });
+        imageDotsContainer.appendChild(dot);
+    });
+
+    setInterval(nextImage, 3000); // Auto advance
+    showImageSlide(imageIndex);
+
+    // ===== VIDEO SLIDER =====
+    let videoIndex = 0;
+    const videoSlides = document.querySelectorAll('.video-slide');
+    const videoDotsContainer = document.getElementById('videoDots');
+
+    function showVideoSlide(index) {
+        videoSlides.forEach((vid, i) => {
+            vid.pause();
+            vid.currentTime = 0;
+            vid.style.display = i === index ? 'block' : 'none';
+            videoDotsContainer.children[i].style.backgroundColor = i === index ? '#fff' : '#888';
+        });
+        videoSlides[index].play();
+    }
+
+    function nextVideo() {
+        videoIndex = (videoIndex + 1) % videoSlides.length;
+        showVideoSlide(videoIndex);
+    }
+
+    function prevVideo() {
+        videoIndex = (videoIndex - 1 + videoSlides.length) % videoSlides.length;
+        showVideoSlide(videoIndex);
+    }
+
+    // Create dots for video slider
+    videoSlides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.style.cssText = 'width: 10px; height: 10px; border-radius: 50%; background: #888; cursor: pointer;';
+        dot.addEventListener('click', () => {
+            videoIndex = i;
+            showVideoSlide(videoIndex);
+        });
+        videoDotsContainer.appendChild(dot);
+    });
+
+    // Setup auto next after each video ends
+    videoSlides.forEach((video, i) => {
+        video.addEventListener('ended', nextVideo);
+    });
+
+    showVideoSlide(videoIndex);
+</script>
+
+
+
+</body>
+
+</html>

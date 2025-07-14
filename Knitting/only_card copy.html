@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Card</title>
+    <style>
+        #cardprint {
+            width: 80mm;
+            height: 60mm;
+            font-size: 0.90em;
+            margin-top: 3px;
+            margin-right: 1px;
+            margin-left: 1px;
+            overflow: hidden; /* Prevent content from overflowing */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+
+            box-sizing: border-box;
+        }
+    
+        table {
+            width: 100%;
+            table-layout: fixed; /* Ensures table stays within div */
+            font-size: 11px;
+            border-collapse: collapse;
+        }
+    
+        td {
+            border: 1px solid black;
+            padding: 2px;
+            word-wrap: break-word;
+            white-space: normal;
+            text-align: center;
+        }
+    
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div id="cardprint" style="width: 75mm; height: 60mm; font-size: 0.90em; margin-top: 3px; margin-right: 1px; margin-left: 1px;"></div>
+    <button onclick="generate()">Generate</button>
+    <button onclick="printCard()">Print Card</button>
+    <script>
+        function printCard() {
+            window.print();
+        }
+    </script>
+<script>
+    let company = "MIL(Knit)", g_FBarcodeGernationId = 4286967, buyer = "Auchan", job = "MIL-BB5876-01-25", order = 3155591, machineID="845AA";
+let result = {
+    ItemName: "S/J",
+    FabSize: "140",
+    DiaxGG: "36*24",
+    FinishedDia: "76",
+    StichLen: "2.80",
+    Specification: "hjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjha hjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjhahjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjhahjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjha ",
+    Colors: "Lt. White Blue Pearl Green",
+    FeederType: "uyygbjhwvjugjd",
+    Lots: "24KH246167 hjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjha",
+    Gwt: "29.2",
+    Brands: "SH SH SIwsaj hjwiuds gbvjbdsjjhadvssvhcvjjhsv jhdsvchjwiudsgbv jbdsjjha"
+}
+
+var bcode = `<div id="cardprint" style="width: 80mm; height: 60mm; font-size: 0.90em; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid black;  box-sizing: border-box;">
+    <table style="width: 100%; table-layout: fixed; font-size: 11px; border-collapse: collapse;">
+        <tr>
+            <td style="width: 25%; text-align: center;">
+                <img src="Screenshot_1.png" style="height: 60px; width: 75px; display: block; margin: auto;">
+            </td>
+            <td style="text-align: center; font-weight: bold;">${company}</td>
+            <td style="text-align: center; font-weight: bold;">${g_FBarcodeGernationId}</td>
+            <td id="gwaight" style="text-align: center;"> G.wt: <strong>${result.Gwt}</strong> Kg</td>
+        </tr>
+    </table>
+    <div>
+        <table style="border-collapse: collapse; width: 100%; table-layout: fixed; font-size: 11px; overflow: hidden">
+            <tr>
+                <td id="buyer" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">B: ${buyer}</td>
+                <td id="jobno" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">J: ${job}</td>
+                <td id="orderno" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">O: ${order}</td>
+            </tr>
+            <tr>
+                <td id="fabric" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">Fab: ${result.ItemName}</td>
+                <td id="gsm" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">GSM: ${result.FabSize}</td>
+                <td id="mch" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">M/C: ${machineID}</td>
+            </tr>
+            <tr>
+                <td id="yarn" colspan="3" style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">Y: ${result.Specification}</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">D*G: ${result.DiaxGG}</td>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">FD : ${result.FinishedDia}</td>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">SL: ${result.StichLen}</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">Clr.: ${result.Colors}</td>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">Lot: ${result.Lots}</td>
+                <td style="border: 1px solid black; padding: 2px; word-wrap: break-word; white-space: normal;">Br: ${result.Brands}</td>
+            </tr>
+        </table>
+    </div>
+</div>`;
+
+function generate() {
+    document.getElementById("cardprint").innerHTML = bcode;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2818 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Merchandising">
+    <meta name="keywords" content="Merchandising,Masco, MIS">
+    <meta name="author" content="MIS, Masco" />
+    <title>CardPrintOutline </title>
+    <!-- Favicon icon -->
+    <link rel="icon" href="/App_Theme/main_components/assets/images/MascoLogo.png" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/icon/icofont/css/icofont.css">
+    <!-- flag icon framework css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/flag-icon/flag-icon.min.css">
+    <!-- Menu-Search css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/menu-search/css/component.css">
+    <!-- Horizontal-Timeline css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/dashboard/horizontal-timeline/css/style.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/dashboard/amchart/css/amchart.css">
+    <!-- flag icon framework css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/flag-icon/flag-icon.min.css">
+    <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+    <!-- Notification.css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/pages/notification/notification.css">
+    <!-- Date-time picker css -->
+    <link href="/App_Theme/main_components/assets/pages/advance-elements/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/animate.css/animate.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/css/style.css">
+    <!--color css-->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/css/color/color-1.css" id="color" />
+    <!--Sweet Alert css-->
+    <link href="/App_Theme/main_components/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" />
+    <!--EditDeleteButton-->
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/css/EditDelete.css" />
+    <!--Layout customised design-->
+    <link href="/App_Theme/main_components/assets/css/layoutStyle.css" rel="stylesheet" />
+    <!--Select2 css-->
+    <link href="/App_Theme/main_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <!--Kendo css-->
+    <link href="/Content/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="/Content/css/kendo.dataviz.default.min.css" rel="stylesheet" />
+    <link href="/Content/css/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="/Content/css/kendo.default.min.css" rel="stylesheet" />
+    <link href="/Content/css/kendo.rtl.min.css" rel="stylesheet" />
+    <!--Block UI-->
+    <link href="/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <!-- Multi Select css -->
+    <link href="/App_Theme/main_components/assets/css/multiple-select.css" rel="stylesheet" />
+    <link href="/App_Theme/main_components/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="/App_Theme/main_components/multiselect/css/multi-select.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="/App_Theme/main_components/assets/css/component.css" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        var $331 = $.noConflict(true);
+    </script>
+    <script src="/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="/AppJs/UserDefinedNotification.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/tether/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="/App_Theme/main_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="/App_Theme/main_components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/modernizr/feature-detects/css-scrollbars.js"></script>
+
+    <!-- Rickshow Chart js -->
+    
+    <!-- Morris Chart js -->
+    <script src="/App_Theme/main_components/raphael/raphael.min.js"></script>
+    <script src="/App_Theme/main_components/morris.js/morris.js"></script>
+    <!-- Horizontal-Timeline js -->
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/horizontal-timeline/js/main.js"></script>
+    <!-- amchart js -->
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/amchart/js/amcharts.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/amchart/js/serial.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/amchart/js/light.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/amchart/js/custom-amchart.js"></script>
+    <!-- data-table js -->
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/data-table/js/jszip.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/data-table/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/data-table/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <!-- Bootstrap date-time-picker js -->
+    <script src="/App_Theme/main_components/assets/pages/advance-elements/moment-with-locales.min.js"></script>
+    <script src="/App_Theme/main_components/assets/pages/advance-elements/bootstrap-datetimepicker.min.js"></script>
+    
+    <!-- notification js -->
+    <script type="text/javascript" src="/App_Theme/main_components/assets/js/bootstrap-growl.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/notification/notification.js"></script>
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="/App_Theme/main_components/i18next/i18next.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/jquery-i18next/jquery-i18next.min.js"></script>
+    <!-- Custom js -->
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/dashboard/custom-dashboard.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/pages/data-table/js/data-table-custom.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/js/script.js"></script>
+    <!--Select2 js-->
+    
+    <!--Sweet Alert Init js-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Kendo js-->
+    <script src="/Scripts/kendo.all.min.js"></script>
+    <!--Block ui-->
+    <script src="/Scripts/jquery.blockUI.js"></script>
+    <script src="/App_Theme/main_components/select2/dist/js/select2.full.min.js"></script>
+    
+    <!-- Multiselect js -->
+    <script src="/Scripts/jquery.multiple.select.js"></script>
+    <script src="/App_Theme/main_components/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+    <script src="/App_Theme/main_components/multiselect/js/jquery.multi-select.js"></script>
+    
+    <script type="text/javascript" src="/App_Theme/main_components/assets/js/modal.js"></script>
+    <script type="text/javascript" src="/App_Theme/main_components/assets/js/modalEffects.js"></script>
+    <!-- classie js -->
+    <script type="text/javascript" src="/App_Theme/main_components/classie/classie.js"></script>
+    <style>
+        .ui-dialog-titlebar-close {
+            visibility: hidden;
+        }
+
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow: auto;
+            color: black !important;
+            font-size: 12px !important;
+        }
+    </style>
+
+</head>
+<body class="horizontal-fixed">
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div></div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <!-- Menu header start -->
+    <nav class="navbar header-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-logo">
+                
+                
+                
+                <a class="mobile-search morphsearch-search" href="#">
+                    <i class="ti-search"></i>
+                </a>
+                <a href="/Home/Index">
+                    <img class="img-fluid" src="/App_Theme/main_components/assets/images/MascoLogo.png" alt="Theme-Logo" style="height: 40px;" /><span style="font-weight:bold"> MASCO Group</span>
+                </a>
+                <a class="mobile-options">
+                    <i class="ti-more"></i>
+                </a>
+            </div>
+            <div class="navbar-container container-fluid">
+                <div>
+                    <ul class="nav-left"></ul>
+                    <ul class="nav-right">
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <i class="ti-bell" style="font-size:20px;"></i> <span class="badge badge-light bookingNotify" style="left:36px;">0</span>
+                                <span class="sr-only">unread messages</span>
+                            </a>
+                            <ul class="show-notification profile-notification" style="width:80em">
+                                <li style='height:500px;width:100%;overflow:auto;' class="notify-data">
+
+                                    <table class="table table-bordered table-hover" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center">Buyer</th>
+                                                <th style="text-align:center">Tracking No</th>
+                                                <th style="text-align:center">Style</th>
+                                                <th style="text-align:center">Shipment Date</th>
+                                                <th style="text-align:center">Sample Stage</th>
+                                                <th style="text-align:center">Details</th>
+                                                <th style="text-align:center">Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="notify-data">
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="user-profile header-notification">
+                            <a href="#!">
+                                <img src="/Content/EmpImages/emp184321.jpg" alt="User-Profile-Image" id="userImage">
+                                <span>Md. Merajul Rahman Shipon</span>
+                                <i class="ti-angle-down"></i>
+                            </a>
+                            <ul class="show-notification profile-notification">
+                                <li>
+                                    <a href="/Elemental_BookingTracking/Index?ModuleId=3">
+                                        <input type="hidden" id="moduelId" value="3" />
+                                        <i class="ti-bell"></i> Booking Tracking <span class="badge badge-light bookingNotify" style="left:200px;">0</span>
+                                        <span class="sr-only">unread messages</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!">
+                                        <i class="ti-settings"></i> Settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user-profile.html">
+                                        <i class="ti-user"></i> Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-inbox.html">
+                                        <i class="ti-email"></i> My Messages
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="auth-lock-screen.html">
+                                        <i class="ti-lock"></i> Lock Screen
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Logout">
+                                        <i class="ti-layout-sidebar-left"></i> Logout
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+     
+
+    </nav>
+    <!-- Menu header end -->
+    <!-- MESSAGE BAR -->
+    
+
+
+    <!-- MESSAGE BAR END-->
+
+    <!-- Menu aside start -->
+    
+    
+<nav id='cssmenu'>
+    
+    <div class="button"></div>
+    <ul>
+
+                <li id='mainElemental Operation'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Elemental Operation</span>
+                    </a>
+                    <ul>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+66+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Buyer Related
+                                </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            <a href="/?p=726">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildSubcontinent'>
+                                                        <a href="/Elemental_Subcontinent/Subcontinent?p=894">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Subcontinent Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildCountry'>
+                                                        <a href="/Elemental_Country/Country?p=895">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Country Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildOperationType'>
+                                                        <a href="/Elemental_BuyerOpLogoOpType/OperationType?p=732">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Operation Type Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildZonalSubcontinet'>
+                                                        <a href="/Elemental_ZonalSubcontentFormation/ZonalSubcontinet?p=733">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Subcontinent Formation (Zonal)
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSubcontinentWiseBuyerCountryForm'>
+                                                        <a href="/Elemental_SubcontinentWiseBuyerCountryForm/SubcontinentWiseBuyerCountryForm?p=734">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Subcontinent wise Buyer&#39;s Country Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerZone'>
+                                                        <a href="/Elemental_BuyerZone/BuyerZone?p=901">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Zone
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            <a href="/?p=729">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildBuyerDetailsFormation'>
+                                                        <a href="/Elemental_BuyerDetailsFormation/BuyerDetailsFormation?p=896">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Details Operation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerOpLogo'>
+                                                        <a href="/Elemental_BuyerOpLogo/BuyerOpLogo?p=731">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer&#39;s Operational Logo Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyingOfficeData'>
+                                                        <a href="/Elemental_BuyingOfficeData/BuyingOfficeData?p=735">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buying Office Data Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        <a href="/ImporterNameEntry/Index?p=2125">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Importer Name Entry
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        <a href="/ImporterwiseBuyerTag/Index?p=2126">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Importer Wise Buyer Tag
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+738+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Merchant Related
+                                </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            <a href="/?p=739">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildRoleOfActionFormation'>
+                                                        <a href="/Elemental_Buyer_Basic_RoleOfAction/RoleOfActionFormation?p=742">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Role Of Action Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildStateWiseShipmentDateActive'>
+                                                        <a href="/StateWiseShipmentDateActive/StateWiseShipmentDateActive?p=1754">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            State Wise Shipment Date Active
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            <a href="/?p=740">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildBuyingMerchantData'>
+                                                        <a href="/Operational_BuyingMerchantData/BuyingMerchantData?p=736">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buying Merchant Data Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerWiseInternalMarcantFormation'>
+                                                        <a href="/Elemental_BuyerRelated_Operational_BuyerWiseInternalMarcant/BuyerWiseInternalMarcantFormation?p=737">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Internal Merchant Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildHierarchySet'>
+                                                        <a href="/Elemental_TeamHierarchySet/HierarchySet?p=741">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Merchandising Team Hierarchy Set
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+743+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Booking Basic Operation
+                                </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            <a href="/?p=744">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildDressPart'>
+                                                        <a href="/Elemental_DressPart/DressPart?p=754">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Dress Part Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildDeptHeadFormation'>
+                                                        <a href="/Elemental_DeptHeadFormation/DeptHeadFormation?p=899">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Department Head Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSeasonHead'>
+                                                        <a href="/Elemental_BuyerWorkingSeasonHead/SeasonHead?p=749">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Season Head Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBasic_BodyPartSetup'>
+                                                        <a href="/Basic_BodyPartSet/Basic_BodyPartSetup?p=755">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Body Part formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPrintPlaceSetup'>
+                                                        <a href="/Basic_PrintPlaceSetup/PrintPlaceSetup?p=750">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Print Place Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildGSMTolerance'>
+                                                        <a href="/ElementalGSM/GSMTolerance?p=756">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            GSM Tolerance Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPrintTypeSetup'>
+                                                        <a href="/Basic_PrintTypeSetup/PrintTypeSetup?p=751">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Print Type Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildOtherFabricOperation'>
+                                                        <a href="/Basic_OtherFabricOperation/OtherFabricOperation?p=757">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Others Fabric Operation formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildEmbroideryTypeSetup'>
+                                                        <a href="/Basic_EmbroideryTypeSetup/EmbroideryTypeSetup?p=752">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Embroidery Type Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildColorShadeSetup'>
+                                                        <a href="/Basic_ColorShadeSetup/ColorShadeSetup?p=758">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Color Shade Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildEmbroideryPlaceSetUp'>
+                                                        <a href="/Basic_EmbroideryPlaceSetUp/EmbroideryPlaceSetUp?p=753">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Embroidery Place Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildFabricsColorType'>
+                                                        <a href="/Basic_FabricsColorType/FabricsColorType?p=759">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Fabric Color Type Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildFabricColorTypeSpecFormation'>
+                                                        <a href="/BookingBasic_FabricColorTypeSpecFormation/FabricColorTypeSpecFormation?p=760">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Fabric Color Type Specification Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildAopBackgroundColorFormation'>
+                                                        <a href="/AopBackgroundColorFormation/AopBackgroundColorFormation?p=761">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            AOP Background Color Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildColorCodeFormation'>
+                                                        <a href="/Elemental_ColorCodeFormation/ColorCodeFormation?p=762">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Basic Color &amp; Color Code Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPantonNoFormation'>
+                                                        <a href="/Elemental_BookingBasic_BasicSetUp_PantonNoFormation/PantonNoFormation?p=763">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Pantone No. Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPantonNoWiseImageFormation'>
+                                                        <a href="/Element_BookingBasic_BasicSetUp_PantonNoWiseImageFormation/PantonNoWiseImageFormation?p=764">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Pantone No. Wise Image Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildColorWayFormation'>
+                                                        <a href="/Basic_ColorWayFormation/ColorWayFormation?p=765">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Color Way formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerWiseColorDetails'>
+                                                        <a href="/BuyerWiseColorDetails/BuyerWiseColorDetails?p=766">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Color Details 
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildHeadFormation'>
+                                                        <a href="/Elemental_InstructionHeadFormation/HeadFormation?p=767">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Instruction Head Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildNameFormation'>
+                                                        <a href="/Elemental_InstructionNameFormation/NameFormation?p=768">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Instruction Name Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildAttachmentName'>
+                                                        <a href="/Elemental_AttachmentNameFormation/AttachmentName?p=769">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Attachment Name Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildDeliveryTermsCondition'>
+                                                        <a href="/Elmental_DeliveryTermsCondition/DeliveryTermsCondition?p=954">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Delivery Terms &amp; Condition
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPaymentTermsCondition'>
+                                                        <a href="/Elemental_PaymentTermsCondition/PaymentTermsCondition?p=955">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Payment Terms &amp; Condition
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildTechnicalSpecification'>
+                                                        <a href="/Elemental_TechnicalSpecification/TechnicalSpecification?p=956">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Technical Specification
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildDeliveryCostReason'>
+                                                        <a href="/Elemental_DeliveryCostReason/DeliveryCostReason?p=957">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Delivery Cost Reason
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            <a href="/?p=745">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildWorkingDepartment'>
+                                                        <a href="/Elemental_BuyerDepartment/WorkingDepartment?p=747">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Working Department Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildCompanyFormation'>
+                                                        <a href="/BuyerWiseLcCompany/CompanyFormation?p=746">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyerwise L/C Company Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerWorkingSeason'>
+                                                        <a href="/Elemental_BuyerWorkingSeason/BuyerWorkingSeason?p=748">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyers Working Season formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerFabricCode'>
+                                                        <a href="/Elemental_BuyerFabric/BuyerFabricCode?p=1387">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Fabric Code Formation
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+770+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Order Basic Operation
+                                </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            <a href="/?p=771">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildStyleNameFormation'>
+                                                        <a href="/Elemental_StyleNameFormation/StyleNameFormation?p=773">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Style Name Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildOrderNoFormation'>
+                                                        <a href="/Elemental_OrderNoformation/OrderNoFormation?p=774">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Order No. Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildJobNoFormation'>
+                                                        <a href="/Elemental_JobNoFormation/JobNoFormation?p=775">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Company Job No Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildCurrencyFormation'>
+                                                        <a href="/Elemental_CurrencyBaseFormation/CurrencyFormation?p=776">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Currency Base Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerWiseSizeSetFormation'>
+                                                        <a href="/Elemental_BuyerWiseSizeSetFormation/BuyerWiseSizeSetFormation?p=779">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Size Set Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerCountryWiseSizeSetFormation'>
+                                                        <a href="/Elemental_BuyerCountryWiseSizeSetFormation/BuyerCountryWiseSizeSetFormation?p=780">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer &amp; Country Wise Size Set Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSizeEqualization'>
+                                                        <a href="/Elemental_SizeEqualization/SizeEqualization?p=781">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Size Equalization Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildMasterPackFormation'>
+                                                        <a href="/Basic_MasterPackFormation/MasterPackFormation?p=782">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Master Pack formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSubPackNameFormation'>
+                                                        <a href="/Basic_SubPackNameFormation/SubPackNameFormation?p=783">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Sub- Master Pack formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildUnitPackNameFormation'>
+                                                        <a href="/Basic_UnitPackNameFormation/UnitPackNameFormation?p=784">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Unit/Base Pack Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSizeEqualizationDeptWise'>
+                                                        <a href="/Elemental_SizeEqualizationDeptWise/SizeEqualizationDeptWise?p=968">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Size Equalization Formation (Dept Wise)
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            <a href="/?p=772">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildCurrencyValue'>
+                                                        <a href="/Elemental_CurrencyValue/CurrencyValue?p=777">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Currency Value Formation
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+68+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Order Related
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+150+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Others
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+260+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Temporary Order Booking
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+441+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Basic Operation
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+461+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Yarn Related
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+463+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Fabrics Related
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                <a class="menuclick" data-id='+2059+' href="/">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Event Management
+                                </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            <a href="/EventEntryForm/Index?p=2060">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Event Entry Form
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='childIndex'>
+                                <a class="menuclick" data-id='+1775+' href="/MainLineSet/Index">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Main Line Set
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                            <li id='childIndex'>
+                                <a class="menuclick" data-id='+1776+' href="/UnitWiseCapacity/Index">
+                                    <i class="ti-angle-right" style="padding-right: 5px;"></i>
+                                    Unit Wise Capacity Set
+                                </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+                <li id='mainIntelligent Operation'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Intelligent Operation</span>
+                    </a>
+                    <ul>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Permission Related
+                                    </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=787">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=788">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildActivationFormation'>
+                                                        
+                                                        <a href="/Intelligent_BuyerwiseActivationFormation/ActivationFormation?p=789">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Permission Activation Formation
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        CPM &amp; PERT Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=837">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTOperationName/Index?p=839">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            CPM &amp; PERT Operation Name
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTOperationAnswer/Index?p=840">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            CPM &amp; PERT Operation Answer
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/BuyerWiseCPMPERTOperationAnswerSet/Index?p=841">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise CPM &amp; PERT Operation Answer Set
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildAccessoriesBookingCriteriaSet'>
+                                                        
+                                                        <a href="/CPMPERTAccessoriesBookingCriteriaSet/AccessoriesBookingCriteriaSet?p=842">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Accessories Booking Criteria Set for CPM &amp; PERT
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTProductionMonitoringOperationNameSet/Index?p=843">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            CPM &amp; PERT Production Monitoring Name Set
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTProductionMonitoringOperationStageSet/Index?p=844">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise CPM &amp; PERT Production Monitoring Stage Set
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTDevelopmentMonitoringOperationNameSet/Index?p=845">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            CPM &amp; PERT Development Monitoring Name Set
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPMPERTDevelopmentMonitoringOperationStageSet/Index?p=846">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise CPM &amp; PERT Development Monitoring Stage Set
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/CPM_PERT_ProcessActionCalculation/Index?p=949">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Process Action Calculation(Trims Monitoring)
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=838">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildCPMPERTTrimsMonitoring'>
+                                                        
+                                                        <a href="/Intelligent_CPMPERTTrimsMonitoring/CPMPERTTrimsMonitoring?p=847">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            CPM &amp; PERT Trims Monitoring
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+                <li id='mainExtended Operation'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Extended Operation</span>
+                    </a>
+                    <ul>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Accessories Related Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=798">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildAccessoriesSet'>
+                                                        
+                                                        <a href="/BuyerwiseAccessories/AccessoriesSet?p=800">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Accessories Set Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildAccessoriesCode'>
+                                                        
+                                                        <a href="/BuyerwiseAccessoriesCode/AccessoriesCode?p=801">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Accessories Code Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/BuyerWiseSupplierAllocation/Index?p=2035">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Supplier Allocation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerNominatedItemListFormat'>
+                                                        
+                                                        <a href="/BuyerNominatedItemListFormat/BuyerNominatedItemListFormat?p=802">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Nominated Item List Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSupplierList'>
+                                                        
+                                                        <a href="/NominatedSupplier/SupplierList?p=803">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Accessories Wise Nominated Supplies Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildPricingFormation'>
+                                                        
+                                                        <a href="/ApprovedPricingFormation/PricingFormation?p=804">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Supplies Wise Accessories Approved Pricing Formation
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=799">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/AccessoriesBooking/Index?p=2027">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Accessories Booking
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=1590">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                BOM
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildBillOfMaterial'>
+                                                        
+                                                        <a href="/BillOfMaterial/BillOfMaterial?p=1587">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Bill Of Material
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Approval Related Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChildStepFormation'>
+                                            
+                                            <a href="/ApprovalStep/StepFormation?p=806">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Approval Step formation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildPageApproval'>
+                                            
+                                            <a href="/PageFormation/PageApproval?p=807">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Page Formation for approval
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildPageStep'>
+                                            
+                                            <a href="/ApprovalPageStep/PageStep?p=808">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Approved Page Wise Step Formation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildRACIMatrixApprovalSystem'>
+                                            
+                                            <a href="/ExtendedOperatopn_ApprovalRelatedOp_RACIMatrixApprovalSystem/RACIMatrixApprovalSystem?p=809">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                RACI Matrix Approval System
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildRACIMatrixApprovalSystemCancel'>
+                                            
+                                            <a href="/ExtendedOperation_ApprovalRelated_RACIMatrixApprovalSystemCancel/RACIMatrixApprovalSystemCancel?p=810">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                RACI Matrix Approval System (Cancel)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Subsidiary Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/ExcessShipment/Index?p=830">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Excess Shipment Standard Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/OrderWisePriceSettlementOperation/Index?p=831">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Order Wise Price Settlement Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/OrderCloseOperation/Index?p=832">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Order Close Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/FOBCMComparisionOperation/Index?p=833">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                FOB &amp; CM Comparison Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/AirShipmentOperation/Index?p=834">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Air Shipment Detail Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildPriceDiscountOperation'>
+                                            
+                                            <a href="/Extended_PriceDiscountOperation/PriceDiscountOperation?p=835">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Price Discount Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/OrderWiseFileAttachmentOperation/Index?p=966">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Orderwise File Attachment Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/Home/DynamicMenuLoad">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Financial Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChildSuppliers_PI_Acceptance_Operation'>
+                                            
+                                            <a href="/Suppliers_PI_Acceptance_Operation/Suppliers_PI_Acceptance_Operation?p=963">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Supplier PI Acceptance Operation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildSupplierPIAcceptanceOperationStore'>
+                                            
+                                            <a href="/ExtentedSupplierPIAcceptanceOperationStore/SupplierPIAcceptanceOperationStore?p=971">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Supplier PI Acceptance Operation (Store)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Fabric Digital Library
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/DigitalFabricEntry/Index?p=1923">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Digital Fabric Entry
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/DigitalLibraryReport/Index?p=1967">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Digital Library Report
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildGroupName'>
+                                            
+                                            <a href="/GroupName/GroupName?p=1977">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Digital Library Group Name Entry
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildindex'>
+                                            
+                                            <a href="/FabricSearch/index?p=1978">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Digital Library Image Update
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+                <li id='mainEnterprise Operation'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Enterprise Operation</span>
+                    </a>
+                    <ul>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Order Booking Operation (Bulk)
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/MasterOrderBookingInitial/Index?p=820">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Master Order Booking (Initial)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildMasterOrderBookingIndividual'>
+                                            
+                                            <a href="/Enterprise_MasterOrderBookingIndividual/MasterOrderBookingIndividual?p=822">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Master Order Booking (Individual)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/MasterOrderBookingInitialTarget/Index?p=1724">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Master Order Booking (Initial) All
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/POSheetProcessToExcel/Index?p=2077">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                PO Sheet Process to Download Excel File
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/BulkOrderBooking/Index?p=1914">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Buyer Wise Job Creation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Associate Booking Operation (Bulk)
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/Enterprise_SampleYarnBookingForBulk/Index?p=823">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Yarn Booking Operation (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildFabricBookingOperationFormBulk'>
+                                            
+                                            <a href="/FabricBookingOperationFormBulk/FabricBookingOperationFormBulk?p=900">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Fabric Booking Form (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildAOPFabricBookingOperationBulk'>
+                                            
+                                            <a href="/AOPFabricBookingOperationBulk/AOPFabricBookingOperationBulk?p=826">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                AOP Fabric Booking Operation (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/FabricBooking/Index?p=1987">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Fabric Booking
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/Enterprise_PrintBookingBulk/Index?p=824">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Placement Print booking operation (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/Enterprise_EmbroideryBookingBulk/Index?p=825">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Placement Embroidery Booking Operation (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildAccessoriesBookingOperation'>
+                                            
+                                            <a href="/Enterprise_AccessoriesBookingOperationNew/AccessoriesBookingOperation?p=827">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Accessories Booking Operation (MPR)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildAccessoriesBookingOperation'>
+                                            
+                                            <a href="/Enterprise_AccessoriesBookingOperation/AccessoriesBookingOperation?p=1550">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Accessories Booking Operation (MPR)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildOrderChecklistFormation'>
+                                            
+                                            <a href="/Enterprise_OrderChecklistFormation/OrderChecklistFormation?p=828">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Order Checklist formation
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/PrintBooking/Index?p=2024">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Print Booking
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/EmbroideryBooking/Index?p=2026">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Embroidery Booking
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildBookingOperation'>
+                                            
+                                            <a href="/FlatBedFabricBooking/BookingOperation?p=1446">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Flat Bed Fabric Booking
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Shipment Segment 
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/PackingListCA/Index?p=1561">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Packing List ( C&amp;A )
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildCutOffName'>
+                                            
+                                            <a href="/CutOffName/CutOffName?p=1432">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Cut Off Name
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildShippingModeDay'>
+                                            
+                                            <a href="/ShippingModeDay/ShippingModeDay?p=1433">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Shipping Mode Wise Day
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildPortName'>
+                                            
+                                            <a href="/PortName/PortName?p=1434">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Port Name Entry
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildCountryCutOff'>
+                                            
+                                            <a href="/CountryCutOff/CountryCutOff?p=1435">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Country Wise Cut Off 
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildCountryWeekTransfer'>
+                                            
+                                            <a href="/CountryWeekTransfer/CountryWeekTransfer?p=1436">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Country Wise Week Transfer
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Development Order Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=791">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Setup
+                                            </a>
+                                            <ul>
+                                                    <li id='childChildChildSampleStageName'>
+                                                        
+                                                        <a href="/Basic_SampleStageName/SampleStageName?p=793">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Sample Stage Name Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildBuyerWiseSampleStageName'>
+                                                        
+                                                        <a href="/Basic_BuyerWiseSampleStageName/BuyerWiseSampleStageName?p=794">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Buyer Wise Sample Stage Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildSampleSizeSet'>
+                                                        
+                                                        <a href="/Enterprise_SampleStageWiseSizeSetFormation/SampleSizeSet?p=795">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Sample Stage Wise Size Set Formation
+                                                        </a>
+                                                    </li>
+                                                    <li id='childChildChildIndex'>
+                                                        
+                                                        <a href="/SampleCommentsEntry/Index?p=2117">
+                                                            <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                            Sample Comments Entry
+                                                        </a>
+                                                    </li>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChild'>
+                                            
+                                            <a href="/?p=792">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Operational Setup
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/SampleOrderBookingMaster/Index?p=1633">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Sample Order Booking (Master)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Buyer Follow Up 
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/ShipOutStatus/Index?p=2151">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Ship Out Qty
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/BuyerFollowUpHead/Index?p=2107">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Buyer Follow Up Head
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/BuyerFollowup/Index?p=2111">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Plan And Action Date Set
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/BuyerFollowRole/Index?p=2108">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Role Set Up
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/RoleWiseFieldSet/Index?p=2109">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Role Wise Field Set
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/BuyerWisePrePlanDate/Index?p=2110">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Buyer Wise Pre-Plan Date
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+                <li id='mainOutline'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Outline</span>
+                    </a>
+                    <ul>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Elemental Operation (Outline)
+                                    </a>
+                                <ul>
+                                        <li id='childChildBasicOutline'>
+                                            
+                                            <a href="/Outline_BasicOutline/BasicOutline?p=922">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Enterprise Operation (Outline)
+                                    </a>
+                                <ul>
+                                        <li id='childChildMasterOrderBookingOutlineBulk'>
+                                            
+                                            <a href="/Enterprise_MasterOrderBookingOutlineBulk/MasterOrderBookingOutlineBulk?p=889">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Master Order Booking
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/Enterprise_MasterOrderBookingWeeklyReportHM/Index?p=1459">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Weekly Report H&amp;M
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildBasicOrderBookingOutlineSample'>
+                                            
+                                            <a href="/BasicOrderBookingOutlineSample/BasicOrderBookingOutlineSample?p=891">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Order Booking Outline (Sample)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildBookingOperationBulk'>
+                                            
+                                            <a href="/BookingOperationBulk/BookingOperationBulk?p=950">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Booking Operation Outline (Bulk)
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/CountryWiseWeekReport/Index?p=1873">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Country Wise Week Report
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Extended Operation Outline
+                                    </a>
+                                <ul>
+                                        <li id='childChildBasicAccessoriesOutline'>
+                                            
+                                            <a href="/BasicAccessoriesOutline/BasicAccessoriesOutline?p=892">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Basic Accessories Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/SubsidiaryOperationOutline/Index?p=893">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Subsidiary Operation Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildFinancialOperationOutline'>
+                                            
+                                            <a href="/FinancialOperationOutline/FinancialOperationOutline?p=961">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Financial Operation Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Dynamic Outline
+                                    </a>
+                                <ul>
+                                        <li id='childChildShippingMarkOutline'>
+                                            
+                                            <a href="/ShippingMarkOutline/ShippingMarkOutline?p=952">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Shipping Mark Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildCardPrintOutline'>
+                                            
+                                            <a href="/CardPrintOutline/CardPrintOutline?p=1386">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Card Print Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/CubusBarcodePrint/Index?p=1854">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Cubus Barcode Print
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='child'>
+                                    <a href="/">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Shipment Operation
+                                    </a>
+                                <ul>
+                                        <li id='childChildIndex'>
+                                            
+                                            <a href="/PackingListCAOutline/Index?p=1674">
+                                                <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                                Packing List ( C&amp;A ) Outline
+                                            </a>
+                                            <ul>
+
+                                            </ul>
+                                        </li>
+                                </ul>
+
+                            </li>
+                            <li id='childTrimAccessoriesPurchaseOrder'>
+                                    <a href="/AccessoriesOutline/TrimAccessoriesPurchaseOrder">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Accessories Outline
+                                    </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+                <li id='mainCosting'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Costing</span>
+                    </a>
+                    <ul>
+                    </ul>
+                </li>
+                <li id='mainWIP'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>WIP</span>
+                    </a>
+                    <ul>
+                    </ul>
+                </li>
+                <li id='mainDash Board'>
+                    <a href="#">
+                        <i class="ti-home" style="padding-right: 5px;"></i>
+                        <span>Dash Board</span>
+                    </a>
+                    <ul>
+                            <li id='childIndex'>
+                                    <a href="/SampleOrderBookingDashBroad/Index" target="_blank">
+                                        <i class="ti-angle-right" style="padding-right: 5px; font-size: 10px;"></i>
+                                        Sample Order Booking
+                                    </a>
+                                <ul>
+                                </ul>
+
+                            </li>
+                    </ul>
+                </li>
+    </ul>
+</nav>
+
+
+
+    <!-- Menu aside end -->
+
+    <!-- Main-body start-->
+    <div class="main-body">
+
+        
+
+
+
+
+<style>
+    .ms-drop.bottom {
+        margin-left: -11px !important;
+        margin-top: 2px !important;
+    }
+
+    .ms-choice {
+        border: 1px solid #fff;
+    }
+
+        .ms-choice > span {
+            top: 6px;
+            left: 4px;
+        }
+</style>
+
+
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page header start -->
+        <div class="page-header">
+            <div class="page-header-title">
+                <h4>Card Print Outline</h4>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="/Home/Index">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Outline</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Dynamic Outline</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#">Card Print Outline</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Page header end -->
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-8">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <input type="hidden" id="hfId" value="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Buyer Name</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control select2" id="ddlBuyer">
+                                            </select>
+                                            <small id="divddlBuyer" class="text-danger error">Select Buyer Name..!</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Prototype Name</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control select2" id="ddlPrototype">
+                                                
+                                            </select>
+                                            <small id="divddlPrototype" class="text-danger error">Select Prototype Name..!</small>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" id="divPrintPart">
+                                        <label class="col-sm-3 col-form-label">Print Part</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control select2" id="ddlPrintPart">
+                                                <option value="-1">--- Seletc ---</option>
+                                                <option value="1">Front</option>
+                                                <option value="2">Back</option>
+                                            </select>
+                                            <small id="divddlPrintPart" class="text-danger error">Select Print Part..!</small>
+                                        </div>
+
+                                    </div>
+                                    <div id="divPrimePart">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Tracking No:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2" name="ddlJob" id="ddlJob">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Style:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2" name="ddlStyle" id="ddlStyle">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Sample Stage:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2" name="ddlSampleStage" id="ddlSampleStage">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Color:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2" name="ddlColor" id="ddlColor">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Size:</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control select2" name="ddlSize" id="ddlSize">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="offset-md-4 col-md-6">
+                                    <input type="button" class="btn btn-info btn-preview" id="btnPreview" value="Preview" />
+                                    <input type="button" class="btn btn-warning btn-refresh" id="btnRefresh" value="Refresh" />
+                                    <input type="button" class="btn btn-danger btn-close" id="btnClose" value="Close" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/AppJs/DataBaseOperationJs.js"></script>
+
+<script type="text/javascript">
+
+    var base = '/';
+    const PrototypeFront = base + "PrototypePrint/PrototypeFront";
+    const PrototypeBack = base + "PrototypePrint/PrototypeBack";
+    const RedTagFront = base + "PrototypePrint/RedTagFront";
+    const RedTagBack = base + "PrototypePrint/RedTagBack";
+    const GoldSealFront = base + "PrototypePrint/GoldSealFront";
+    const GoldSealBack = base + "PrototypePrint/GoldSealBack";
+
+    const SpeedToMarketFront = base + "PrototypePrint/SpeedToMarketFront";
+    const SpeedToMarketBack = base + "PrototypePrint/SpeedToMarketBack";
+
+    const MarketingSampleFront = base + "PrototypePrint/MarketingSampleFront";
+    const MarketingSampleBack = base + "PrototypePrint/MarketingSampleBack";
+
+    const eComSampleFront = base + "PrototypePrint/eComSampleFront";
+    const eComSampleBack = base + "PrototypePrint/eComSampleBack";
+
+    const MockStoreSampleFront = base + "PrototypePrint/MockStoreSampleFront";
+    const MockStoreSampleBack = base + "PrototypePrint/MockStoreSampleBack";
+
+    const CMOSampleFront = base + "PrototypePrint/CMOSampleFront";
+    const CMOSampleBack = base + "PrototypePrint/CMOSampleBack";
+
+    const ProductionSampleFront = base + "PrototypePrint/ProductionSampleFront";
+    const ProductionSampleBack = base + "PrototypePrint/ProductionSampleBack";
+
+
+    const FitSampleFront = base + "PrototypePrint/FitSampleFront";
+    const FitSampleBack = base + "PrototypePrint/FitSampleBack";
+
+    const TopProductionFront = base + "PrototypePrint/TopProductionFront";
+    const TopProductionBack = base + "PrototypePrint/TopProductionBack";
+
+    const PrototypeTwoFront = base + "PrototypePrint/PrototypeTwoFront";
+    const PrototypeTwoBack = base + "PrototypePrint/PrototypeTwoBack";
+
+    const BlockSampleFront = base + "PrototypePrint/BlockSampleFront";
+    const BlockSampleBack = base + "PrototypePrint/BlockSampleBack";
+
+    const MarkettingSampleTwoFront = base + "PrototypePrint/MarkettingSampleTwoFront";
+    const MarkettingSampleTwoBack = base + "PrototypePrint/MarkettingSampleTwoBack";
+
+    const ecomMarkettingSampleFront = base + "PrototypePrint/ecomMarkettingSampleFront";
+    const ecomMarkettingSampleBack = base + "PrototypePrint/ecomMarkettingSampleBack";
+
+    const LicensePreProductionsampleFront = base + "PrototypePrint/LicensePreProductionsampleFront";
+    const LicensePreProductionsampleBack = base + "PrototypePrint/LicensePreProductionsampleBack";
+
+    const LicenseTOPsampleFront = base + "PrototypePrint/LicenseTOPsampleFront";
+    const LicenseTOPsampleBack = base + "PrototypePrint/LicenseTOPsampleBack";
+
+    $(document).ready(function () {
+        $("#divddlPrototype").hide();
+        $("#divddlPrintPart").hide();
+        $("#divddlBuyer").hide();
+        $("#divPrimePart").hide();
+        loadBuyerName();
+        $("#ddlBuyer").select2();
+    });
+
+    $("#btnPreview").on("click", function () {
+        var protoType = $("#ddlPrototype").val();
+        var printPart = $("#ddlPrintPart").val();
+
+        if (validData() == true) {
+
+            if ($("#ddlBuyer option:selected").text() == "C&A") {
+                if (protoType == "1") {
+                    if (printPart == "1") {
+                        window.open(PrototypeFront, '_blank');
+                    } else {
+                        window.open(PrototypeBack, '_blank');
+                    }
+                }
+                else if (protoType == "2") {
+                    if (printPart == "1") {
+                        window.open(RedTagFront, '_blank');
+                    } else {
+                        window.open(RedTagBack, '_blank');
+                    }
+                }
+                else if (protoType == "3") {
+                    if (printPart == "1") {
+                        window.open(GoldSealFront, '_blank');
+                    } else {
+                        window.open(GoldSealBack, '_blank');
+                    }
+                }
+                else if (protoType == "4") {
+                    if (printPart == "1") {
+                        window.open(SpeedToMarketFront, '_blank');
+                    } else {
+                        window.open(SpeedToMarketBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "5") {
+                    if (printPart == "1") {
+                        window.open(MarketingSampleFront, '_blank');
+                    } else {
+                        window.open(MarketingSampleBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "6") {
+                    if (printPart == "1") {
+                        window.open(eComSampleFront, '_blank');
+                    } else {
+                        window.open(eComSampleBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "7") {
+                    if (printPart == "1") {
+                        window.open(MockStoreSampleFront, '_blank');
+                    } else {
+                        window.open(MockStoreSampleBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "8") {
+                    if (printPart == "1") {
+                        window.open(CMOSampleFront, '_blank');
+                    } else {
+                        window.open(CMOSampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "9") {
+                    if (printPart == "1") {
+                        window.open(ProductionSampleFront, '_blank');
+                    } else {
+                        window.open(ProductionSampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "10") {
+                    if (printPart == "1") {
+                        window.open(FitSampleFront, '_blank');
+                    } else {
+                        window.open(FitSampleBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "11") {
+                    if (printPart == "1") {
+                        window.open(TopProductionFront, '_blank');
+                    } else {
+                        window.open(TopProductionBack, '_blank');
+                    }
+                }
+
+                else if (protoType == "12") {
+                    if (printPart == "1") {
+                        window.open(PrototypeTwoFront, '_blank');
+                    } else {
+                        window.open(PrototypeTwoBack, '_blank');
+                    }
+                }
+                else if (protoType == "13") {
+                    if (printPart == "1") {
+                        window.open(BlockSampleFront, '_blank');
+                    } else {
+                        window.open(BlockSampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "14") {
+                    if (printPart == "1") {
+                        window.open(MarkettingSampleTwoFront, '_blank');
+                    } else {
+                        window.open(MarkettingSampleTwoBack, '_blank');
+                    }
+                }
+
+                 else if (protoType == "15") {
+                    if (printPart == "1") {
+                        window.open(ecomMarkettingSampleFront, '_blank');
+                    } else {
+                        window.open(ecomMarkettingSampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "16") {
+                    if (printPart == "1") {
+                        window.open(WashSampleFront, '_blank');
+                    } else {
+                        window.open(WashSampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "17") {
+                    if (printPart == "1") {
+                        window.open(LicensePreProductionsampleFront, '_blank');
+                    } else {
+                        window.open(LicensePreProductionsampleBack, '_blank');
+                    }
+                }
+                else if (protoType == "18") {
+                    if (printPart == "1") {
+                        window.open(LicenseTOPsampleFront, '_blank');
+                    } else {
+                        window.open(LicenseTOPsampleBack, '_blank');
+                    }
+                }
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Cubus") {
+                const Varner = base + "Varner/Index";
+                window.open(Varner, '_blank');
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Carrefour") {
+
+                if (protoType == '1') {
+                    const Carrefour = base + "Varner/CarrefourCard";
+                    window.open(Carrefour, '_blank');
+                }
+                if (protoType == '2') {
+                    const fitSample = base + "Varner/CarrefourfitSample";
+                    window.open(fitSample, '_blank');
+                }
+                if (protoType == '3') {
+                    const sizePP = base + "Varner/CarrefoursizePP";
+                    window.open(sizePP, '_blank');
+                }
+                if (protoType == '4') {
+                    const pps = base + "Varner/Carrefourpps";
+                    window.open(pps, '_blank');
+                }
+
+
+            }
+            if ($("#ddlBuyer option:selected").text() == "Celio") {
+                if (protoType == '1') {
+                    const Celio1 = base + "Varner/CelioCard";
+                    window.open(Celio1, '_blank');
+                }
+                if (protoType == '2') {
+                    const Celio2 = base + "Varner/CelioTwo";
+                    window.open(Celio2, '_blank');
+                }
+                if (protoType == '3') {
+                    const Celio3 = base + "Varner/CelioThree";
+                    window.open(Celio3, '_blank');
+                }
+                if (protoType == '4') {
+                    const Celio3 = base + "Varner/CelioFour";
+                    window.open(Celio3, '_blank');
+                }
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Masco") {
+                const masco = base + "Varner/MascoCard";
+                window.open(masco, '_blank');
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "KONTOOR") {
+                const Kontoor = base + "Varner/KontoorCard";
+                window.open(Kontoor, '_blank');
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "IDKIDS") {
+                if (protoType == '1') {
+                    const _idkids = base + "Varner/IdgroupCard";
+                    window.open(_idkids, '_blank');
+                }
+                if (protoType == '2') {
+                    const _idkids = base + "Varner/IdkidsCard";
+                    window.open(_idkids, '_blank');
+                }
+                if (protoType == '3') {
+                    const _idkids = base + "Varner/JACADISampleCard";
+                    window.open(_idkids, '_blank');
+                }
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "SPORTS MASTER") {
+                const Sports = base + "Varner/SportsMasterCard";
+                window.open(Sports, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "Zara (Inditex)") {
+                const Kids2 = base + "Varner/ZaraKidsCard";
+                window.open(Kids2, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "MUSTANG") {
+                const Kids2 = base + "Varner/MustangCard";
+                window.open(Kids2, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "Monoprix") {
+                const Monoprix = base + "Varner/MonoprixCard";
+                window.open(Monoprix, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "Vertbaudet") {
+                const Vertbaudet = base + "Varner/DeegautexCard";
+                window.open(Vertbaudet, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "S. Oliver") {
+                const SOliver = base + "Varner/SOliverCard";
+                window.open(SOliver, '_blank');
+            }
+            if ($("#ddlBuyer option:selected").text() == "PRIMARK") {
+                // JSON data to pass
+                debugger
+                let track = $("#ddlJob option:selected").text();
+                let style = $("#ddlStyle option:selected").text();
+                let stage = $("#ddlSampleStage option:selected").text();
+                let color = $("#ddlColor option:selected").text();
+                let size = $("#ddlSize option:selected").text();
+                let sizeId = $("#ddlSize option:selected").val();
+                var _Lst = [];
+                if (_gData.length > 0) {
+                    _Lst = $.grep(_gData, function (n, k) {
+                        return (n.Value == parseInt(sizeId));
+                    });
+                    if (_Lst.length == 0) {
+                        _Lst = _gData[0];
+                    }
+                }
+                console.log(_gData);
+                const jsonData = {
+                    track: track,
+                    style: style,
+                    stage: stage == "Select......." ? "" : stage,
+                    color: color == "Select......." ? "" : color.replace(/'/g, ""),
+                    size: size == "Select......." ? "" : size.replace(/'/g, ""),
+                    dept: _Lst.length == 0 ? "" : _Lst[0].ValueStr.replace(/'/g, ""),
+                    fabric: _Lst.length == 0 ? "" : _Lst[0].DisplayName.replace(/%/g, "aaa"),
+                    remark: _Lst.length == 0 ? "" : _Lst[0].ValueStr2.replace(/'/g, "")
+                };
+
+                // Convert JSON data to a string and encode it
+                const encodedData = encodeURIComponent(JSON.stringify(jsonData));
+               // console.log(url); // Prints the complete URL
+
+                const Primark = base + 'Varner/PrimarkCard?data=' + encodedData;
+                window.open(Primark, '_blank');
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "ASOS") {
+                if (protoType == '1') {
+                    const aSOS = base + "Varner/ASOSGoldSeal";
+                    window.open(aSOS, '_blank');
+                }
+                if (protoType == '2') {
+                    const aSOS = base + "Varner/ASOSPhotoshoot";
+                    window.open(aSOS, '_blank');
+                }
+                if (protoType == '3') {
+                    const aSOS = base + "Varner/ASOSSampleCard";
+                    window.open(aSOS, '_blank');
+                }
+
+            }
+        }
+
+    });
+
+    function validData() {
+        let valids = true;
+
+        if ($("#ddlBuyer").val() == '-1') {
+            $("#divddlBuyer").show();
+            return valids = false;
+        } else { $("#divddlBuyer").hide(); }
+
+        if ($("#ddlPrototype").val() == '-1') {
+            $("#divddlPrototype").show();
+            return valids = false;
+        } else { $("#divddlPrototype").hide(); }
+
+        if ($("#ddlBuyer option:selected").text() == "C&A") {
+            if ($("#ddlPrintPart").val() == '-1') {
+                $("#divddlPrintPart").show();
+                return valids = false;
+            } else { $("#divddlPrintPart").hide(); }
+        }
+
+        if ($("#ddlBuyer option:selected").text() == "PRIMARK") {
+            if ($("#ddlJob").val() == '-1') {
+                alert("Plz Select Tracking No:")
+                return valids = false;
+            }
+            if ($("#ddlStyle").val() == '-1') {
+                alert("Plz Select Style No:")
+                return valids = false;
+            }
+        }
+
+        return valids;
+    }
+
+    $("#btnClose").on("click", function () {
+           var base = '/';
+        var baseUrl = base + "Home/Index";
+        window.location.href = baseUrl;
+    });
+
+
+    $("#btnRefresh").on("click", function () {
+        $("#ddlPrototype").val('-1').trigger('change');
+        $("#ddlPrintPart").val('-1').trigger('change');
+        $("#ddlBuyer").val('-1').trigger('change');
+    });
+
+    function loadBuyerName() {
+        $.ajax({
+            beforeSend: function () { $.blockUI(); },
+            complete: function () { $.unblockUI(); },
+            type: "POST",
+            url: base + "Outline_BasicOutline/GetBuyerName",
+            contentType: "application/json;charset=utf-8",
+            dataType: "JSON",
+            success: function (data) {
+                if (data.IsSessionOut != null) {
+                    notify('danger', "Your Session Timed Out, Please Login Again");
+                    return false;
+                }
+                if (data.Error != null) {
+                    notify('danger', data.Error);
+                    return false;
+                } else {
+                    if (data.ldata != null) {
+                        var content = '';
+                        $.each(data.ldata, function (i, t) {
+                            content += '<option value="' + t.Value + '">' + t.DisplayName + '</option>';
+                        });
+                        $('#ddlBuyer option').remove();
+                        $('#ddlBuyer').append(content);
+                        $('#ddlBuyer option').remove();
+                        var content2 = '<option value="-1">Select.......</option><option value="1">Masco</option>';
+                        $('#ddlBuyer').append(content2);
+                        $('#ddlBuyer').append(content);
+                    }
+                }
+            },
+            error: function (a, b, c) {
+                ShowCustomDialog(formatErrorMessage(a, c), 'Load Error');
+            }
+        });
+    }
+    //for prototype
+  $('#ddlBuyer').on('change', function () {
+        var buyer = '';
+        buyer = $("#ddlBuyer").val();
+        var content = '';
+        if (buyer != '-1') {
+            if ($("#ddlBuyer option:selected").text() == "C&A") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">1. Prototype Sample 1</option>' +
+                    '<option value="2">2. Red Tag Sample</option>' +
+                    '<option value="3">3. Gold Seal Tag Sample</option>' +
+                    '<option value="4">4. Speed to Market</option>' +
+                    '<option value="5">5. Marketing Sample</option>' +
+                    '<option value="6">6. eCom Sample</option>' +
+                    '<option value="7">7. Mock Store Sample</option>' +
+                    '<option value="8">8. CMO Sample</option>' +
+                    '<option value="9">9. Production Sample</option>' +
+                    '<option value="10">10. Fit Sample</option>'+
+                    '<option value="11">11. Top Production Sample</option>' +
+                    '<option value="12">12. Prototype Sample 2</option>'+
+                    '<option value="13">13. Block Sample </option>'+
+                    '<option value="14">14. Marketing Sample 2</option>'+
+                    '<option value="15">15. eCom Marketting Sample</option>'+
+                    '<option value="16">16. Wash Sample</option>'+
+                    '<option value="17">17. License Pre-Production Sample</option>' +
+                    '<option value="18">18. License TOP Sample</option>';
+                $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").show();
+                $("#divPrimePart").hide();
+
+            }
+            if ($("#ddlBuyer option:selected").text() == "Cubus") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Varner Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+
+            }
+            if ($("#ddlBuyer option:selected").text() == "Carrefour") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Carrefour Card</option>' +
+                    '<option value = "2">Fit Sample</option>' +
+                    '<option value = "3">Size PP</option>' +
+                    '<option value = "4">PPS</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Celio") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Celio 1</option>' +
+                    '<option value = "2">Celio 2</option>' +
+                    '<option value = "3">Celio 3</option>' +
+                    '<option value = "4">Celio 4</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Masco") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Masco Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "KONTOOR") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Kontoor Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "IDKIDS") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">IDKIDS Card</option>' +
+                    '<option value = "2">ACT FOR KIDS</option>'+
+                    '<option value = "3">JACADI Sample Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+            if ($("#ddlBuyer option:selected").text() == "SPORTS MASTER") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">SPORTS MASTER Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Zara (Inditex)") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">Zara Kids</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+            if ($("#ddlBuyer option:selected").text() == "MUSTANG") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value = "1">OMNIBRAND LIMITED Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Monoprix") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value="1">Monoprix Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+            if ($("#ddlBuyer option:selected").text() == "Vertbaudet") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value="1">Deegautex Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+            if ($("#ddlBuyer option:selected").text() == "S. Oliver") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value="1">SOliver Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+            if ($("#ddlBuyer option:selected").text() == "PRIMARK") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value="1">PRIMARK Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").show();
+                $.getScript('../../AppJs/Outline/DynamicOutline/CardPrintOutline.js',
+                    function (data, textStatus, jqxhr) {
+                        console.log('Script File Load Status=' + jqxhr.status);
+                    });
+            }
+            if ($("#ddlBuyer option:selected").text() == "ASOS") {
+                content = '<option value="-1">--- Seletc ---</option>' +
+                    '<option value="1">ASOS Gold Seal Sample</option>' +
+                    '<option value="2">ASOS Photoshoot Sample</option>' +
+                    '<option value="3">ASOS Sample Card</option>';
+                    $('#ddlPrototype option').remove();
+                $('#ddlPrototype').append(content);
+                $("#divPrintPart").hide();
+                $("#divPrimePart").hide();
+            }
+
+        } else {
+            $('#ddlPrototype option').remove();
+            $('#ddlPrototype').append(content);
+        }
+
+    });
+
+
+
+</script>
+    </div>
+    <!-- Main-body end-->
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!-- Warning Section Ends -->
+    <!-- Required Jqurey -->
+    
+
+    ;
+
+    <script>
+
+        $(window).load(function () {
+            function ahref() {
+                // location.reload();
+               // LoadCountData()
+            };
+            setTimeout(function () { ahref(); }, 1000);
+            //setInterval(function () { ahref(); }, 50000);
+            
+        })
+        function LoadCountData() {
+
+            var moduleId = $('#moduelId').val();
+            //alert(moduleId);
+            $.ajax({
+                type: "POST",
+                url: "/Home/Notifications",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ moduelId: moduleId }),
+                success: function (response) {
+                    try {
+                        $('.bookingNotify').html(response[0].Count);
+                        //alert(output);
+
+                        
+
+                        $('#notify-data').empty();
+                        var result = "";
+                        var GroupName ="Masco Group";
+                        var ReportType = "pdf";
+                        var dateValue = "abc";
+                        for (var i = 0; i < response.length; i++) {
+
+                            let date = new Date(+("" + response[i].ShipmentDate).slice(6, 19)).toLocaleString('en-GB', { year: "numeric", day: "2-digit", month: "2-digit" }).split("/").join("-");
+
+                            result += `
+
+                                                    <tr>
+                                                        <td style="text-align:center">${response[i].BuyerName}</td>
+                                                        <td style="text-align:center">${response[i].JobInfo}</td>
+                                                        <td style="text-align:center">${response[i].StyleInfo}</td>
+                                                        <td style="text-align:center">${date}</td>
+                                                        <td style="text-align:center">${response[i].SampleStage}</td>
+                                                        <td style="text-align:center">
+                                                            <a href="/Elemental_BookingTracking/GetAllBookingDataWithJobId?BuyerId=${response[i].BuyerId}&JobId=${response[i].JobId}&StyleId=${response[i].StyleId}&ModuleId=3">
+                                                                <i class="ti-eye" style="color:#136a8a"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td style="text-align:center">
+                                                            <a href='/BasicOrderBookingOutlineSample/SampleOrderBookingMaster?buyerId=${response[i].BuyerId}&jobId=${response[i].JobId}&StyleId=${response[i].StyleId}&dateValue=""&GroupName=${GroupName}&ReportType=${ReportType}' target="_blank">
+                                                                New Booking
+                                                            </a> &nbsp; | &nbsp;
+                                                            <a href='/BasicOrderBookingOutlineSample/SampleOrderBookingMasterOtherStage?buyerId=${response[i].BuyerId}&jobId=${response[i].JobId}&StyleId=${response[i].StyleId}&SampleStageId=${response[i].StageSetId}&dateValue=""&GroupName=${GroupName}&ReportType=${ReportType}' target="_blank">
+                                                                Other Stage
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                        
+                                  
+                                `;
+                        }
+                        $('#notify-data').append(result);
+
+
+                    } catch (e) {
+                        alert("Output is not valid JSON: " + e);
+                    }
+
+                    //alert(3);
+
+                }
+            });
+        }
+
+
+    </script>
+
+
+</body>
+</html>
+

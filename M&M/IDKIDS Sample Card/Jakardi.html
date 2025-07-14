@@ -1,0 +1,413 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JACADI CARD</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0
+        }
+
+        body {
+            font-size: 10px;
+            line-height: 10px;
+            font-family: 'Roboto', sans-serif !important;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 100px;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+
+            table td {
+                font-size: 10px;
+                line-height: 10px;
+                padding-top: 2px;
+                padding-left: 10px;
+            }
+
+
+        .print_card {
+            width: 9cm;
+            height: 11cm;
+            background-color: #fff;
+            border: 1px solid black;
+        }
+
+        .wrapper {
+            height: 100%;
+        }
+
+        .back .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+            padding-top: 60px;
+        }
+
+        .logo {
+            width: 30%;
+            margin: 0 auto;
+        }
+
+            .logo img {
+                width: 100%;
+            }
+
+        input[type=text],
+        input[type=date] {
+            padding: 0;
+            height: 12px;
+            font-size: 11px;
+            border: none;
+            border-bottom: 1px dotted;
+            border-image: repeating-linear-gradient(90deg, rgb(55, 55, 56), 2px, transparent 2px, transparent 6px) 1;
+        }
+
+        input[type=checkbox] {
+            outline: none;
+            content: none;
+            margin: 1px 0;
+        }
+        input[type=checkbox]:before {
+            font-family: "FontAwesome";
+            /* content: "\2713"; */
+            content: "\f00c";
+            /* content: "✓"; */
+            font-size: 10px;
+            color: transparent !important;
+            /* background: #fef2e0; */
+            display: block;
+            width: 9px;
+            height: 9px;
+            border: 1px solid black;
+        }
+        input[type=checkbox]:checked:before {
+            color: black !important;
+        }
+
+        .btn_left {
+            position: absolute;
+            text-align: center;
+            display: block;
+            padding: 8px 15px;
+            width: 100px;
+            cursor: pointer;
+            background: #4caf50;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #div_print_box, #div_print_box * {
+            visibility: visible;
+        }
+
+        #div_print_box {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        button.print {
+            text-align: center;
+            display: block;
+            padding: 8px 15px;
+            width: 100px;
+            cursor: pointer;
+            background: #4caf50;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        @media print {
+            .print_card {
+                margin: 0 auto;
+                border: 1px solid black;
+                width: 9cm;
+                height: 11cm;
+            }
+
+            select {
+                appearance: none;
+            }
+            .print_btn {
+                display: none;
+            }
+        }
+        hr {
+            border: none;
+            border-top: 2px dashed rgb(55, 55, 56);
+            color: #fff;
+            background-color: #fff;
+            height: 1px;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            border-image: repeating-linear-gradient(90deg, rgb(55, 55, 56), 5px, transparent 4px, transparent 9px) 1;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var $331 = $.noConflict(true);
+    </script>
+</head>
+<body>
+    <div class="main">
+
+        <div class="print_card front" id="div_Left_print_box">
+
+            <div class="wrapper">
+                <div class="header" style="display: flex;">
+                    <div style="width: 70%; padding:10px;">
+                        <p style="font-size: 12px; padding-bottom: 3px; color: #4292BD; font-weight: 600;">JACADI SAS</p>
+                        <P style="font-size: 11px; padding-bottom: 3px;">25, Rue Louis Le Grand</P>
+                        <p style="font-size: 11px; padding-bottom: 3px;">75002 Paris /France</p>
+                        <p style="font-size: 10.5px; padding-bottom: px;">Tel (33)1 53 43 97 58 /Fax (33)1 53 43 97 99</p>
+                    </div>
+                    <div style="width: 30%;" class="logo">
+                        <img src="JACADI logo.png" alt="Logo">
+                    </div>
+                </div>
+                <hr>
+                <div style="padding-top: 5px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    DATE: <input type="text" name="date" id="date" style="width: 120px;">
+                                </td>
+                                <td>
+                                    ACHETEUR: <input type="text" name="acheture" id="acheture" style="width: 91px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    FABRICANT /AGENT: <input type="text" name="fabric" id="fabric" style="width: 218px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    USINE: <input type="text" name="fabric" id="fabric" style="width: 281px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    THEME: <input type="text" name="date" id="date" style="width: 115px;">
+                                </td>
+                                <td>
+                                    SAISON: <input type="text" name="acheture" id="acheture" style="width: 107px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    REFERENCE: <input type="text" name="fabric" id="fabric" style="width: 254px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    TAILLE: <input type="text" name="fabric" id="fabric" style="width: 278px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    COMPOSITION: <input type="text" name="fabric" id="fabric" style="width: 242px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    CONSTRUCTION /FILS /JAUGE: <input type="text" name="fabric" id="fabric" style="width: 170px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="text" name="fabric" id="fabric" style="width: 95.7%;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    POIDS (GSM): <input type="text" name="date" id="date" style="width: 90px;">
+                                </td>
+                                <td>
+                                    POIDS /PIECE: <input type="text" name="acheture" id="acheture" style="width: 79px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                            <tr >
+                                <td style="padding-top: 8px;"><input type="checkbox" name="" id=""> PROTOTYPE</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id=""> SIZE SET SAMPLES</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id=""> PRE PRODUCTION SAMPLES</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" name="" id=""> SHIPMENT SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 8px;"><input type="checkbox" name="" id=""> PHOTO SAMPLE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="padding-top: 10px;">
+                                    TISSU(S)
+                                </td>
+                                <td style="padding-top: 10px;">
+                                    <input type="checkbox" name="" id=""> Substitute
+                                </td>
+                                <td style="padding-top: 10px;">
+                                    <input type="checkbox" name="" id=""> Bulk
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    VISUEL(S)
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Substitute
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Bulk
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ACCESSORIES(S)
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Substitute
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Bulk
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    COLORIS(S)
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Substitute
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="" id=""> Bulk
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn_left print_btn" onclick="Left_print_btn()">Print</button>
+        </div>
+
+        <div class="print_card back" id="div_right_print_box">
+
+            <div class="wrapper" >
+                <h4 style="text-align: center; padding-top: 20px; padding-bottom: 5px;">REMARQUES / COMMENTAIRES / QUESTIONS / SUGGESTIONS:</h5>
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+                <input type="text" style="width: 8cm; margin-left: 20px;" >
+
+            </div>
+
+            <button class="btn_left print_btn" onclick="Right_print_btn()">Print</button>
+
+        </div>
+    </div>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script >
+    function Left_print_btn() {
+    console.log('Left print button clicked');
+    console.log(typeof jQuery);
+ // Debugging log
+    $("#div_right_print_box").fadeOut(200);
+    
+    setTimeout(function () {
+        console.log('Printing now...');
+        window.print();
+    }, 400);
+
+    setTimeout(function () {
+        console.log('Showing div_right_print_box again');
+        $("#div_right_print_box").fadeIn(200);
+    }, 3000);
+}
+
+function Right_print_btn() {
+    console.log('Right print button clicked'); // Debugging log
+    $("#div_Left_print_box").fadeOut(200);
+
+    setTimeout(function () {
+        console.log('Printing now...');
+        window.print();
+    }, 400);
+
+    setTimeout(function () {
+        console.log('Showing div_Left_print_box again');
+        $("#div_Left_print_box").fadeIn(200);
+    }, 3000);
+}
+    
+</script>
+</body>
+</html>

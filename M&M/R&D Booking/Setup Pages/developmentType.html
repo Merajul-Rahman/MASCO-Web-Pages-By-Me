@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Type Entry</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            width: 100%;
+        }
+
+        .type-container {
+            margin-bottom: 20px;
+        }
+
+        .type-container input {
+            margin-bottom: 10px;
+        }
+
+        .type-list {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .type-list th, .type-list td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .action-buttons button {
+            margin: 0 5px;
+        }
+
+        .highlighted-row {
+            background-color: #dcf805;
+        }
+        .content-box {
+            border: 1px solid darkgray;
+            border-radius: 10px;
+            box-shadow: azure;
+            width: 70%;
+            padding: 20px;
+            margin: auto;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Development Type</h1>
+    <div class="content-box">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h4>Development Type Name</h4>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="develomentType" placeholder="Enter development type name">
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-6 d-flex justify-content-center">
+                <input type="checkbox" name="isActive" id="isActive">
+                <h5 class="ml-2">Is Active</h5>
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-3">
+                <button class="btn btn-primary w-100" id="saveBtn">Save</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-secondary w-100" id="refreshBtn">Refresh</button>
+            </div>
+        </div>
+   </div>
+
+    <table class="type-list" id="tyeListTable">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Development Type Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Dynamic rows will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        let editingRow = null;  // Track if a row is being edited
+
+        // Function to add or update a row
+        document.getElementById("saveBtn").addEventListener("click", function() {
+            const typeName = document.getElementById("develomentType").value;
+            const isActive = document.getElementById("isActive").checked ? 'Active' : 'Inactive';
+
+            if (typeName) {
+                if (editingRow) {
+                    // Update the existing row with the new data
+                    editingRow.cells[1].textContent = typeName;
+                    editingRow.cells[2].textContent = isActive;
+
+                    // Clear the highlight from the edited row
+                    editingRow.classList.remove("highlighted-row");
+
+                    // Reset editingRow variable to null
+                    editingRow = null;
+                } else {
+                    // Add a new row to the table
+                    const tableBody = document.getElementById("tableBody");
+                    const rowCount = tableBody.rows.length + 1;
+
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${rowCount}</td>
+                        <td>${typeName}</td>
+                        <td>${isActive}</td>
+                        <td class="action-buttons">
+                            <button class="btn btn-warning btn-sm" onclick="editRow(this)">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+
+                // Clear the input fields after saving
+                document.getElementById("develomentType").value = '';
+                document.getElementById("isActive").checked = false;
+            } else {
+                alert("Please enter a development type name.");
+            }
+        });
+
+        // Function to edit a row
+        function editRow(button) {
+            const row = button.closest("tr");
+            row.classList.add("highlighted-row");  // Highlight the row
+
+            // Populate the input fields with row data for editing
+            const typeName = row.cells[1].textContent;
+            const status = row.cells[2].textContent === 'Active';
+
+            document.getElementById("develomentType").value = typeName;
+            document.getElementById("isActive").checked = status;
+
+            // Set the row to be edited
+            editingRow = row;
+        }
+
+        // Function to delete a row
+        function deleteRow(button) {
+            const row = button.closest("tr");
+            row.remove();
+        }
+
+        // Function to refresh the page (clear all inputs and reset the table)
+        document.getElementById("refreshBtn").addEventListener("click", function() {
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = '';  // Clear all rows
+
+            document.getElementById("develomentType").value = '';
+            document.getElementById("isActive").checked = false;
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

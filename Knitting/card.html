@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+<body>
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable" tabindex="-1" role="dialog" aria-describedby="ui-id-5" aria-labelledby="ui-id-6" style="height: auto; width: 370px; top: 157.5px; left: 574.5px; display: block;">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span id="ui-id-6" class="ui-dialog-title">Barcode Preview</span>
+            <button type="button" class="ui-dialog-titlebar-close"></button>
+        </div>
+        <div id="ui-id-5" class="ui-dialog-content ui-widget-content" style="display: block; width: auto; min-height: 0px; max-height: none; height: 280.3px;">
+            <div id="iddivpdf" style="width:85mm;height:75mm; font-size: .90em;margin-top: 3px;margin-right: 1px;margin-left: 1px;">
+                <div class="margin_bottom_5"><div style="text-align: center;font-size: .90em; margin-bottom: 2px;">
+                     <img class="center-block margin_bottom_5" style="height: 20px; width: 40px;" src="data:image/png;base64,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">
+                    <strong>Masco Industries Ltd.</strong>
+                    <span style="margin-left: 5px;font-size: 1.3em;">
+                        <strong>4286967</strong>
+                    </span>
+                </div>
+               <div class="col-md-12 longTextMultiLine">
+                    <span class="col-md-4">
+                        <strong>B:Auchan</strong>
+                    </span>
+                    <span class="col-md-8">
+                        <strong>J:MIL-BB1848-01-24</strong>
+                    </span>
+                </div>
+                <div class="col-md-12 longTextMultiLine">
+                    <span class="col-md-4">
+                        <strong>Fab : S/J</strong>
+                    </span>
+                    <span class="col-md-4">
+                        <strong>GSM:140</strong>
+                    </span>
+                    <span class="col-md-4">
+                        <strong>M/C : 053</strong>
+                    </span>
+                </div>
+                <div class="col-md-12 longTextMultiLine">
+                    <span class="col-md-4">
+                        <strong>D*G:36*24</strong>
+                    </span>
+                    <span class="col-md-4">
+                        <strong>FD : 76</strong>
+                    </span>
+                    <span class="col-md-4">
+                        <strong>SL:2.80</strong>
+                    </span>
+                </div>
+                <div class="longTextMultiLine yarn_font_size col-md-12">Yn : KH(100%Ctn)-30/1</div>
+            </div>
+            <div class="" style="display: flex; width: 100%; justify-content: space-between;">
+                <span class="col-md-11 longTextMultiLine" style="padding-left: 0px !important;padding-right: 0px !important;">
+                    <strong>Clr.:Lt. White</strong>
+                </span>
+                <span class="col-md-1" style="font-size:16px;font-weight:700; padding-left: 0px !important;padding-right: 0px !important;">
+                    <strong></strong>
+                </span>
+            </div>
+            <div class="">
+                <span class="col-md-12 longTextMultiLine">
+                    <strong>Lot:III4-11(W)</strong>
+                </span>
+            </div>
+            <div class="" style="display: flex; width: 100%; justify-content: space-between;"> 
+                <span class="col-md-10 longTextMultiLine" style="padding-left: 0px !important;padding-right: 0px !important;">
+                    <strong>Br:Nam Dinh</strong>
+                </span>
+                <span class="col-md-4">
+                    <strong>G.wt: 33 Kg</strong>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+            <button type="button" class="btn">Print</button>
+            <button type="button" class="btn">New</button>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+
+
+<div>
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="ui-id-6" class="ui-dialog-title">Barcode Preview</span>
+        <button type="button" class="ui-dialog-titlebar-close"></button>
+    </div>
+    <div id ="ui-id-5">
+        <div class="margin_bottom_5"><div style="text-align: center;font-size: .90em; margin-bottom: 2px;">
+            <img id="qrcodeimage" src="qrcode" alt="QR CODE">
+            <strong>Masco Industries Ltd.</strong>
+            <span style="margin-left: 5px;font-size: 1.3em;">
+                <strong>4286967</strong>
+            </span>
+        </div>
+        <table border="1" style="width: 75mm; display: block; position: absolute; " >
+            <tr>
+                <td id="buyer">B: Auchan</td>
+                <td id="jobno">J: MIL-BB1848-01-24</td>
+                <td id="gwaight">G.wt: 33 Kg</td>
+            </tr>
+            <tr>
+                <td id="fabric">Fab: S/J</td>
+                <td id="gsm">GSM: 140</td>
+                <td id="mch">M/C: 053</td>
+            </tr>
+            <tr style="width: 7.5mm;">
+                <td id="buyer" colspan="3">y: wiudsgbvjbdsjjhadvssvhcvjjhsvjhdsvchjwiudsgbvjbdsjjhadvssvhcvjjhsvjhdsvchjwiudsgbvjbdsjjhadvssvhcvjjhsvjhdsvchj</td>
+            </tr>
+            <tr>
+                <td>D*G:36*24</td>
+                <td>FD : 76</td>
+                <td>SL:2.80</td>
+            </tr>
+            <tr>
+                <td>Clr.:Lt. White</td>
+                <td>Lot:III4-11(W)</td>
+                <td>Br:Nam Dinh</td>
+            </tr>
+
+        </table>
+    </div>
+</div>

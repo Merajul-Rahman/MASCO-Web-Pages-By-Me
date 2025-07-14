@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masco Employee Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen font-sans" style="
+  background-image: url('Picture1.png');
+  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right top;
+  background-size: 40vw 100vh;
+">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between bg-blue-900 text-white p-4 fixed top-0 left-0 w-full z-50">
+    <a href="/" class="flex items-center space-x-3">
+      <img src="logo-main.png" class="w-10 h-10 bg-white rounded" alt="Logo">
+      <h1 class="text-lg font-bold tracking-wide">
+        <span>M</span><span>A</span><span>S</span><span>C</span><span>O</span>
+        <span>G</span><span>R</span><span>O</span><span>U</span><span>P</span>
+      </h1>
+    </a>
+    <div class="flex items-center gap-2">
+      <button id="sidebarCollapse" class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded">
+        <i class="fa fa-bars"></i>
+      </button>
+      <a href="/Home/LogOut" class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded">
+        <i class="fa fa-power-off pr-2"></i>Logout
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Wrapper: Sidebar + Content -->
+  <div class="flex pt-[3.75rem] min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-gradient-to-b from-white to-[#e0f0ff] text-black w-64 p-6 shadow-lg hidden ">
+      <div class="text-center">
+        <img src="Profile.jpg" class="rounded-full border-4 border-white mx-auto w-24 h-24" />
+        <hr class="my-4 border-blue-900" />
+        <p>Md. Merajul Rahman Shipon</p>
+        <hr class="my-4 border-blue-900" />
+        <p>Jr. Executive</p>
+        <hr class="my-4 border-blue-900" />
+        <div class="mt-10 space-y-3">
+          <a href="../MascoSearch/Index" class="block text-center bg-blue-600 hover:bg-blue-800 py-2 rounded">Back To Previous</a>
+          <a href="/" class="block text-center bg-blue-600 hover:bg-blue-800 py-2 rounded">Back To Home</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 bg-white/30 overflow-y-auto">
+      <!-- Title -->
+      <h1 class="text-center text-3xl font-bold text-blue-900 my-6">Masco Employee Portal</h1>
+
+      <!-- Cards Grid -->
+      <div class="max-w-[90vw] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+        <a href="https://mis-search.mascoknit.com/ConveyanceBill" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:border-blue-900 hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-file-invoice-dollar text-3xl mb-4 block"></i>
+          <div>Conveyance Bill / Lunch</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/SopDocumentSearch/SopDocumentSearch" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:border-blue-900 hover:bg-white hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-book-open text-3xl mb-4 block"></i>
+          <div>e-SOP</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/MascoSearch/EmployeesComPortal" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:border-blue-900 hover:bg-white hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-comments text-3xl mb-4 block"></i>
+          <div>Employee's Communication Portal</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/DigitalLibrary" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:border-blue-900 hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-archive text-3xl mb-4 block"></i>
+          <div>Fabric Digital Library</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/HRDocumentsDownloadSection/HRDocumentsDownloadSection" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:border-blue-900 hover:bg-white hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-file-download text-3xl mb-4 block"></i>
+          <div>HR Info</div>
+        </a>
+        <a href="leave.html" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-plane-departure text-3xl mb-4 block"></i>
+          <div>Leave</div>
+        </a>
+        <a href="#" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-folder text-3xl mb-4 block"></i>
+          <div>Personal Docutments</div>
+        </a>
+        <a href="#" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-id-badge text-3xl mb-4 block"></i>
+          <div>Personal HRIS Data</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/PromotedEmployee/PromotedEmployee" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:border-blue-900 hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-user-tie text-3xl mb-4 block"></i>
+          <div>Promoted Employee List</div>
+        </a>
+        <a href="https://mis-search.mascoknit.com/PromotedEmployee/PromotedEmployee" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:border-blue-900 hover:text-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-sign-out-alt text-3xl mb-4 block"></i>
+          <div>Resignation Apply</div>
+        </a>
+        <a href="#" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-store text-3xl mb-4 block"></i>
+          <div>Self Store Requisition</div>
+        </a>
+        <a href="#" class="block bg-blue-200/80 border border-blue-900/20 rounded-xl p-6 text-center text-lg font-bold text-black shadow-md hover:bg-white hover:text-blue-900 hover:border-blue-900 hover:scale-105 transition-all duration-300">
+          <i class="fas fa-car text-3xl mb-4 block"></i>
+          <div>Vehicle Requisition</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Toggle Script -->
+  <script>
+    document.getElementById("sidebarCollapse").addEventListener("click", function () {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>

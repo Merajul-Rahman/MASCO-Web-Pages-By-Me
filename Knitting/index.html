@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <button id="openDialog">Open Dialog</button>
+    <div id="dialogbox" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="ui-id-3" aria-labelledby="ui-id-4">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height: 6mm;">
+            <span id="ui-id-4" class="ui-dialog-title">Regenerate Barcode</span>
+            <button type="button" class="ui-dialog-titlebar-close">x</button>
+        </div>
+        <div id="ui-id-3" class="ui-dialog-content ui-widget-content" style="display: block; width: auto; min-height: 0px; max-height: none; height: 100.3px;">
+            <input type="text" class="form-control keyboard" id="txtRegenerateBarcode" style="padding: 10px;">
+        </div>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <div class="ui-dialog-buttonset">
+                <button type="button">OK</button>
+                <button type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+    // Initially hide the dialog box
+    $("#dialogbox").hide();
+
+    // Show dialog box on button click
+    $("#openDialog").click(function () {
+        $("#dialogbox").css({
+            "position": "fixed",
+            "top": "50%",
+            "left": "50%",
+            "transform": "translate(-50%, -50%)",
+            "display": "block",
+            "width": "350px",
+            "height": "auto"
+        });
+    });
+
+    // Close dialog box when the "Close" button is clicked
+    $("#dialogbox .ui-dialog-buttonset button:contains('Close'), .ui-dialog-titlebar-close").click(function () {
+        $("#dialogbox").hide();
+    });
+    $("#dialogbox .ui-dialog-buttonset button:contains('OK')").click(function(){
+        $this("#dialogbox").destroy();
+    });
+});
+
+</script>
+</html>

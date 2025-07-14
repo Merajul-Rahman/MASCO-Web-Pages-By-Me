@@ -1,0 +1,39 @@
+html, body {
+    background-image: url('Picture1.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    background-size: 40vw 100vh;
+  }
+  
+  .tile {
+    background-color: rgba(117, 181, 230, 0.8);
+    border: 2px solid rgba(21, 27, 142, 0.23);
+    border-radius: 0.75rem; /* 12px */
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 4px 8px rgba(0, 119, 204, 0.2);
+    cursor: pointer;
+    max-height: 100px;
+  }
+  
+  .tile:hover {
+    background-color: #fff;
+    color: #151B8E;
+    box-shadow: 0 8px 16px rgba(0, 119, 204, 0.4);
+  }
+  
+  .tile:hover a {
+    color: #151B8E;
+  }
+  
+  .tile i {
+    color: #000;
+  }
+  
+  .tile:hover i {
+    color: #151B8E;
+  }
+  

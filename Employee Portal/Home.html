@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masco Employee Portal</title>
+  <link rel="shortcut icon" href="logo-main.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.3/vanilla-tilt.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="Home.html" class="logo">
+      <img src="logo-main.png" alt="Logo">
+    </a>
+    <a href="Home.html" class="logo" style="margin-left: 6rem;">
+      <h1>MASCO GROUP</h1>
+    </a>
+    <div class="nav-buttons">
+      <button id="sidebarToggle"><i class="fa fa-bars"></i></button>
+      <a href="/Home/LogOut"><i class="fa fa-power-off pr-2"></i> Logout</a>
+    </div>
+  </nav>
+
+  <!-- Page Content Wrapper -->
+  <div class="page-wrapper">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="text-center">
+        <h4>Previous Pages</h4>
+        <hr />
+        <div class="links" id="links">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" style="margin-top: 1rem;">
+      <div id="card-container">
+        <!-- Cards will be injected here -->
+      </div>
+    </main>
+  </div>
+  
+
+  <script>
+    const cards = [
+  { img: "RequisitionPortal.jpg", title: "Requisition Portal", link: "submenu.html?menu=requisition" },
+  { img: "hr-software-main.jpg", title: "Personal HRIS Data", link: "submenu.html?menu=hris" },
+  { img: "HR.jpg", title: "HR Information", link: "submenu.html?menu=hrinfo" },
+  { img: "SOP.png", title: "e-SOP", link: "https://mis-search.mascoknit.com/SopDocumentSearch/SopDocumentSearch" },
+  { img: "FD.png", title: "Fabric Digital Library", link: "https://mis-search.mascoknit.com/DigitalLibrary" }
+];
+
+
+    const cardContainer = document.getElementById("card-container");
+    cards.forEach(card => {
+      const cardHTML = `
+      <a href="${card.link}">
+        <div class="card_holder">
+          <div class="img_holder">
+            <img src="${card.img}" alt="${card.title}">
+          </div>
+          <div class="info_holder">
+            <b>${card.title}</b>
+          </div>
+        </div>
+      </a>
+      `;
+      cardContainer.insertAdjacentHTML('beforeend', cardHTML);
+    });
+
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("mainContent");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      mainContent.classList.toggle("shifted");
+    });
+
+    // Optional: ensure sidebar is hidden on load
+    sidebar.classList.remove("open");
+  </script>
+</body>
+</html>
