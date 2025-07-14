@@ -89,10 +89,11 @@
 p{
     font-size: small;
 }
-input[type="text"]
+input[type="text"], input[type="date"]
 {
     font-size: small;
     height: 4mm;
+        border: none;
 }
 
 @media print{
@@ -144,9 +145,41 @@ function printBack(){                // print the second .main
 <body>
     <div style="display: flex; justify-content: space-evenly; gap: 20px;">
         <div class="main">
-            
+            <div style="height: 15mm; display: flex; margin-top: 2mm;">
+                <img style="margin-left: 11mm; height: 15mm; width: 13mm;" src="logo-main.png" alt="MASCO Logo">
+                <img style="margin-left: 16mm; margin-top: 4.5mm; justify-content: center; align-items: center; height: 5.5mm; width: 32.5mm;" src="logo_pull_black_new.svg">
+            </div>
+            <div style="padding-top: 1.5mm; margin-left: 3.5mm;">
+                <div style="display: flex;">
+                    <div style="display: flex; width: 29mm; border-bottom: 1px solid black;">
+                        <p>Supplier:</p> 
+                        <input type="text" style="width: 18mm;">
+                    </div>
+                    <div style="display: flex; width: 33mm; border-bottom: 1px solid black; margin-left: 6mm;">
+                        <p>Sent Date:</p> 
+                        <input type="date" style="width: 18mm;">
+                    </div>
+                </div>
+                <div style="display: flex; margin-top: 4mm;">
+                    <div style="display: flex; width: 29mm; border-bottom: 1px solid black;">
+                        <p>Country:</p> 
+                        <input type="text" style="width: 18mm;">
+                    </div>
+                    <div style="display: flex; width: 33mm; border-bottom: 1px solid black; margin-left: 6mm;">
+                        <p>Season:</p> 
+                        <input type="date" style="width: 18mm;">
+                    </div>
+                </div>
+                <div style="margin-top: 4mm; display: flex; width: 68mm; border-bottom: 1px solid black;">
+                    <p>Style:</p> 
+                    <input type="text" style="width: 61mm;">
+                </div>
+            </div>
+            <div>
+                <p style="text-align: center; font-weight: bolder;">SAMPLE DESCRIPTION</p>
+            </div>
         </div>
-        <div class="main">\
+        <div class="main">
             
         </div>
     </div>
