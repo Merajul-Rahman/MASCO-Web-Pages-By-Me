@@ -15,16 +15,9 @@
         margin-top: 50px;
         border: 1px solid black;
         width: 75mm;
-        height: 100mm;
+        height: 145mm;
     }
-    .buyerSelect{
-        display: flex;
-        margin-top: 7mm;
-        align-items: center;
-        padding-left: 5mm;
-        padding-right: 5mm;
-    }
-
+    
     input[type="checkbox"]{
     appearance:none;           
     -webkit-appearance:none;
@@ -116,13 +109,6 @@ input[type="text"]
     background:transparent!important;
     outline:none!important;
   }
-  #lindextext{
-    background:#000 !important;
-    color:#fff !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;/
-  }
-
   /* vanish all buttons on the sheet                                */
   button{display:none!important;}
 
@@ -158,166 +144,10 @@ function printBack(){                // print the second .main
 <body>
     <div style="display: flex; justify-content: space-evenly; gap: 20px;">
         <div class="main">
-            <div class="buyerSelect">
-                <p style="font-size: 3mm; font-weight:900">STOCKMANN</p> 
-                <input type="checkbox" name="stockmann" id="stockmann">
-                <p id="lindextext" style="font-size: 2.5mm; background-color: black; color: white;letter-spacing: 2px;  padding: 2px; align-items: center; margin-left: 14mm;">LINDEX</p>
-                <input type="checkbox" name="lindex" id="lindex">
-            </div>
-            <div class="div1">
-                <p>Bangladesh Office</p>
-                <p style="margin-top: 2mm;">Supplier: Shanta Expressions Ltd.</p>
-                <div style="display: flex; margin-top: 2mm;">
-                    <p>Attn:</p>
-                    <input style="width: 55mm; margin-left: 2mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 2mm;">
-                    <p>Date:</p>
-                    <input style="width: 55mm; margin-left: 1.8mm;" type="date" name="attn" id="attn">                
-                </div>
-            </div>
-            <div class="div2">
-                <label><span>Dev</span><input type="checkbox" value="B1"></label>
-                <label><span>Coll</span><input type="checkbox" value="B2"></label>
-                <label><span style="padding-left: 4px;">F/S</span><input type="checkbox" value="B3"></label>
-                <label><span>RevF/S</span><input type="checkbox" value="B4"></label>
-                <label style="margin-left: 1mm;"><span style="padding-left: 4.5px;">SS</span><input type="checkbox" value="B5"></label>
-                <label><span style="padding-left: 2px;">C/S</span><input type="checkbox" value="B6"></label>
-                <label><span>RevC/S</span><input type="checkbox" value="B7"></label>
-                <label style="margin-left: 1mm;"><span style="padding-left: 4.5px;">P/S</span><input type="checkbox" value="B8"></label>
-            </div>
-
-            <div class="div3">
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Style No:</p>
-                    <input style="width: 50mm; margin-left: 3mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Size:</p>
-                    <input style="width: 50mm; margin-left: 9.3mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Colour:</p>
-                    <input style="width: 50mm; margin-left: 5.7mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm; margin-bottom: 1mm;">
-                    <p>Style desc:</p>
-                    <input style="width: 50mm; margin-left: 1.1mm;" type="text" name="attn" id="attn">                
-                </div>
-            </div>
-            <div class="div4">
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Composition:</p>
-                    <input style="width: 50mm; margin-left: 1.2mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Fabric constr:</p>
-                    <input style="width: 46mm; margin-left: 1mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Gauge:</p>
-                    <input style="width: 50mm; margin-left: 10mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Yarn count:</p>
-                    <input style="width: 46mm; margin-left: 4mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Weight:</p>
-                    <input style="width: 50mm; margin-left: 9mm;" type="text" name="attn" id="attn">                
-                </div>
-            </div>
+            
         </div>
-        <div class="main">
-            <div style="margin-top: 7mm; border-bottom: 1px solid black; padding-left: 5mm;">  
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Fabric:</p>
-                    <p style="margin-left: 10mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Lace:</p>
-                    <p style="margin-left: 12mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Colour:</p>
-                    <p style="margin-left: 9.2mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Print:</p>
-                    <p style="margin-left: 12mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Wash:</p>
-                    <p style="margin-left: 11.2mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Trimmings:</p>
-                    <p style="margin-left: 3.5mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-                <div style="display: flex; margin-bottom: 1mm;">
-                    <p>Labels:</p>
-                    <p style="margin-left: 9.5mm;">Similar to bulk</p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 4.5mm;">Bulk</p>
-                    <input type="checkbox" name="" id="">
-                </div>
-            </div>
-            <div style="border-bottom: 1px solid black; padding-left: 5mm;">
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Fabric Mill:</p>
-                    <input style="width: 47mm; margin-left: 0mm;" type="text" name="attn" id="attn">                
-                </div>
-                <div style="display: flex; margin-top: 1mm; margin-bottom: 1mm;">
-                    <p>Fabric Ref:</p>
-                    <input style="width: 47mm; margin-left: 1mm;" type="text" name="attn" id="attn">                
-                </div>
-            </div>
-            <div style="border-bottom: 1px solid black; padding-left: 5mm;">
-                <div style="display: flex; margin-top: 1mm; margin-bottom: 1mm;">
-                    <p>For reference: </p>
-                    <input type="checkbox" name="" id="">
-                    <p style="margin-left: 14mm;">For approval: </p>
-                    <input type="checkbox" name="" id="">
-                </div>
-            </div>
-            <div style="border-bottom: 1px solid black; padding-left: 5mm;">
-                <div style="display: flex; margin-top: 1mm; margin-bottom: 1mm;">
-                    <p>Fitting: </p>
-                    <input style="margin-left: 11.3mm;" type="checkbox" name="" id="">
-                    <p style="margin-left: 14mm;">Style: </p>
-                    <input style="margin-left: 12.5mm;" type="checkbox" name="" id="">
-                </div>
-            </div>
-            <div style="border-bottom: 1px solid black; padding-left: 5mm;">
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>Comments:</p>
-                    <textarea style="min-height: 18mm; max-height: 18mm; min-width:47mm; max-width: 47mm; margin-left: 1mm; margin-bottom: 1mm;"></textarea>
-                </div>
-            </div>
-            <div style="padding-left: 5mm;">
-                <div style="display: flex; margin-top: 1mm;">
-                    <p>App. peice:</p>
-                    <input style="width: 47mm; margin-left: 1mm;" type="text" name="attn" id="attn">                
-                </div>
-            </div>
+        <div class="main">\
+            
         </div>
     </div>
     
