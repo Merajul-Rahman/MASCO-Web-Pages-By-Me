@@ -22,9 +22,10 @@
     appearance:none;           
     -webkit-appearance:none;
     -moz-appearance:none;
-    width:4mm;
-    height:4mm;
-    margin-left:2mm;
+    width:3mm;
+    height:3mm;
+    
+    margin-left: 1.5px;
     border:1px solid black;    
     border-radius:0;           
     cursor:pointer;
@@ -33,57 +34,77 @@
     input[type="checkbox"]:checked::after{
     content:"";
     position:absolute;
-    top: -0.8mm;                
-    left:1.1mm;
-    width:1.4mm;
-    height:2.8mm;
+    top: -0.4mm;                
+    left:0.8mm;
+    width:0.7mm;
+    height:1.8mm;
     border:solid black;
     border-width:0 0.6mm 0.6mm 0;
     transform:rotate(45deg);  
     }
 
-    .div1{
-        margin-top: 3mm;
-        padding-left: 5mm;
-        padding-right: 5mm;
-    }
-    .div2{
-    margin-top:1mm;
-    border-top:1px solid black;
-    min-height:10mm;
-    max-height:10mm;
-    padding-left: 3mm;
-    padding-right: 5mm;
-    border-bottom:1px solid black;
-    display:flex;
-
+.div2-left{
+    display: flex; width: 29mm; border-bottom: 1px solid black;
 }
-    .div2 label{
-        flex:1 1 0;                      
-        display:flex;
-        font-weight: 500;
-        flex-direction:column;          
-        align-items:center;              
-        font-size:3mm;
-        line-height:1.5;
-    }
-
-.div2 label span{
-  width:4mm;
-  text-align:center;
-  white-space:nowrap;                /* no wrapping                   */
-  margin-bottom:0.2mm;               /* small gap above the box       */
+.div2-right{
+    display: flex; width: 33mm; border-bottom: 1px solid black; margin-left: 6mm;
 }
-
-.div3{
-    padding-left: 3mm;
-    padding-right: 5mm;
-    border-bottom:1px solid black;
+.div2-right input[type="date"]
+{
+    font-size: 9.5px;
+    letter-spacing: 0px;
+}
+.full-input-div{
+    margin-top: 4mm; display: flex; width: 68mm; border-bottom: 1px solid black;
+    align-items: center;
+}
+.full-input-div input{
+    width: 61mm;
+    height: 4mm;
+    align-items: center;
+}
+.full-input-div p{
+    font-size: 9px;
+    font-weight: bold;
+}
+.full-input-div2{
+    display: flex; width: 68mm; height: 4.5mm; margin: 0; padding: 0; border-bottom: 1px solid black;
+    align-items: center;
+}
+.full-input-div2 input{
+    width: 68mm;
+    margin: 0;
+    height: 4mm;
+}
+.full-input-div3{
+    display: flex; width: 68mm; height: 6mm; margin: 0; padding: 0; border-bottom: 1px solid black;
+    align-items: center;
+}
+.full-input-div3 input{
+    width: 68mm;
+    margin: 0;
+    height: 5.5mm;
 }
 
 .div4{
-    padding-left: 3mm;
-    padding-right: 5mm;
+    margin-top: 5mm; margin-left: 3.5mm; margin-right: 3.5mm;
+}
+.section-heading{
+    text-align: center; font-weight: bolder; font-size: 10px;
+}
+.cboxdiv{
+    display: flex; margin-top: 1.5mm; justify-content: space-between;
+}
+.inputDiv{
+    display: flex;
+    align-items: center;
+}
+.inputDiv input[type="text"]
+{
+    width: 10mm; height: 3.5mm; margin-left: 1.5px; border:1px solid black
+}
+.cboxdiv2{
+    display: flex; margin-top: 1.5mm; justify-content: right
 }
 
 p{
@@ -91,32 +112,142 @@ p{
 }
 input[type="text"], input[type="date"]
 {
-    font-size: small;
-    height: 4mm;
-        border: none;
+    font-size: 9.5px;
+    border: none;
 }
 
 @media print{
   @page{ margin:0; }          /* printer leaves no page margins        */
 
+  .main{
+    border: none;
+  }
   /* hide anything you temporarily tag with 'hide-print' (from JS) */
   .hide-print{display:none!important;}
-
-  /* remove borders/fills from inputs in the printout               */
-  input[type="text"],
-  input[type="date"],
-  textarea{
-    border:none!important;
-    background:transparent!important;
-    outline:none!important;
-  }
   /* vanish all buttons on the sheet                                */
   button{display:none!important;}
-
   /* ensure the card itself still hugs the edge on paper            */
   .main{margin:0!important;}
 }
 </style>
+
+
+<body>
+    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
+        <div class="main">
+            <div style="height: 15mm; display: flex; margin-top: 2mm;">
+                <img style="margin-left: 11mm; height: 15mm; width: 13mm;" src="logo-main.png" alt="MASCO Logo">
+                <img style="margin-left: 16mm; margin-top: 4.5mm; justify-content: center; align-items: center; height: 5.5mm; width: 32.5mm;" src="logo_pull_black_new.svg">
+            </div>
+            <div style="padding-top: 1.5mm; margin-left: 3mm;">
+                <div style="display: flex;">
+                    <div class="div2-left">
+                        <p>Supplier:</p> 
+                        <input type="text" style="width: 18mm;">
+                    </div>
+                    <div class="div2-right">
+                        <p>Sent Date:</p> 
+                        <input type="date" style="width: 18.5mm;">
+                    </div>
+                </div>
+                <div style="display: flex; margin-top: 4mm;">
+                    <div class="div2-left">
+                        <p>Country:</p> 
+                        <input type="text" style="width: 18mm;">
+                    </div>
+                    <div class="div2-right">
+                        <p>Season:</p> 
+                        <input type="text" style="width: 18mm;">
+                    </div>
+                </div>
+                <div class="full-input-div">
+                    <p style="font-size: small; font-weight: 400;">Style:</p> 
+                    <input type="text">
+                </div>
+            </div>
+            <div style="margin-top: 4mm; margin-left: 3.5mm; margin-right: 3.5mm;">
+                <p class="section-heading">SAMPLE DESCRIPTION</p>
+                <div class="cboxdiv">
+                    <div style="display: flex;"><p style="font-size:9px">DS</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">FS</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">SS</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">PP(A)</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">PP(B)</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">PROD</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:9px">P.SHIP</p> <input type="checkbox"></div>
+                </div>
+            </div>
+            <div class="div4">
+                <p class="section-heading">SAMPLE APPROVAL OF</p>
+                <div class="cboxdiv">
+                    <div style="display: flex;"><p style="font-size:8px">QUALITY:</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:8px">COLOUR:</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:8px">HANDFEEL:</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:8px">FINISHING:</p> <input type="checkbox"></div>
+                </div>
+                <div class="cboxdiv2">
+                    <div style="display: flex; margin-right: 2.5mm;"><p style="font-size:8px">WASH:</p> <input type="checkbox"></div>
+                    <div style="display: flex;"><p style="font-size:8px">TRIMMINGS:</p> <input type="checkbox"></div>
+                </div>
+            </div>
+            <div class="div4">
+                <p class="section-heading">SAMPLE INFORMATION</p>
+                <div class="cboxdiv">
+                    <div class="inputDiv"><p style="font-size:8px">SIZE:</p><input type="text"></div>
+                    <div class="inputDiv"><p style="font-size:8px">GG:</p> <input type="text"></div>
+                    <div class="inputDiv"><p style="font-size:8px">WEIGHT:</p> <input type="text"></div>
+                </div>
+                <div class="cboxdiv2">
+                    <div class="inputDiv" style="margin-right: 9.5mm;"><p style="font-size:8px">NEEDLES:</p> <input type="text"></div>
+                    <div class="inputDiv"><p style="font-size:8px">X ROWS:</p> <input type="text"></div>
+                </div>
+            </div>
+            <div style="margin-top: 2mm; margin-left: 3.5mm; margin-right: 3.5mm;">
+                <div class="full-input-div"><p>COMPOSITION:</p> <input type="text"></div>
+                <div class="full-input-div2"><input type="text"></div>
+                <div class="full-input-div2"><input type="text"></div>
+                <div class="full-input-div2"><input type="text"></div>
+                <div class="full-input-div"><p>YARN COUNT:</p><input type="text" style="width: 19mm;"><p>(</p><input type="text" style="width: 7mm;"><p>)</p><input type="text" style="width: 15mm;"><p>(ENDS)</p></div>
+                <div class="full-input-div"><p>PRODUCTION DEADLINE:</p> <input type="date" style="width: 35mm;"></div>
+                <div class="full-input-div"><p>FABRIC REFERENCE:</p> <input type="text" style="width: 42mm;"></div>
+                <div class="full-input-div"><p>FABROC SUPPLIER:</p> <input type="text" style="width: 44mm;"></div>
+            </div>
+        </div>
+        <div class="main">
+            <div style="height: 5.5mm; display: flex; margin-top: 15mm; margin-bottom: 0mm;">
+                <img style="margin: auto; align-items: center; height: 5.5mm; width: 32.5mm;" src="logo_pull_black_new.svg">
+            </div>
+            <div style="margin-top: 0mm; margin-left: 3.5mm; margin-right: 3.5mm;">
+                <div style="display: flex; width: 68mm; height: 4mm; margin: 0; padding: 0; border-bottom: 1px solid black; align-items: center;"><input type="text" style="width: 68mm; height: 3.5mm;"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+                <div class="full-input-div3"><input type="text"></div>
+            </div>
+            <div>
+                <img src="image.png" alt="" width="100%" style="margin-top: 5mm;">
+            </div>
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
+        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printFront()">Print</button>
+        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printBack()">Print</button>
+    </div>
+    
+
+    
 
 <script>
 /* helper – hide one element, print, then restore it */
@@ -141,54 +272,5 @@ function printBack(){                // print the second .main
   hideAndPrint(front);
 }
 </script>
-
-<body>
-    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
-        <div class="main">
-            <div style="height: 15mm; display: flex; margin-top: 2mm;">
-                <img style="margin-left: 11mm; height: 15mm; width: 13mm;" src="logo-main.png" alt="MASCO Logo">
-                <img style="margin-left: 16mm; margin-top: 4.5mm; justify-content: center; align-items: center; height: 5.5mm; width: 32.5mm;" src="logo_pull_black_new.svg">
-            </div>
-            <div style="padding-top: 1.5mm; margin-left: 3.5mm;">
-                <div style="display: flex;">
-                    <div style="display: flex; width: 29mm; border-bottom: 1px solid black;">
-                        <p>Supplier:</p> 
-                        <input type="text" style="width: 18mm;">
-                    </div>
-                    <div style="display: flex; width: 33mm; border-bottom: 1px solid black; margin-left: 6mm;">
-                        <p>Sent Date:</p> 
-                        <input type="date" style="width: 18mm;">
-                    </div>
-                </div>
-                <div style="display: flex; margin-top: 4mm;">
-                    <div style="display: flex; width: 29mm; border-bottom: 1px solid black;">
-                        <p>Country:</p> 
-                        <input type="text" style="width: 18mm;">
-                    </div>
-                    <div style="display: flex; width: 33mm; border-bottom: 1px solid black; margin-left: 6mm;">
-                        <p>Season:</p> 
-                        <input type="date" style="width: 18mm;">
-                    </div>
-                </div>
-                <div style="margin-top: 4mm; display: flex; width: 68mm; border-bottom: 1px solid black;">
-                    <p>Style:</p> 
-                    <input type="text" style="width: 61mm;">
-                </div>
-            </div>
-            <div>
-                <p style="text-align: center; font-weight: bolder;">SAMPLE DESCRIPTION</p>
-            </div>
-        </div>
-        <div class="main">
-            
-        </div>
-    </div>
-    
-    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
-        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printFront()">Print</button>
-        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printBack()">Print</button>
-    </div>
-    
-        
 </body>
 </html>
