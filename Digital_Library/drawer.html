@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Click-to-Toggle Sidebar</title>
+  <style>
+    :root{
+      --sidebar-width: 300px;
+      --spacer: 16px;
+      --accent: #0b74de;
+      --bg: #f7f9fc;
+      --text: #222;
+    }
+
+    *{box-sizing: border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      padding:24px;
+    }
+
+    /* Page layout */
+    .page{
+      max-width:1000px;
+      margin:80px auto 40px; /* leave space for topbar */
+    }
+
+    header{margin-bottom:16px}
+    h1{font-size:20px;margin:0 0 8px}
+    p.lead{margin:0;color:#444}
+
+    /* Top bar */
+    .topbar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:60px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:0 16px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      z-index:10;
+    }
+
+    .topbar .sidebar-toggle{
+      width:44px;
+      height:40px;
+      border-radius:6px;
+      background:linear-gradient(180deg,#ffffff,#f1f5fb);
+      box-shadow:0 4px 12px rgba(3,15,34,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:600;
+      color:var(--accent);
+      cursor:pointer;
+      border:1px solid rgba(11,116,222,0.12);
+    }
+
+    .search{
+      flex:1;
+      padding:8px 12px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-size:14px;
+    }
+
+    /* Sidebar container (fixed left, initially hidden) */
+    .sidebar-wrap{
+      position:fixed;
+      left:0;
+      top:60px; /* below topbar */
+      height:calc(100vh - 60px);
+      pointer-events:none; /* prevent interactions when closed */
+      z-index:9;
+    }
+
+    .sidebar{
+      width:var(--sidebar-width);
+      max-width:calc(100vw - 40px);
+      height:100%;
+      background:#fff;
+      margin-left:0;
+      border-radius:0 8px 8px 0;
+      box-shadow:0 10px 30px rgba(8,20,40,0.08);
+      transform:translateX(calc(-1 * var(--sidebar-width)));
+      transition:transform .22s cubic-bezier(.2,.9,.2,1);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* When open */
+    .sidebar.open{
+      transform:translateX(0);
+      pointer-events:auto; /* enable interaction when open */
+    }
+
+    .sidebar-header{
+      padding:16px 16px;
+      border-bottom:1px solid #eef3fa;
+      background:linear-gradient(180deg, rgba(11,116,222,0.03), transparent);
+    }
+    .sidebar-header h2{margin:0;font-size:16px}
+    .sidebar-header p{margin:4px 0 0;font-size:13px;color:#666}
+
+    .sidebar-content{
+      padding:12px 12px 24px 12px;
+      overflow:auto; /* makes it scrollable */
+      flex:1;
+    }
+
+    .menu{
+      list-style:none;padding:0;margin:0;display:block;
+    }
+    .menu li{
+      padding:10px 12px;border-radius:6px;margin-bottom:8px;cursor:pointer;
+      border:1px solid rgba(9,30,66,0.04);
+    }
+    .menu li:hover{background:#f4f8ff}
+
+    /* page content area for demo */
+    .content{
+      padding:20px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(3,15,34,0.06);
+    }
+
+    @media (max-width:560px){
+      .topbar .sidebar-toggle{height:36px;width:36px}
+      .sidebar{width:260px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar with button + search -->
+  <div class="topbar">
+    <button class="sidebar-toggle" aria-controls="sidebar" aria-expanded="false" id="sidebarToggle">☰</button>
+    <input type="text" class="search" placeholder="Search..." aria-label="Search" />
+  </div>
+
+  <!-- Sidebar (initially completely hidden) -->
+  <div class="sidebar-wrap" aria-hidden="true">
+    <aside class="sidebar" id="sidebar" aria-hidden="true">
+      <div class="sidebar-content" tabindex="0">
+        <ul class="menu">
+          <li>TRENDY FABRIC</li>
+          <li>PREMIUM PICK</li>
+          <li>BASIC SINGLE JERSEY (Low Weight, Cotton, CVC, PC, Viscose, Modal, Tencel, Slub)</li>
+          <li>STRETCH SINGLE JERSEY</li>
+          <li>HEAVY JERSEY (Plaited, 2Ply 3Ply, Loose Knit)</li>
+          <li>HIGH VALUE FIBER FABRIC (Hemp, Wool, Milk, Silk, Acrylic, Bamboo, etc…)</li>
+          <li>SUSTAINABLE FABRIC (Material, Process, Recycled, Organic)</li>
+          <li>FANCY SPINNING FABRIC (Snow, Neps, Inject, etc...)</li>
+          <li>FANCY SPINNING FABRIC (Siro, Twisted, Centipede, etc...)</li>
+          <li>2 THREAD PLUSH FABRIC (Structured Terry)</li>
+          <li>2 THREAD PLUSH FABRIC (Structured Terry-Fleece)</li>
+          <li>2 THREAD PLUSH FABRIC (Stretch Terry-Fleece)</li>
+          <li>3 THREAD PLUSH FABRIC (Basic Terry-Fleece)</li>
+          <li>3 THREAD PLUSH FABRIC (Loop Design Terry-Fleece)</li>
+          <li>3 THREAD PLUSH FABRIC (Yarn Fancy Terry-Fleece)</li>
+          <li>3 THREAD PLUSH FABRIC (Poly Binder Terry-Fleece)</li>
+          <li>VELOUR LOOPBACK (Baby Terry, Towel, Structural)</li>
+          <li>VELOUR CUT-PILE (Velvet, Knit Corduroy, Polar Fleece)</li>
+          <li>SMALL STRUCTURED FABRIC (Lacoste, Pique, Polo, etc..)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Twill, Herringbone,...)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Crepe, Smogging, Wrinkle…)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Vertical Stripe, Seersucker, Box,..)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Horizontal, Decorative,...)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Bubble, Lace, Cord,...)</li>
+          <li>STRUCTURAL SINGLE JERSEY (Creased, Thin Terry,.. )</li>
+          <li>STRUCTURAL SINGLE JERSEY (Semi Jacquard)</li>
+          <li>SHINY FABRIC (Shimmer, Glossy, Twinkling)</li>
+          <li>KNIT DENIM FABRIC (Indigo Dyed)</li>
+          <li>FANCY YARN DYED (Cross-Dyed, Burn-Out, Space-dyed, etc...)</li>
+          <li>YARN DYED STRIPE FABRIC (Feeder, Engineering/Autostripe)</li>
+          <li>SYNTHETIC KNIT FABRIC</li>
+          <li>SPECIAL FINISHED FABRIC (Moisture Management, Silky-touch, Stay White,...)</li>
+          <li>SPECIAL FINISHED FABRIC (Mercerized, Teflon, Anti-Crease/Odor/Bacteria/UV/Static,…)</li>
+          <li>BASIC DOUBLE JERSEY (Rib, Interlock)</li>
+          <li>VARIEGATED NEEDLE DROP RIB</li>
+          <li>FANCY NEEDLE DROP RIB</li>
+          <li>WAFFLE RIB FABRIC</li>
+          <li>POINTELLE DESIGN FABRIC</li>
+          <li>POINTELLE JACQUARD FABRIC</li>
+          <li>OTTOMAN DOUBLE JERSEY (Horizontal/Vertical Cord, Box Cord)</li>
+          <li>EYELET MESH FABRIC</li>
+          <li>PONTE-DE-ROMA FABRIC</li>
+          <li>SPACER DOUBLE JERSEY (Mini Scuba, Plaited Interlock, Real Spacer/Scuba)</li>
+          <li>STRUCTURAL DOUBLE JERSEY (Quarter Gauge, PK, Honeycomb, Houndstooth,...)</li>
+          <li>STRUCTURAL DOUBLE JERSEY (Beads-look, Zigzag, Flatback, Quilt/Padding,...)</li>
+          <li>JACQUARD FABRIC</li>
+          <li>JACQUARD FABRIC</li>
+          <li>JACQUARD FABRIC</li>
+          <li>JACQUARD FABRIC</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+
+  <script>
+    // Simple, robust toggle behavior (click-only). Fixed earlier stray syntax errors.
+    (function(){
+      const btn = document.getElementById('sidebarToggle');
+      const sidebar = document.getElementById('sidebar');
+      let open = false;
+
+      if(!btn || !sidebar) return;
+
+      function setState(isOpen){
+        open = !!isOpen;
+        if(open){
+          sidebar.classList.add('open');
+          sidebar.setAttribute('aria-hidden','false');
+          btn.setAttribute('aria-expanded','true');
+          document.body.style.overflow = '';
+        } else {
+          sidebar.classList.remove('open');
+          sidebar.setAttribute('aria-hidden','true');
+          btn.setAttribute('aria-expanded','false');
+        }
+      }
+
+      btn.addEventListener('click', function(e){
+        setState(!open);
+        e.stopPropagation();
+      });
+
+      // Close when clicking/tapping outside
+      document.addEventListener('click', function(e){
+        if(!open) return;
+        if(!sidebar.contains(e.target) && !btn.contains(e.target)){
+          setState(false);
+        }
+      });
+
+      // Close on escape
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && open){
+          setState(false);
+          btn.focus();
+        }
+      });
+
+      // Make sidebar focusable & keyboard friendly
+      sidebar.addEventListener('keydown', function(e){
+        if(e.key === 'Tab'){
+          // keep focus inside when open (simple trap)
+          const focusables = sidebar.querySelectorAll('a, button, input, [tabindex]');
+          if(focusables.length === 0) return;
+        }
+      });
+
+      // initial state: closed
+      setState(false);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masco Group - R&D Timeline</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 20px; }
+        .table-container { width: 100%; overflow-x: auto; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+        table { border-collapse: collapse; min-width: 3000px; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        
+        /* Main Header Colors */
+        .header-main { background-color: #2c3e50; color: white; text-align: center; font-size: 14px; }
+        .header-dept { background-color: #34495e; color: #ecf0f1; text-align: center; }
+        .header-sub { background-color: #f2f2f2; position: sticky; top: 0; }
+
+        /* Input Styling */
+        input[type="text"], input[type="number"] {
+            width: 100%; border: 1px solid #ccc; padding: 4px; border-radius: 3px; box-sizing: border-box;
+        }
+        input[type="date"] {
+            padding: 2px; border: 1px solid #3498db; border-radius: 3px; font-family: inherit;
+        }
+        .General{
+            width: 90%;
+            min-height: 300px;
+            border: 1px solid #ccc;
+            padding: 4px;
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 12px;
+            resize: none;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;  /* key for Excel-like wrapping */
+            pointer-events: none;
+            background-color: aliceblue;
+        }
+        
+        tr:hover { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h2>Central Research & Development - Masco Group</h2>
+    <p>Development Timeline Tracking</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <!-- Top Level Department Grouping -->
+                <tr class="header-main">
+                    <th colspan="13">General Information</th>
+                    <th colspan="10">Gant Chart</th>
+                    <th colspan="18" style="background-color: #2980b9;">Department</th>
+                </tr>
+                
+                <!-- Detailed Column Headers -->
+                <tr class="header-sub">
+                    <!-- General -->
+                    <th>SL</th>
+                    <th>Booking Time</th>
+                    <th>R&D Concern</th>
+                    <th>Masco Ref</th>
+                    <th>Development Motive</th>
+                    <th>Development Type</th>
+                    <th>Buyer</th>
+                    <th>Style</th>
+                    <th>Fabrication</th>
+                    <th>Yarn Details</th>
+                    <th>Dyeing Method</th>
+                    <th>Dyeing Unit</th>
+                    <th>Dept</th>
+                    <th>Booking Date</th>
+                    <th>10 Days</th><th>20 Days</th><th>30 Days</th><th>40 Days</th><th>50 Days</th><th>60 Days</th><th>70 Days</th><th>80 Days</th><th>90 Days</th>
+                    <!-- Repeating Dept Headers (Example for SCM) -->
+                    <th>Allocated Days</th><th>Auto Start</th><th>Auto EDT</th>
+                    <th>Actual Start</th><th>Actual End</th><th>Total Working Days</th><th>Days Befoe Start </th><th>Working days within Alocated Days</th><th>Extra Days</th><th>Days End Before EDT</th><th>Combined</th>
+                    <th>Days Befoe Start</th><th>Working days within Alocated Days</th><th>Extra Days</th><th>Days End Before EDT</th><th>Allocated Days</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <!-- General Data -->
+                    <td rowspan="7"><textarea class="General">1</textarea></td>
+
+                    <td rowspan="7">
+                        <textarea class="General" id="bookingDate">2025-06-28</textarea>
+                    </td>
+
+                    <td rowspan="7"><textarea class="General">Md. Mainul Islam</textarea></td>
+
+                    <td rowspan="7"><textarea class="General">RND JAQRD-151</textarea></td>
+
+                    <td rowspan="7"><textarea class="General">Strategic Co-Creation</textarea></td>
+
+                    <td rowspan="7"><textarea class="General">First Development</textarea></td>
+
+                    <td rowspan="7"><textarea class="General">R&D</textarea></td>
+
+                    <td rowspan="7"><textarea class="General">K-6</textarea></td>
+
+                    <td rowspan="7">
+                        <textarea class="General">
+                    100% COTTON // HERRINGBONE DESIGN ENGR STRIPE SINGLE JERSEY JACQUARD
+                        </textarea>
+                    </td>
+
+                    <td rowspan="7">
+                        <textarea class="General">20 S/1; 100% CH COTTON</textarea>
+                    </td>
+
+                    <td rowspan="7"><textarea class="General">Solid</textarea></td>
+
+                    <td rowspan="7">
+                        <textarea class="General">
+                    Masco Industries Ltd.(Composite Knit Garments)
+                        </textarea>
+                    </td>
+                    
+                    
+                
+                    <!-- SCM Department Data -->
+                    <td class="scm-col">SCM</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="2"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr> 
+                
+                <tr>
+                    <!-- Y/D Department Data -->
+                    <td class="yd-col">Y/D</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="3"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr>
+                <tr>
+                    <!-- Knitting Department Data -->
+                    <td class="yd-col">Knitting</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="10"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr>
+                <tr>
+                    <!-- Dyeing Department Data -->
+                    <td class="yd-col">Dyeing</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="2"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr>
+                <tr>
+                    <!-- Finishing Department Data -->
+                    <td class="yd-col">Finishing</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="1"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr>
+                <tr>
+                    <!-- Submission Department Data -->
+                    <td class="yd-col">Submission</td>
+                    <td colspan="10">
+                        <div style="display: flex; flex-direction: column;">
+                            <div>Chart Plan</div>
+                            <div>Chat Actual</div>
+                        </div>
+                    </td>
+                    <td class="scm-col"><input type="number" class="alocatedDays" disabled value="3"></td>
+                    <td class="scm-col"><input type="date" class="autoStart" disabled></td>
+                    <td class="scm-col"><input type="date" class="autoEDT" disabled></td>
+                    <td class="scm-col"><input type="date" class="actualStart" onchange="actualStart()"></td>
+                    <td class="scm-col"><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+                    <td class="scm-col"><input type="number" class="totalWorkingDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="daysBeforeStart" disabled></td>
+                    <td class="scm-col"><input type="number" class = "withinAlocatedDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="extraDays" disabled></td>
+                    <td class="scm-col"><input type="number" class="beforeEdt" disabled></td>
+                    
+                    <td class="scm-col"><div class="combined"></div></td>
+                    <td class="scm-col"><div class="daysBeforeStartChart"></div></td>
+                    <td class="scm-col"><div class="withinAlocatedDaysChart"></div></td>
+                    <td class="scm-col"><div class="extraDaysChart"></div></td>
+                    <td class="scm-col"><div class="beforeEdtChart"></div></td>
+                    <td class="scm-col"><div class="alocatedDaysChart"></div></td>
+                </tr>
+                <!-- More rows can be added here -->
+            </tbody>
+        </table>
+    </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const bookingDateInput = document.getElementById("bookingDate");
+
+    // =========================
+    // HELPER: ADD DAYS
+    // =========================
+    function addDays(dateStr, days) {
+        if (!dateStr) return "";
+        const date = new Date(dateStr);
+        date.setDate(date.getDate() + Number(days || 0));
+        return date.toISOString().split("T")[0];
+    }
+
+    // =========================
+    // HELPER: DATE DIFFERENCE
+    // =========================
+    function dateDiff(later, earlier) {
+        if (!later || !earlier) return 0;
+
+        const d1 = new Date(earlier);
+        const d2 = new Date(later);
+
+        const diff = (d2 - d1) / (1000 * 60 * 60 * 24);
+        return Math.round(diff);
+    }
+
+    // =========================
+    // GET ALL ROWS
+    // =========================
+    function getRows() {
+        return Array.from(document.querySelectorAll("tbody tr")).filter(row =>
+            row.querySelector(".actualStart")
+        );
+    }
+
+    // =========================
+    // UPDATE SINGLE ROW
+    // =========================
+    function updateRow(row, prevRow) {
+
+        const bookingDate = bookingDateInput.value;
+
+        const actualStartInput = row.querySelector(".actualStart");
+        const actualEndInput = row.querySelector(".actualEDT");
+        const allocatedDaysInput = row.querySelector(".alocatedDays");
+
+        const autoStartInput = row.querySelector(".autoStart");
+        const autoEndInput = row.querySelector(".autoEDT");
+
+        const totalWorkingDaysInput = row.querySelector(".totalWorkingDays");
+        const daysBeforeStartInput = row.querySelector(".daysBeforeStart");
+        const withinAllocatedInput = row.querySelector(".withinAlocatedDays");
+        const extraDaysInput = row.querySelector(".extraDays");
+        const beforeEdtInput = row.querySelector(".beforeEdt");
+
+        const actualStart = actualStartInput.value;
+        const actualEnd = actualEndInput.value;
+
+        let autoStart = "";
+
+        // =========================
+        // AUTO START LOGIC
+        // =========================
+        // if (!prevRow) {
+        //     autoStart = actualStart ? actualStart : bookingDate;
+        // } else {
+        //     if (actualStart) {
+        //         autoStart = actualStart;
+        //     } else {
+        //         const prevActualEnd = prevRow.querySelector(".actualEDT")?.value;
+        //         const prevAutoEnd = prevRow.querySelector(".autoEDT")?.value;
+        //         autoStart = prevActualEnd || prevAutoEnd || bookingDate;
+        //     }
+        // }
+
+
+        if (!prevRow) {
+            autoStart = bookingDate;
+        } else {
+            const prevActualEnd = prevRow.querySelector(".actualEDT")?.value;
+            const prevAutoEnd = prevRow.querySelector(".autoEDT")?.value;
+            autoStart = prevActualEnd || prevAutoEnd || bookingDate;
+        }
+
+
+
+        autoStartInput.value = autoStart;
+
+        // =========================
+        // AUTO END
+        // =========================
+        const allocatedDays = Number(allocatedDaysInput.value || 0);
+        const autoEnd = addDays(autoStart, allocatedDays);
+        autoEndInput.value = autoEnd;
+
+        // =========================
+        // TOTAL WORKING DAYS
+        // =========================
+        let totalWorkingDays = 0;
+
+        if (actualStart && actualEnd) {
+            totalWorkingDays = dateDiff(actualEnd, actualStart);
+        } else if (!actualStart && actualEnd) {
+            totalWorkingDays = dateDiff(actualEnd, autoStart);
+        } else if (autoEnd && autoStart) {
+            totalWorkingDays = dateDiff(autoEnd, autoStart);
+        }
+
+        totalWorkingDaysInput.value = totalWorkingDays;
+
+        // =========================
+        // DAYS BEFORE START
+        // =========================
+        daysBeforeStartInput.value = dateDiff(actualStart ? actualStart : autoStart, bookingDate);
+
+
+        // =========================
+        // EXTRA DAYS (no negative)
+        // =========================
+        let extraDays = dateDiff(actualEnd, autoEnd);
+        extraDaysInput.value = extraDays > 0 ? extraDays : 0;
+
+        // =========================
+        // WITHIN ALLOCATED DAYS
+        // =========================
+        let withinAllocated = 0;
+
+        if (actualEnd && actualStart ? actualStart : autoStart) {
+            
+            if(dateDiff(actualEnd, autoEnd) <= 0)
+            {  
+                withinAllocated = dateDiff(actualEnd, actualStart ? actualStart : autoStart);
+                console.log(withinAllocated);
+            }
+            else
+            {
+                withinAllocated = dateDiff(autoEnd, actualStart ? actualStart : autoStart);
+            }
+        } 
+        else 
+        {
+            withinAllocated = dateDiff(autoEnd, actualStart ? actualStart : autoStart);
+        }
+
+        withinAllocatedInput.value = withinAllocated;
+
+        // =========================
+        // BEFORE EDT (no negative)
+        // =========================
+        let beforeEdt = 0;
+
+        if (autoEnd && actualEnd) {
+            beforeEdt = dateDiff(autoEnd, actualEnd);
+        }
+
+        beforeEdtInput.value = beforeEdt > 0 ? beforeEdt : 0;
+
+        // store for debugging / chaining
+        row.dataset.autoEnd = autoEnd;
+    }
+
+    // =========================
+    // UPDATE ALL ROWS (CHAIN)
+    // =========================
+    function updateAllRows() {
+        const rows = getRows();
+
+        rows.forEach((row, index) => {
+            const prevRow = index > 0 ? rows[index - 1] : null;
+            updateRow(row, prevRow);
+        });
+    }
+
+    // =========================
+    // GLOBAL EVENTS (your HTML onchange calls)
+    // =========================
+    window.actualStart = function () {
+        updateAllRows();
+    };
+
+    window.actualEDT = function () {
+        updateAllRows();
+    };
+
+    bookingDateInput.addEventListener("change", updateAllRows);
+
+    // initial run
+    updateAllRows();
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONTOOR</title>
+    <!--  -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;displa y=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .main_wrap {
+            display: flex;
+            justify-content: space-around;
+            /* font-size: 11px; */
+            /* margin: 100px 0;*/
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+        .box {
+            /**95mm **/
+            width: 359px;
+            /** 120mm **/
+            height: 454px;
+            border: 1px solid #ddd;
+            padding: 0 12px;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: 35px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .table_wrap table td {
+            text-transform: capitalize;
+            vertical-align: bottom;
+            font-weight: bold;
+            padding: 5px 0;
+            font-size: 12px;
+        }
+
+        .table_wrap {
+            padding-top: 6px;
+        }
+
+            .table_wrap table td span {
+                border: 1px solid #333;
+                padding: 2px 3px;
+                margin-right: 3px;
+                display: inline-block;
+                font-size: 13px;
+            }
+
+            .table_wrap table td input[type="text"] {
+                width: 100%;
+                border: 0;
+                border-bottom: 1px solid #333;
+                margin: 2px;
+            }
+
+
+        .btn_left {
+            text-align: center;
+            display: block;
+            padding: 8px 15px;
+            margin-top: 25px;
+            width: 100px;
+            /* margin: 33px auto; */
+            cursor: pointer;
+            background: #4caf50;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 15px;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        #div_print_box, #div_print_box * {
+            visibility: visible;
+        }
+
+        #div_print_box {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        button.print {
+            text-align: center;
+            display: block;
+            padding: 8px 15px;
+            margin-top: 10px;
+            width: 100px;
+            margin: 10px auto;
+            cursor: pointer;
+            background: #4caf50;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        @media print {
+            .table_wrap td:nth-child(1),
+            .table_wrap td:nth-child(2) {
+                visibility: hidden;
+            }
+
+            .print_box h1 {
+                visibility: hidden;
+            }
+
+            .table_wrap table td input,
+            .table_wrap table td textarea {
+                border-bottom: none !important;
+                position: relative;
+                bottom: 7px;
+            }
+
+            @page {
+                size: 95mm 120mm;
+                margin: 0;
+            }
+
+            .box {
+                width: 95mm;
+                height: 120mm;
+            }
+
+            button.print_btn {
+                display: none;
+            }
+
+            .table_wrap table td input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+                -webkit-appearance: none;
+            }
+
+            .table_wrap table td input[type="date"]::placeholder {
+                display: none;
+            }
+
+            .table_wrap {
+                padding-top: 6px;
+            }
+        }
+    </style>
+
+
+    <script type="text/javascript" src="/Scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        var $331 = $.noConflict(true);
+    </script>
+</head>
+
+<body>
+
+    <div class="main_wrap">
+        <div class="left_print box" id="div_Left_print_box">
+            <div class="print_box">
+                <h1 style="font-size: 42px !important; font-weight: bolder !important;">KONTOOR</h1>
+                <div class="table_wrap">
+                    <table>
+                        <colgroup>
+                        <col style="width: 30mm">
+                        <col style="width: 1mm">
+                        <col style="width: 57mm">
+                    </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>date</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>supplier / vendor</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>season + style #</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>mill + article</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>color + size</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>fibre content</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>weight / gauge</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>finishing + washing</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>sample type</td>
+                                <td>:</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>remarks</td>
+                                <td>:</td>
+                                <td rowspan="2"><textarea style="height: 65px; overflow: hidden; resize: none; width: 100%; border: none; border-bottom: 1px solid #333;"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+            <button class="btn_left print_btn" onclick="Left_print_btn()">Print</button>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function Left_print_btn() {
+            window.print();
+        }
+    </script>
+
+
+</body></html>

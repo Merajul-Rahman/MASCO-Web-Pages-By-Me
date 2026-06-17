@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masco Group - R&D Timeline</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 20px; }
+        .table-container { width: 100%; overflow-x: auto; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px; }
+        table { border-collapse: collapse; min-width: 3000px; width: 100%; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 1px; text-align: left; }
+        
+        /* Main Header Colors */
+        .header-main { background-color: #2c3e50; color: white; text-align: center; font-size: 14px; }
+        .header-dept { background-color: #34495e; color: #ecf0f1; text-align: center; }
+        .header-sub { background-color: #f2f2f2; position: sticky; top: 0; }
+
+        /* Input Styling */
+        input[type="text"], input[type="number"] {
+            width: 100%; border: 1px solid #ccc; padding: 4px; border-radius: 3px; box-sizing: border-box;
+        }
+        input[type="date"] {
+            padding: 2px; border: 1px solid #3498db; border-radius: 3px; font-family: inherit;
+        }
+        .General{
+            width: 95%;
+            min-height: 300px;
+            border: none;
+            padding: 4px;
+            border-radius: 3px;
+            font-family: inherit;
+            resize: none;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;  /* key for Excel-like wrapping */
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Central Research & Development - Masco Group</h2>
+    <p>Development Timeline Tracking</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <!-- Top Level Department Grouping -->
+                <tr class="header-main">
+                    <th colspan="13">General Information</th>
+                    <th colspan="10">Gant Chart</th>
+                    <th colspan="18" style="background-color: #2980b9;">Department</th>
+                </tr>
+                
+                <!-- Detailed Column Headers -->
+                <tr class="header-sub">
+                    <!-- General -->
+                    <th>SL</th>
+                    <th>Booking Time</th>
+                    <th>R&D Concern</th>
+                    <th>Masco Ref</th>
+                    <th>Development Motive</th>
+                    <th>Development Type</th>
+                    <th>Buyer</th>
+                    <th>Style</th>
+                    <th>Fabrication</th>
+                    <th>Yarn Details</th>
+                    <th>Dyeing Method</th>
+                    <th>Dyeing Unit</th>
+                    <th>Dept</th>
+                    <th>Booking Date</th>
+                    <th>10 Days</th><th>20 Days</th><th>30 Days</th><th>40 Days</th><th>50 Days</th><th>60 Days</th><th>70 Days</th><th>80 Days</th><th>90 Days</th>
+                    
+                    <th>Allocated Days</th><th>Auto Start</th><th>Auto EDT</th>
+                    <th>Actual Start</th><th>Actual End</th><th>Total Working Days</th><th>Days Befoe Start </th><th>Working days within Alocated Days</th><th>Extra Days</th><th>Days End Before EDT</th><th>Combined</th>
+                    <th>Days Befoe Start</th><th>Working days within Alocated Days</th><th>Extra Days</th><th>Days End Before EDT</th><th>Allocated Days</th>
+                    
+                </tr>
+            </thead>
+            <tbody class="project-group">
+                
+            </tbody>
+        </table>
+    </div>
+
+
+<script>
+
+const projects = [
+    {
+        general: {
+            sl: 1,
+            bookingDate: "2026-05-24",
+            concern: "Md. Mainul Islam",
+            ref: "RND JAQRD-151",
+            motive: "Strategic Co-Creation",
+            type: "First Development",
+            dept: "R&D",
+            style: "K-6",
+            fabric: "100% Cotton",
+            yarn: "20 S/1",
+            dyeing: "Solid",
+            unit: "Masco Industries"
+        },
+
+        departments: [
+            { name: "SCM", class: "scm-col", alloc: 2 },
+            { name: "Y/D", class: "yd-col", alloc: 3 },
+            { name: "Knitting", class: "yd-col", alloc: 10 },
+            { name: "Dyeing", class: "yd-col", alloc: 2 },
+            { name: "Finishing", class: "yd-col", alloc: 1 },
+            { name: "Submission", class: "yd-col", alloc: 3 }
+        ]
+    },
+
+    {
+        general: {
+            sl: 2,
+            bookingDate: "2025-06-28",
+            concern: "Another Buyer",
+            ref: "RND-200",
+            motive: "New Development",
+            type: "Repeat",
+            dept: "Merchandising",
+            style: "Polo",
+            fabric: "Poly Cotton",
+            yarn: "30/1",
+            dyeing: "Reactive",
+            unit: "Masco Knit"
+        },
+
+        departments: [
+            { name: "SCM", class: "scm-col", alloc: 1 },
+            { name: "Y/D", class: "yd-col", alloc: 4 },
+            { name: "Knitting", class: "yd-col", alloc: 8 }
+        ]
+    }
+];
+
+function createDepartmentRow(project, dept, deptIndex, totalDeptRows) {
+
+    const g = project.general;
+
+    return `
+    <tr>
+
+        ${deptIndex === 0 ? `
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.sl}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General bookingDate">${g.bookingDate}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.concern}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.ref}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.motive}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.type}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.dept}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.style}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.fabric}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.yarn}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.dyeing}</textarea>
+            </td>
+
+            <td rowspan="${totalDeptRows}">
+                <textarea class="General">${g.unit}</textarea>
+            </td>
+        ` : ""}
+
+        <td class="${dept.class}">${dept.name}</td>
+
+        <td colspan="10">
+            <div class="GantChart"></div>
+        </td>
+
+        <td><input type="number" class="alocatedDays" value="${dept.alloc}" disabled></td>
+
+        <td><input type="date" class="autoStart" disabled></td>
+        <td><input type="date" class="autoEDT" disabled></td>
+
+        <td><input type="date" class="actualStart" onchange="actualStart()"></td>
+        <td><input type="date" class="actualEDT" onchange="actualEDT()"></td>
+
+        <td><input type="number" class="totalWorkingDays" disabled></td>
+        <td><input type="number" class="daysBeforeStart" disabled></td>
+        <td><input type="number" class="withinAlocatedDays" disabled></td>
+        <td><input type="number" class="extraDays" disabled></td>
+        <td><input type="number" class="beforeEdt" disabled></td>
+
+        <td><div class="combined"></div></td>
+        <td><div class="daysBeforeStartChart"></div></td>
+        <td><div class="withinAlocatedDaysChart"></div></td>
+        <td><div class="extraDaysChart"></div></td>
+        <td><div class="beforeEdtChart"></div></td>
+        <td><div class="alocatedDaysChart"></div></td>
+
+    </tr>
+    `;
+}
+
+
+
+function renderTable() {
+
+    const tbody = document.querySelector("tbody");
+
+    let html = "";
+
+    projects.forEach(project => {
+
+        const totalDeptRows = project.departments.length;
+
+        project.departments.forEach((dept, deptIndex) => {
+
+            html += createDepartmentRow(
+                project,
+                dept,
+                deptIndex,
+                totalDeptRows
+            );
+
+        });
+
+    });
+
+    tbody.innerHTML = html;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    renderTable();
+    updateAllRows();
+    drawwithinAlocatedDaysChart();
+    drawDaysBeforeStartChart();
+    drawextraDaysChart();
+    drawbeforeEdtChart();
+    drawAlocatedDays();
+    drawCombined();
+
+});
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // =========================================
+    // HELPER: ADD DAYS
+    // =========================================
+    function addDays(dateStr, days) {
+
+        if (!dateStr) return "";
+
+        const date = new Date(dateStr);
+
+        date.setDate(date.getDate() + Number(days || 0));
+
+        return date.toISOString().split("T")[0];
+    }
+
+    // =========================================
+    // HELPER: DATE DIFFERENCE
+    // =========================================
+    function dateDiff(later, earlier) {
+
+        if (!later || !earlier) return 0;
+
+        const d1 = new Date(earlier);
+        const d2 = new Date(later);
+
+        const diff =
+            (d2 - d1) / (1000 * 60 * 60 * 24);
+
+        return Math.round(diff);
+    }
+
+    // =========================================
+    // UPDATE SINGLE ROW
+    // =========================================
+    function updateRow(row, prevRow) {
+
+        // -------------------------
+        // CURRENT PROJECT GROUP
+        // -------------------------
+        const projectGroup =
+            row.closest(".project-group");
+
+        const bookingDate =
+            projectGroup.querySelector(".bookingDate")?.value || "";
+
+        // -------------------------
+        // INPUTS
+        // -------------------------
+        const actualStartInput =
+            row.querySelector(".actualStart");
+
+        const actualEndInput =
+            row.querySelector(".actualEDT");
+
+        const allocatedDaysInput =
+            row.querySelector(".alocatedDays");
+
+        const autoStartInput =
+            row.querySelector(".autoStart");
+
+        const autoEndInput =
+            row.querySelector(".autoEDT");
+
+        const totalWorkingDaysInput =
+            row.querySelector(".totalWorkingDays");
+
+        const daysBeforeStartInput =
+            row.querySelector(".daysBeforeStart");
+
+        const withinAllocatedInput =
+            row.querySelector(".withinAlocatedDays");
+
+        const extraDaysInput =
+            row.querySelector(".extraDays");
+
+        const beforeEdtInput =
+            row.querySelector(".beforeEdt");
+
+        // -------------------------
+        // VALUES
+        // -------------------------
+        const actualStart =
+            actualStartInput.value;
+
+        const actualEnd =
+            actualEndInput.value;
+
+        let autoStart = "";
+
+        // =========================================
+        // AUTO START LOGIC
+        // =========================================
+
+        // FIRST ROW
+        if (!prevRow) {
+
+            autoStart =
+                actualStart || bookingDate;
+        }
+
+        // OTHER ROWS
+        else {
+
+            if (actualStart) {
+
+                autoStart = actualStart;
+
+            } else {
+
+                const prevActualEnd =
+                    prevRow.querySelector(".actualEDT")?.value;
+
+                const prevAutoEnd =
+                    prevRow.querySelector(".autoEDT")?.value;
+
+                autoStart =
+                    prevActualEnd ||
+                    prevAutoEnd ||
+                    bookingDate;
+            }
+        }
+
+        autoStartInput.value = autoStart;
+
+        // =========================================
+        // AUTO END
+        // =========================================
+        const allocatedDays =
+            Number(allocatedDaysInput.value || 0);
+
+        const autoEnd =
+            addDays(autoStart, allocatedDays);
+
+        autoEndInput.value = autoEnd;
+
+        // =========================================
+        // TOTAL WORKING DAYS
+        // =========================================
+        let totalWorkingDays = 0;
+
+        if (actualStart && actualEnd) {
+
+            totalWorkingDays =
+                dateDiff(actualEnd, actualStart);
+
+        } else if (!actualStart && actualEnd) {
+
+            totalWorkingDays =
+                dateDiff(actualEnd, autoStart);
+
+        } else {
+
+            totalWorkingDays =
+                dateDiff(autoEnd, autoStart);
+        }
+
+        totalWorkingDaysInput.value =
+            totalWorkingDays;
+
+        // =========================================
+        // DAYS BEFORE START
+        // =========================================
+        daysBeforeStartInput.value =
+            dateDiff(autoStart, bookingDate);
+
+        // =========================================
+        // EXTRA DAYS
+        // =========================================
+        let extraDays =
+            dateDiff(actualEnd, autoEnd);
+
+        extraDaysInput.value =
+            extraDays > 0 ? extraDays : 0;
+
+        // =========================================
+        // WITHIN ALLOCATED DAYS
+        // =========================================
+        let withinAllocated = 0;
+
+        if (actualEnd && autoStart) {
+
+            if (dateDiff(actualEnd, autoEnd) <= 0) {
+
+                withinAllocated =
+                    dateDiff(actualEnd, autoStart);
+
+            } else {
+
+                withinAllocated =
+                    dateDiff(autoEnd, autoStart);
+            }
+
+        } else {
+
+            withinAllocated =
+                dateDiff(autoEnd, autoStart);
+        }
+
+        withinAllocatedInput.value =
+            withinAllocated;
+
+        // =========================================
+        // BEFORE EDT
+        // =========================================
+        let beforeEdt = 0;
+
+        if (autoEnd && actualEnd) {
+
+            beforeEdt =
+                dateDiff(autoEnd, actualEnd);
+        }
+
+        beforeEdtInput.value =
+            beforeEdt > 0 ? beforeEdt : 0;
+
+        // =========================================
+        // STORE DEBUG
+        // =========================================
+        row.dataset.autoEnd = autoEnd;
+    }
+
+    // =========================================
+    // UPDATE ALL ROWS
+    // =========================================
+    function updateAllRows() {
+
+        const projectGroups =
+            document.querySelectorAll(".project-group");
+
+        projectGroups.forEach(group => {
+
+            const rows = Array.from(
+                group.querySelectorAll("tr")
+            ).filter(row =>
+                row.querySelector(".actualStart")
+            );
+
+            rows.forEach((row, index) => {
+
+                const prevRow =
+                    index > 0
+                        ? rows[index - 1]
+                        : null;
+
+                updateRow(row, prevRow);
+
+            });
+
+        });
+    }
+
+    // =========================================
+    // EVENTS
+    // =========================================
+
+    // BOOKING DATE
+    document.querySelectorAll(".bookingDate")
+        .forEach(el => {
+
+            el.addEventListener("change", function () {
+
+                updateAllRows();
+
+                drawwithinAlocatedDaysChart();
+                drawDaysBeforeStartChart();
+                drawextraDaysChart();
+                drawbeforeEdtChart();
+                drawAlocatedDays();
+                drawCombined();
+
+            });
+
+        });
+
+    // ACTUAL START
+    document.querySelectorAll(".actualStart")
+        .forEach(el => {
+
+            el.addEventListener("change", function () {
+
+                updateAllRows();
+
+                drawwithinAlocatedDaysChart();
+                drawDaysBeforeStartChart();
+                drawextraDaysChart();
+                drawbeforeEdtChart();
+                drawAlocatedDays();
+                drawCombined();
+
+            });
+
+        });
+
+    // ACTUAL END
+    document.querySelectorAll(".actualEDT")
+        .forEach(el => {
+
+            el.addEventListener("change", function () {
+
+                updateAllRows();
+
+                drawwithinAlocatedDaysChart();
+                drawDaysBeforeStartChart();
+                drawextraDaysChart();
+                drawbeforeEdtChart();
+                drawAlocatedDays();
+                drawCombined();
+
+            });
+
+        });
+
+    // =========================================
+    // INITIAL LOAD
+    // =========================================
+    updateAllRows();
+
+    drawwithinAlocatedDaysChart();
+    drawDaysBeforeStartChart();
+    drawextraDaysChart();
+    drawbeforeEdtChart();
+    drawAlocatedDays();
+    drawCombined();
+
+});
+
+
+</script>
+
+<script>
+
+// Department color map
+    const colorMap = {
+        "SCM": "#ff0000",        // Red
+        "Y/D": "#2ecc71",        // Green
+        "Knitting": "#3498db",   // Blue
+        "Dyeing": "#9b59b6",     // Purple
+        "Finishing": "#1abc9c",  // Teal
+        "Submission": "#f1c40f"  // Light Yellow
+    };
+    function REPT(char, count) {
+        return char.repeat(Math.max(0, count));
+    };
+
+function drawCombined() {
+
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+
+        const input1 = row.querySelector(".daysBeforeStart");
+        const input2 = row.querySelector(".alocatedDays");
+        const input3 = row.querySelector(".withinAlocatedDays");
+        const input4 = row.querySelector(".extraDays");
+        const input5 = row.querySelector(".beforeEdt");
+
+        const chartCell = row.querySelector(".combined");
+        const gantchart = row.querySelector(".GantChart");
+
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input1 && !input2 && !input3 && !input4 && !input5 || !chartCell) return;
+
+        const value1 = Number(input1.value || 0);
+        const value2 = Number(input2.value || 0);
+        const value3 = Number(input3.value || 0);
+        const value4 = Number(input4.value || 0);
+        const value5 = Number(input5.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#ff0000"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+
+        const bar = REPT("█", value1+value2);
+        const bar2 = REPT("█", value1+value3);
+        const bar3 = REPT("□", value4);
+        const bar4 = REPT("x", value5);
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px; margin-bottom: 3px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+        // chartCell.innerHTML = chartCell.innerHTML + `
+        //     <div style="display:flex; align-items:center; gap:6px;">
+        //         <span style="
+        //             font-family: monospace;
+        //             letter-spacing: 1px;
+        //             color: ${color};
+        //         ">
+        //             ${bar2}<span style="font-size: 24px">${bar3}</span>${bar4}
+        //         </span>
+        //     </div>
+        // `;
+
+        // gantchart.innerHTML = chartCell.innerHTML;
+
+
+
+        gantchart.innerHTML = chartCell.innerHTML + `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar2}<span style="font-size: 24px">${bar3}</span>${bar4}
+                </span>
+            </div>
+        `;
+
+    });
+}
+
+
+
+
+
+
+
+function drawDaysBeforeStartChart() {
+
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+
+        const input = row.querySelector(".daysBeforeStart");
+        const chartCell = row.querySelector(".daysBeforeStartChart");
+        const combined = row.querySelector(".combined");
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input || !chartCell) return;
+
+        const value = Number(input.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#27ae60"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+
+        const bar = REPT("█", value);
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+    });
+}
+
+function drawwithinAlocatedDaysChart() {
+
+    const rows = document.querySelectorAll("tbody tr");
+    
+    rows.forEach(row => {
+
+        const input = row.querySelector(".withinAlocatedDays");
+        const chartCell = row.querySelector(".withinAlocatedDaysChart");
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input || !chartCell) return;
+
+        const value = Number(input.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#27ae60"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+        const bar = REPT("█", value );
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+    });
+}
+
+
+function drawextraDaysChart() {
+    console.log("Extra Days");
+    const rows = document.querySelectorAll("tbody tr");
+    
+    rows.forEach(row => {
+
+        const input = row.querySelector(".extraDays");
+        const chartCell = row.querySelector(".extraDaysChart");
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input || !chartCell) return;
+
+        const value = Number(input.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#27ae60"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+        const bar = REPT("□", value );
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    font-size: 24px;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+    });
+}
+
+function drawbeforeEdtChart() {
+    console.log("Befor EDT");
+    const rows = document.querySelectorAll("tbody tr");
+    
+    rows.forEach(row => {
+
+        const input = row.querySelector(".beforeEdt");
+        const chartCell = row.querySelector(".beforeEdtChart");
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input || !chartCell) return;
+
+        const value = Number(input.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#27ae60"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+        const bar = REPT("x", value );
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+    });
+}
+
+function drawAlocatedDays() {
+    console.log("Befor EDT");
+    const rows = document.querySelectorAll("tbody tr");
+    
+    rows.forEach(row => {
+
+        const input = row.querySelector(".alocatedDays");
+        const chartCell = row.querySelector(".alocatedDaysChart");
+        const combined = row.querySelector(".combined");
+        const deptCell = row.querySelector("td"); // first dept cell in row
+
+        if (!input || !chartCell) return;
+
+        const value = Number(input.value || 0);
+
+        // detect department name from row
+        const deptText = row.querySelector("td")?.innerText?.trim();
+
+        let color = "#27ae60"; // default green
+
+        for (let key in colorMap) {
+            if (deptText.includes(key)) {
+                color = colorMap[key];
+                break;
+            }
+        }
+        const bar = REPT("█", value );
+
+        chartCell.innerHTML = `
+            <div style="display:flex; align-items:center; gap:6px;">
+                <span style="
+                    font-family: monospace;
+                    letter-spacing: 1px;
+                    color: ${color};
+                ">
+                    ${bar}
+                </span>
+            </div>
+        `;
+    });
+}
+
+
+</script>
+
+</body>
+</html>

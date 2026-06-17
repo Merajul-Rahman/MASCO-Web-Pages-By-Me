@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stradivarius</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    .main{
+        margin-top: 50px;
+        border: 1px solid black;
+        width: 81mm;
+        height: 159.5mm;
+        padding: 0;
+    }
+    
+    input[type="checkbox"]{
+    appearance:none;           
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    width:2.2mm;
+    height:2.2mm;
+    
+    margin-left: 1.5px;
+    border:1px solid black;    
+    border-radius:0;           
+    cursor:pointer;
+    position:relative;         
+    }
+    input[type="checkbox"]:checked::after{
+    content:"";
+    position:absolute;
+    top: -0.2mm;                
+    left:0.5mm;
+    width:0.5mm;
+    height:1.3mm;
+    border:solid black;
+    border-width:0 0.6mm 0.6mm 0;
+    transform:rotate(45deg);  
+    }
+
+p{
+    font-size: 9px;
+}
+input[type="text"], input[type="date"]
+{
+    font-size: 9px;
+    height: 3.5mm;
+    border: none;
+    padding-left: 3px;
+    padding-right: 2px;
+    border-bottom: 1px solid black;
+}
+
+
+.InputDiv1{
+    display: flex; justify-content: center; margin: auto; align-items: center;
+}
+.Heading{
+    margin-top: 0.5mm; background-color: black; margin-left: 3mm; margin-right: 3mm;
+}
+.Heading p{
+    margin-left: 2px; font-weight:lighter; color: white;
+}
+.CDiv{
+    display: flex; margin-left: 3mm; margin-top: 0.5mm; gap: 5px;
+}
+.ComentDIV{
+    display: flex; margin-left: 3mm; margin-top: 0mm;
+}
+.ComentDIV input{
+    width: 74mm;
+}
+
+
+@media print{
+  @page{ margin:0; }          /* printer leaves no page margins        */
+
+  .main{
+    border: none;
+  }
+  .Heading{
+    background-color: black !important;
+        -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;/
+  }
+  .Heading p{
+    color: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;/
+  }
+
+
+
+  /* hide anything you temporarily tag with 'hide-print' (from JS) */
+  .hide-print{display:none!important;}
+  /* vanish all buttons on the sheet                                */
+  button{display:none!important;}
+  /* ensure the card itself still hugs the edge on paper            */
+  .main{margin:0!important;}
+}
+</style>
+
+
+<body>
+    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
+        <div class="main">
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 5.8mm;">
+                <img src="Stradivarius logo.png" style="height: 8.3mm;" alt="">
+            </div>
+            <div style="display: flex; margin-left: 3mm;">
+                <div style="width: 12.7mm;">
+                    <p>SAMPLE N<sup>0</sup></p>
+                    <textarea style="border: 1px solid black; height: 12mm; width: 12mm; resize:none; overflow:hidden; font-size:9px; padding:1px">    
+                    </textarea>
+                </div>
+                <div style="margin-left: 4mm; margin-top: 0.5mm;">
+                    <div class="InputDiv1">
+                        <div style="width: 11mm;"><p>SUPPLIER</p></div>
+                        <input type="text" style="width: 46mm; text-align: center; font-weight: bolder;" value="MASCO INDUSTRIES LTD">
+                    </div>
+                    <div class="InputDiv1">
+                        <div style="width: 11mm;"><p>STYLE</p></div>
+                        <input type="text" style="width: 46mm;">
+                    </div>
+            
+                    <div class="InputDiv1">
+                        <div style="width: 11mm;"><p>DATE</p></div>
+                        <input type="text" style="width: 46mm;">
+                    </div>
+            
+                    <div class="InputDiv1">
+                        <div style="width: 11mm;"><p>FABRIC</p></div>
+                        <input type="text" style="width: 46mm;">
+                    </div>
+                    <div style="display: flex; margin-left: 11mm;">
+                        <div><p>COMPOSITION</p></div>
+                        <input type="text" style="width: 30mm;">
+                    </div>
+                    <div style="display: flex; margin-left: 11mm;">
+                        <div><p>WEIGHT</p></div>
+                        <input type="text" style="width: 37mm;">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="Heading">
+                    <p>KIND OF GARMENT:</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>NEW DEVELOPMENT</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>FITTING SAMPLE</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>AFTER SP</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>REFERENCE SAMPLE</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>SIZE SET</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>SHIPPING SAMPLE</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>INSPECTION SAMPLE</p>
+                </div>
+                <div class="Heading">
+                    <p>TO APPROVE:</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>FABRIC QUALITY</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>HAND FEEL</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>PRINT</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>FITTING / MEASUREMENTS</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>EMBROIDERY</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>WORKMANSHIP</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>WASHING</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>TRIMS/BUTTONS/ZIPPERS, ETC...</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>OTHERS</p>
+                </div>
+                <div class="Heading" style="margin-top: 1mm;">
+                    <p>PATTERN:</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>STR</p>
+                </div>
+                <div class="CDiv">
+                    <input type="checkbox"><p>SUPPLIER</p>
+                </div>
+            </div>
+            <div>
+                <div class="Heading" style="margin-top: 1mm;">
+                    <p>STR COMMENTS:</p>
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                
+                <div class="Heading" style="margin-top: 1mm;">
+                    <p>SUPPLIER COMMENTS:</p>
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+                <div class="ComentDIV">
+                    <input type="text">
+                </div>
+            </div>
+            <div style="display: flex; margin-left: 3mm; margin-top: 1mm;">
+                <p>SAMPLE SUPERVISED BY:</p>
+                <input type="text" style="width: 45.5mm;">
+            </div>
+        </div>
+        <div class="main">
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 49mm;">
+                <img src="stradivarius-social-preview.png" alt="" style="height: 59mm;">
+            </div>
+        </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-evenly; gap: 20px;">
+        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printFront()">Print</button>
+        <button style="margin: 10px; height: 30px; width: 100px; background-color: green; font-weight: 700; color: rgb(8, 226, 233);" onclick="printBack()">Print</button>
+    </div>
+    
+
+    
+
+<script>
+/* helper – hide one element, print, then restore it */
+function hideAndPrint(elem){
+  if(!elem){                       // safety guard
+    window.print();
+    return;
+  }
+  elem.classList.add('hide-print');  // hide just for print preview
+  window.print();
+  elem.classList.remove('hide-print'); // restore right after
+}
+
+/* ---------- public API ---------- */
+function printFront(){               // print the first .main
+  const back = document.querySelectorAll('.main')[1];
+  hideAndPrint(back);
+}
+
+function printBack(){                // print the second .main
+  const front = document.querySelectorAll('.main')[0];
+  hideAndPrint(front);
+}
+</script>
+</body>
+</html>

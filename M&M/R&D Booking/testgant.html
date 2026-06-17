@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Gantt Chart</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    #gantt {
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Gantt Chart</h2>
+<div id="gantt"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const tasks = [
+    {
+      id: "1",
+      name: "Requirement",
+      start: "2026-05-01",
+      end: "2026-05-05",
+      progress: 100
+    },
+    {
+      id: "2",
+      name: "Design",
+      start: "2026-05-06",
+      end: "2026-05-10",
+      progress: 50
+    },
+    {
+      id: "3",
+      name: "Development",
+      start: "2026-05-11",
+      end: "2026-05-20",
+      progress: 20
+    }
+  ];
+
+  if (typeof Gantt === "undefined") {
+    alert("Gantt library failed to load (CDN issue)");
+    return;
+  }
+
+  new Gantt("#gantt", tasks, {
+    view_mode: "Day"
+  });
+
+});
+</script>
+
+</body>
+</html>

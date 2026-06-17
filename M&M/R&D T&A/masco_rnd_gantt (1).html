@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masco Group — R&D Development Timeline</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;color:#2c3e50;font-size:12px}
+  header{background:#2c3e50;color:#ecf0f1;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  header h1{font-size:16px;font-weight:600;letter-spacing:0.3px}
+  header p{font-size:11px;color:#95a5a6;margin-top:2px}
+  .toolbar{background:#fff;border-bottom:1px solid #dde1e7;padding:8px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .toolbar label{font-size:11px;color:#7f8c8d;font-weight:500}
+  select{font-size:11px;padding:4px 8px;border:1px solid #ccc;border-radius:4px;background:#fff;color:#2c3e50;cursor:pointer}
+  .legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:10px;color:#7f8c8d}
+  .legend-item{display:flex;align-items:center;gap:4px}
+  .lb{width:24px;height:9px;border-radius:2px}
+  .lb-outline{width:24px;height:9px;border-radius:2px;border:1.5px dashed #e74c3c;background:transparent}
+  .main{padding:12px 16px;overflow-x:auto}
+  table{border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);font-size:11px;width:100%}
+  th,td{border:0.5px solid #e0e4ea;padding:3px 5px;white-space:nowrap;vertical-align:middle}
+  thead tr:first-child th{background:#2c3e50;color:#ecf0f1;font-weight:600;font-size:11px;text-align:center;padding:5px 6px}
+  thead tr:last-child th{background:#34495e;color:#bdc3c7;font-size:10px;font-weight:500;text-align:center;padding:3px 5px}
+  tbody tr:hover{background:#f8f9fb}
+  .gen-cell{max-width:100px; min-width: 50px; font-size:11px;color:#34495e;white-space:normal;word-break:break-word; text-align: center;}
+  .dept-badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:600;color:#fff;letter-spacing:0.2px}
+  .gantt-wrap{position:relative;overflow:hidden}
+  .gantt-row{position:relative;height:14px;width:100%;overflow:hidden}
+  .gantt-bar{position:absolute;top:1px;height:12px;border-radius:2px}
+  .bar-planned{opacity:0.32}
+  .today-v{position:absolute;top:0;width:2px;background:rgba(231,76,60,0.7);pointer-events:none;z-index:10}
+  .date-hdr-wrap{position:relative;height:28px;overflow:visible}
+  .dtick{position:absolute;font-size:9px;color:#95a5a6;transform:translateX(-50%);top:1px;white-space:nowrap;line-height:1.2}
+  .dtick-line{width:1px;height:8px;background:#dde1e7;margin:0 auto 1px}
+  input[type=date]{font-size:10px;padding:2px 3px;border:1px solid #dde1e7;border-radius:3px;background:#fff;color:#2c3e50;width:96px}
+  input[type=date]:focus{outline:none;border-color:#3498db}
+  .num-cell{text-align:right;font-size:11px;color:#555}
+  .cell-extra{color:#e74c3c;font-weight:600}
+  .cell-early{color:#27ae60;font-weight:600}
+  .auto-cell{color:#95a5a6;font-size:10px;text-align:center}
+  .section-gantt{padding:0 3px}
+  /* early-x: absolutely positioned, width capped by JS, overflow hidden on parent row */
+  .early-x{
+    position:absolute;top:1px;
+    font-family:monospace;font-size:14px;
+    color:#27ae60;letter-spacing:1px;
+    line-height:12px;height:12px;
+    overflow:hidden;white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Central Research &amp; Development — Masco Group</h1>
+    <p>Development Timeline Tracking</p>
+  </div>
+  <div style="font-size:11px;color:#7f8c8d" id="todayLabel"></div>
+</header>
+
+<div class="toolbar">
+  <label>Timeline from:</label>
+  <select id="timelineMode">
+    <option value="booking">Booking Date</option>
+    <option value="current">Current Date</option>
+  </select>
+  <span id="refLabel" style="font-size:11px;color:#7f8c8d"></span>
+  <div class="legend">
+    <span class="legend-item"><span class="lb" style="background:#3498db;opacity:0.32"></span>Planned</span>
+    <span class="legend-item"><span class="lb" style="background:#3498db"></span>Actual (on time)</span>
+    <span class="legend-item"><span class="lb-outline"></span>&nbsp;Extra days (late)</span>
+    <span class="legend-item"><span style="font-family:monospace;color:#27ae60;font-size:12px">×××</span>&nbsp;Finished early</span>
+    <span class="legend-item"><span style="display:inline-block;width:2px;height:12px;background:rgba(231,76,60,0.7);vertical-align:middle;margin-right:4px"></span>Today</span>
+  </div>
+</div>
+
+<div class="main">
+<table id="mainTable">
+<thead>
+<tr>
+  <th colspan="13">General Information</th>
+  <th id="ganttTH" style="min-width:520px">Gantt Chart &nbsp;(top = planned &nbsp;·&nbsp; bottom = actual)</th>
+  <th colspan="2">Auto Schedule</th>
+  <th colspan="2">Actual Dates</th>
+  <th>Alloc</th>
+  <th>Total Days</th>
+  <th>Bef. Start</th>
+  <th>W. Alloc</th>
+  <th>Extra □</th>
+  <th>Early ×</th>
+  <th rowspan="2">Remarks</th>
+</tr>
+<tr>
+  <th>SL</th>
+  <th>Booking</th>
+  <th>Concern</th>
+  <th>Ref</th>
+  <th>Motive</th>
+  <th>Type</th>
+  <th>Buyer</th>
+  <th>Style</th>
+  <th>Fabric</th>
+  <th>Yarn</th>
+  <th>Dyeing Method</th>
+  <th>Dyeing Unit</th>
+  <th>Dept</th>
+  <th id="dateHdrTH" style="min-width:520px;padding:0">
+    <div class="date-hdr-wrap" id="dateHdrInner" style="width:520px"></div>
+  </th>
+  <th>Auto Start</th>
+  <th>Auto EDT</th>
+  <th>Actual Start</th>
+  <th>Actual End</th>
+  <th>Days</th>
+  <th>Total</th>
+  <th>Bef.Start</th>
+  <th>W.Alloc</th>
+  <th>Extra</th>
+  <th>Early</th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+
+<script>
+const GANTT_W = 520;
+
+const DEPT_COLORS = {
+  "R&D":                       "#8e44ad",
+  "SCM":                       "#e74c3c",
+  "Y/D":                       "#27ae60",
+  "Knitting":                  "#2980b9",
+  "Dyeing":                    "#27ff60",
+  "Lab Coloration Dyeing":     "#9b59b6",
+  "AOP/Wash/Embellishment":    "#e67e22",
+  "Finishing":                 "#16a085",
+  "Lab Testing":               "#c0392b",
+  "Submission":                "#f39c12",
+  "Feedback":                  "#607d8b"
+};
+
+const projects = [
+  {
+    general: {
+      sl: 1, bookingDate: "2026-05-24", concern: "Md. Mainul Islam",
+      ref: "RND JAQRD-151", motive: "Strategic Co-Creation", type: "First Development",
+      buyer: "R&D", style: "K-6", fabric: "100% Cotton", yarn: "20 S/1",
+      dyeingMethod: "Solid", dyeingUnit: "Masco Industries"
+    },
+    departments: [
+      {name:"R&D",alloc:1},{name:"SCM",alloc:2},{name:"Y/D",alloc:3},{name:"Knitting",alloc:7},{name:"Dyeing",alloc:3},
+      {name:"Lab Coloration Dyeing",alloc:2},{name:"AOP/Wash/Embellishment",alloc:2},
+      {name:"Finishing",alloc:1},{name:"Lab Testing",alloc:2},{name:"Submission",alloc:3},{name:"Feedback",alloc:2}
+    ]
+  }
+];
+
+// ── helpers ───────────────────────────────────────────────────────────────────
+function pd(s) {
+  if (!s) return null;
+  const [y, m, d] = s.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+function fd(d) {
+  if (!d) return "";
+  const y = d.getFullYear(),
+        m = String(d.getMonth()+1).padStart(2,"0"),
+        dd= String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${dd}`;
+}
+function ad(d, n) {
+  if (!d) return null;
+  const r = new Date(d); r.setDate(r.getDate() + n); return r;
+}
+function diff(a, b) {
+  if (!a || !b) return 0;
+  return Math.round((a - b) / 86400000);
+}
+function fmt(d) {
+  return d.toLocaleDateString("en-GB", {day:"2-digit", month:"short"});
+}
+function today0() {
+  const t = new Date(); t.setHours(0,0,0,0); return t;
+}
+
+// clamp a pixel value to [0, GANTT_W]
+function clampPx(v) { return Math.max(0, Math.min(GANTT_W, v)); }
+
+// ── state ─────────────────────────────────────────────────────────────────────
+let timelineMode = "booking";
+let ganttStart = null, ganttEnd = null;
+let allRows = [];
+
+function buildRows() {
+  allRows = [];
+  projects.forEach((proj, pi) => {
+    proj.departments.forEach((dept, di) => {
+      allRows.push({
+        ...proj.general,
+        deptName: dept.name,
+        alloc: dept.alloc,
+        autoStart: "", autoEDT: "",
+        actualStart: "", actualEnd: "",
+        projIdx: pi, deptIdx: di,
+        totalDepts: proj.departments.length
+      });
+    });
+  });
+}
+
+function cascadeSchedule() {
+  projects.forEach((proj, pi) => {
+    const rows = allRows.filter(r => r.projIdx === pi);
+    let prevEnd = null;
+    rows.forEach((r, i) => {
+      let aStart;
+      if (i === 0) {
+        aStart = r.actualStart || r.bookingDate;
+      } else {
+        aStart = r.actualStart || (prevEnd || r.bookingDate);
+      }
+      r.autoStart = aStart;
+      r.autoEDT   = fd(ad(pd(aStart), r.alloc));
+      prevEnd = r.actualEnd || r.autoEDT;
+    });
+  });
+}
+
+function getRange() {
+  const td = today0();
+  let mn = timelineMode === "current" ? new Date(td) : null;
+  let mx = null;
+  allRows.forEach(r => {
+    const s  = pd(r.autoStart) || pd(r.bookingDate);
+    const e  = pd(r.autoEDT)   || ad(s, r.alloc);
+    const ae = r.actualEnd ? pd(r.actualEnd) : null;
+    if (timelineMode === "booking" && s && (!mn || s < mn)) mn = new Date(s);
+    if (e  && (!mx || e  > mx)) mx = new Date(e);
+    if (ae && (!mx || ae > mx)) mx = new Date(ae);
+  });
+  if (!mn) mn = new Date(td);
+  if (!mx) mx = ad(mn, 30);
+  const pad = Math.max(3, Math.round(diff(mx, mn) * 0.07));
+  return { start: mn, end: ad(mx, pad) };
+}
+
+function toPx(d) {
+  if (!d) return 0;
+  const total = diff(ganttEnd, ganttStart) || 1;
+  return Math.round((diff(d, ganttStart) / total) * GANTT_W);
+}
+
+// ── date header ───────────────────────────────────────────────────────────────
+function drawDateHeader() {
+  const inner = document.getElementById("dateHdrInner");
+  inner.innerHTML = "";
+  inner.style.width = GANTT_W + "px";
+  if (!ganttStart || !ganttEnd) return;
+  const tot = diff(ganttEnd, ganttStart) || 1;
+  let step = 1;
+  if      (tot > 120) step = 21;
+  else if (tot > 60)  step = 14;
+  else if (tot > 30)  step = 7;
+  else if (tot > 15)  step = 3;
+  let cur = new Date(ganttStart);
+  while (cur <= ganttEnd) {
+    const x = toPx(cur);
+    const wrap = document.createElement("div");
+    wrap.className = "dtick";
+    wrap.style.left = x + "px";
+    wrap.innerHTML = `<div class="dtick-line"></div>${fmt(cur)}`;
+    inner.appendChild(wrap);
+    cur = ad(cur, step);
+  }
+  const td = today0();
+  if (td >= ganttStart && td <= ganttEnd) {
+    const tl = document.createElement("div");
+    tl.className = "today-v";
+    tl.style.left   = toPx(td) + "px";
+    tl.style.height = "100%";
+    tl.title = "Today";
+    inner.appendChild(tl);
+  }
+}
+
+// ── draw a single bar segment, clipped to [0, GANTT_W] ───────────────────────
+// returns null if the segment is entirely outside the visible range
+function makeBar(startDate, endDate, color, opacity, dashed, title) {
+  // clip to ganttStart..ganttEnd
+  const visStart = startDate < ganttStart ? ganttStart : startDate;
+  const visEnd   = endDate   > ganttEnd   ? ganttEnd   : endDate;
+  if (visEnd <= ganttStart || visStart >= ganttEnd) return null; // fully outside
+
+  const x1 = clampPx(toPx(visStart));
+  const x2 = clampPx(toPx(visEnd));
+  const w  = Math.max(3, x2 - x1);
+
+  const bar = document.createElement("div");
+  bar.className = "gantt-bar";
+  bar.style.left   = x1 + "px";
+  bar.style.width  = w  + "px";
+  if (dashed) {
+    bar.style.background = "transparent";
+    bar.style.border     = "1.5px dashed " + color;
+    bar.style.opacity    = "0.85";
+  } else {
+    bar.style.background = color;
+    if (opacity != null) bar.style.opacity = opacity;
+  }
+  if (title) bar.title = title;
+  return bar;
+}
+
+// ── gantt cell ────────────────────────────────────────────────────────────────
+function makeGanttCell(r) {
+  const color = DEPT_COLORS[r.deptName] || "#888";
+  const td    = document.createElement("td");
+  td.className = "section-gantt";
+  td.style.minWidth = (GANTT_W + 10) + "px";
+
+  const wrap = document.createElement("div");
+  wrap.className  = "gantt-wrap";
+  wrap.style.width = GANTT_W + "px";
+
+  // today line
+  const td0 = today0();
+  if (td0 >= ganttStart && td0 <= ganttEnd) {
+    const tl = document.createElement("div");
+    tl.className    = "today-v";
+    tl.style.left   = toPx(td0) + "px";
+    tl.style.height = "30px";
+    wrap.appendChild(tl);
+  }
+
+  const autoS = pd(r.autoStart);
+  const autoE = pd(r.autoEDT);
+  const actS  = pd(r.actualStart) || autoS;
+  const actE  = pd(r.actualEnd);
+
+  // ── ROW 1 — PLANNED ──────────────────────────────────────────────────────
+  const rowP = document.createElement("div");
+  rowP.className = "gantt-row";
+
+  if (autoS && autoE && autoE > ganttStart) {
+    const bar = makeBar(autoS, autoE, color, "0.32", false,
+      `Planned: ${r.autoStart} → ${r.autoEDT}`);
+    if (bar) rowP.appendChild(bar);
+  }
+  wrap.appendChild(rowP);
+
+  // ── ROW 2 — ACTUAL ───────────────────────────────────────────────────────
+  const rowA = document.createElement("div");
+  rowA.className = "gantt-row";
+
+  if (actS) {
+    if (actE) {
+      // fully completed
+      const isLate  = actE > autoE;
+      const isEarly = actE < autoE;
+      const solidEnd = isLate ? autoE : actE;
+
+      if (solidEnd > ganttStart) {
+        const solidBar = makeBar(actS, solidEnd, color, null, false,
+          `Actual: ${fd(actS)} → ${fd(actE)}`);
+        if (solidBar) rowA.appendChild(solidBar);
+      }
+
+      if (isLate && actE > ganttStart) {
+        const extraBar = makeBar(autoE, actE, color, null, true,
+          `Extra: ${diff(actE, autoE)} day(s) late`);
+        if (extraBar) rowA.appendChild(extraBar);
+      } else if (isEarly) {
+        // × markers — positioned after actual end, width capped to remaining space
+        const xStartPx = clampPx(toPx(actE));
+        const xEndPx   = clampPx(toPx(autoE));
+        const availPx  = xEndPx - xStartPx;
+        if (availPx > 2 && xStartPx < GANTT_W) {
+          const earlyDays = diff(autoE, actE);
+          const xSpan = document.createElement("span");
+          xSpan.className    = "early-x";
+          xSpan.style.left   = xStartPx + "px";
+          xSpan.style.width  = availPx + "px";          // hard cap — no overflow
+          xSpan.textContent  = "X".repeat(Math.max(1, earlyDays));
+          xSpan.title        = `Finished ${earlyDays} day(s) early`;
+          rowA.appendChild(xSpan);
+        }
+      }
+    } else if (r.actualStart) {
+      // in progress — show bar from actual start up to today (or autoE if today is past it)
+      const progEnd = td0 < autoE ? td0 : autoE;
+      if (progEnd > ganttStart && actS < ganttEnd) {
+        const progBar = makeBar(actS, progEnd, color, "0.65", false,
+          `In progress from ${r.actualStart}`);
+        if (progBar) rowA.appendChild(progBar);
+      }
+    }
+  }
+
+  wrap.appendChild(rowA);
+  td.appendChild(wrap);
+  return td;
+}
+
+// ── analysis ──────────────────────────────────────────────────────────────────
+function calcAnal(r) {
+  const autoS   = pd(r.autoStart);
+  const autoE   = pd(r.autoEDT);
+  const actS    = pd(r.actualStart) || autoS;
+  const actE    = pd(r.actualEnd)   || autoE;
+  const booking = pd(r.bookingDate);
+  return {
+    totalDays:       diff(actE, actS),
+    daysBeforeStart: Math.max(0, diff(autoS, booking)),
+    withinAlloc:     diff(actE, autoE) <= 0 ? diff(actE, autoS) : r.alloc,
+    extraDays:       Math.max(0, diff(actE, autoE)),
+    beforeEdt:       Math.max(0, diff(autoE, actE))
+  };
+}
+
+// ── main render ───────────────────────────────────────────────────────────────
+function renderTable() {
+  // preserve actual dates across re-renders
+  const saved = {};
+  allRows.forEach(r => {
+    saved[r.projIdx + "_" + r.deptIdx] = {
+      actualStart: r.actualStart,
+      actualEnd:   r.actualEnd
+    };
+  });
+
+  buildRows();
+
+  allRows.forEach(r => {
+    const key = r.projIdx + "_" + r.deptIdx;
+    if (saved[key]) {
+      r.actualStart = saved[key].actualStart;
+      r.actualEnd   = saved[key].actualEnd;
+    }
+  });
+
+  cascadeSchedule();
+
+  const range = getRange();
+  ganttStart = range.start;
+  ganttEnd   = range.end;
+
+  const t = new Date();
+  document.getElementById("todayLabel").textContent = "Today: " + fmt(t);
+  document.getElementById("refLabel").textContent   = timelineMode === "current"
+    ? `Reference: Today (${fmt(t)})` : "Reference: Booking Date";
+
+  drawDateHeader();
+
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+
+  allRows.forEach(r => {
+    const tr    = document.createElement("tr");
+    const color = DEPT_COLORS[r.deptName] || "#888";
+
+    // general info — rowspan on first dept row
+    if (r.deptIdx === 0) {
+      [r.sl, r.bookingDate, r.concern, r.ref, r.motive, r.type,
+       r.buyer, r.style, r.fabric, r.yarn, r.dyeingMethod, r.dyeingUnit
+      ].forEach((v, fi) => {
+        const td = document.createElement("td");
+        td.rowSpan   = r.totalDepts;
+        td.className = "gen-cell";
+        td.title     = String(v);
+        td.textContent = v;
+        if (fi === 0) td.style.textAlign = "center";
+        tr.appendChild(td);
+      });
+    }
+
+    // dept badge
+    const tdDept  = document.createElement("td");
+    const badge   = document.createElement("span");
+    badge.className       = "dept-badge";
+    badge.style.background = color;
+    badge.textContent     = r.deptName;
+    tdDept.appendChild(badge);
+    tr.appendChild(tdDept);
+
+    // gantt
+    tr.appendChild(makeGanttCell(r));
+
+    // auto start / edt (read-only display)
+    const tdAS = document.createElement("td");
+    tdAS.className = "auto-cell"; tdAS.textContent = r.autoStart || "-";
+    tr.appendChild(tdAS);
+    const tdAE = document.createElement("td");
+    tdAE.className = "auto-cell"; tdAE.textContent = r.autoEDT || "-";
+    tr.appendChild(tdAE);
+
+    // actual start input
+    const tdActS = document.createElement("td");
+    const inActS = document.createElement("input");
+    inActS.type  = "date"; inActS.value = r.actualStart || "";
+    inActS.addEventListener("change", function() {
+      r.actualStart = this.value;
+      cascadeSchedule();
+      const rng = getRange(); ganttStart = rng.start; ganttEnd = rng.end;
+      drawDateHeader();
+      renderTable();
+    });
+    tdActS.appendChild(inActS); tr.appendChild(tdActS);
+
+    // actual end input
+    const tdActE = document.createElement("td");
+    const inActE = document.createElement("input");
+    inActE.type  = "date"; inActE.value = r.actualEnd || "";
+    inActE.addEventListener("change", function() {
+      r.actualEnd = this.value;
+      cascadeSchedule();
+      const rng = getRange(); ganttStart = rng.start; ganttEnd = rng.end;
+      drawDateHeader();
+      renderTable();
+    });
+    tdActE.appendChild(inActE); tr.appendChild(tdActE);
+
+    // analysis columns
+    const a = calcAnal(r);
+    const mkN = (v, cls) => {
+      const td = document.createElement("td");
+      td.className   = "num-cell" + (cls ? " " + cls : "");
+      td.textContent = v !== "" && v !== null ? v : "";
+      return td;
+    };
+    tr.appendChild(mkN(r.alloc));
+    tr.appendChild(mkN(a.totalDays));
+    tr.appendChild(mkN(a.daysBeforeStart));
+    tr.appendChild(mkN(a.withinAlloc));
+    tr.appendChild(mkN(a.extraDays > 0 ? a.extraDays : "", a.extraDays > 0 ? "cell-extra" : ""));
+    tr.appendChild(mkN(a.beforeEdt  > 0 ? a.beforeEdt  : "", a.beforeEdt  > 0 ? "cell-early" : ""));
+    const remarks = document.createElement("td");
+    remarks.appendChild(Object.assign(document.createElement("input"), {
+        type: "text",
+    }));
+
+    tr.appendChild(remarks);
+
+    tbody.appendChild(tr);
+  });
+}
+
+document.getElementById("timelineMode").addEventListener("change", function() {
+  timelineMode = this.value;
+  renderTable();
+});
+
+renderTable();
+</script>
+</body>
+</html>

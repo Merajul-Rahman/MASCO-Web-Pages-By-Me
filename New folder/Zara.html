@@ -1,0 +1,1519 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZARA Kids Component Checklist</title>
+    <style>
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            font-size: 13px;
+        }
+
+        .main_wrap {
+            display: flex;
+            justify-content: space-around;
+            /*font-size: 11px;*/
+            /* margin: 100px 0;*/
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+        h2,
+        h3 {
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 11px;
+        }
+
+        .logo_holder {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        ::placeholder {
+            color: #333;
+        }
+
+        .box {
+            width: 101.5mm;
+            margin: 0 auto;
+            height: 153mm;
+            background: #fff;
+            /*  border: 1px solid #ccc;*/
+            /* padding: 14px 13px;*/
+        }
+
+        .left_print.box, .right_print.box {
+            padding: 0 5px !important;
+            border: 1px solid #ccc;
+        }
+
+        .left_print {
+            position: relative;
+        }
+
+            .left_print .btn_left {
+                /*    position: absolute;
+        bottom: -55px;*/
+                text-align: center;
+                display: block;
+                padding: 8px 15px;
+                margin-top: 10px;
+                width: 100px;
+                margin: 10px auto;
+                cursor: pointer;
+                background: #4caf50;
+                border: 0;
+                border-radius: 20px;
+                color: #fff;
+                font-size: 15px;
+                overflow: hidden;
+                position: absolute;
+                top: 100%;
+            }
+
+        .right_print .btn_left {
+            text-align: center;
+            display: block;
+            padding: 8px 15px;
+            margin-top: 10px;
+            width: 100px;
+            margin: 10px auto;
+            cursor: pointer;
+            background: #4caf50;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 15px;
+            overflow: hidden;
+            position: absolute;
+            top: 100%;
+        }
+
+        .left_print .print_box,
+        .right_print .print_box {
+            padding-top: 30px;
+        }
+
+        .left_print table {
+            width: 100%;
+            /*border-collapse: collapse;*/
+            /*margin-bottom: 20px;*/
+        }
+
+            .left_print table td, left_print table th {
+                border: 1px solid #333;
+                font-size: 9px;
+                /* padding: 4px 8px;*/
+                /*vertical-align: middle;*/
+            }
+
+        /*input[type="text"] {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 4px;
+        }*/
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2px;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+            .checkbox-grid label {
+                display: flex;
+                align-items: center;
+            }
+
+            .checkbox-grid input {
+                margin-right: 5px;
+            }
+
+        .comments-needed {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            display: flex;
+            position: relative;
+            left: 45px;
+        }
+
+            .comments-needed label {
+                display: flex;
+                align-items: center;
+            }
+
+        .pattern_check table td {
+            border: none;
+        }
+
+        /* .pattern_check table:nth-child(2) {
+            border-collapse:collapse;
+            border: 1px solid #333;
+        }*/
+
+        /*.title {
+            font-weight: bold;
+            margin-top: 20px;
+        }*/
+
+        .no-border td {
+            border: none;
+        }
+
+        .section-header {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .small-input {
+            width: 40px;
+        }
+
+
+        /*   table {
+            width: 100%;
+            border-collapse: collapse;
+        }*/
+
+        input {
+            font-size: 10px;
+            width: 100%;
+        }
+
+        .right_print .box_one .text_holder {
+            grid-gap: 0px;
+            padding-bottom: 12px;
+        }
+
+        .right_print .box_two .text_holder, .right_print .box_three .text_holder {
+            padding-bottom: 12px;
+        }
+
+        .box_one {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+
+        .text_holder {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 10px;
+            padding-bottom: 3px;
+        }
+
+        .box_two table {
+            border-collapse: collapse;
+        }
+
+            .box_two table tr td:first-child {
+                border: none;
+                text-transform: uppercase;
+                width: 40%;
+            }
+
+            .box_two table tr td {
+                /*border: 1px solid #333;*/
+            }
+
+        .box_two,
+        .box_three {
+            padding-top: 3px;
+        }
+
+            .box_two .tbl_2 input[type="text"] {
+                /*padding-left: 35px;*/
+                position: relative;
+            }
+
+            .box_two .tbl_2 input::placeholder {
+                position: absolute;
+                left: 0;
+            }
+
+        .c_box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 20px;
+        }
+
+        .tbl_3 td:nth-child(2) {
+            border-bottom: 1px solid #333;
+        }
+
+        .bottom_box {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+
+        .box_left p {
+            margin: 5px;
+        }
+
+        .box_three table tr td:first-child {
+            width: 40%;
+        }
+
+        .box_right {
+            display: flex;
+            justify-content: space-around;
+            flex: 2;
+            /* margin-top: -20px; */
+        }
+
+            .box_right div {
+                position: relative;
+                /* padding-left: 7px; */
+            }
+
+                .box_right div p {
+                    position: absolute;
+                    top: -15px;
+                    left: 0;
+                    /* display: none; */
+                }
+
+        .underline {
+            display: flex;
+        }
+
+            .underline span {
+                border-bottom: 1px solid #333;
+                min-width: fit-content;
+            }
+
+        .approve_box {
+            width: 40px;
+            height: 17px;
+            border: 1px solid #333;
+        }
+
+        .sign {
+            /* padding-top: 5px; */
+            display: flex;
+            grid-gap: 10px;
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .sign_text {
+            width: 100px;
+            border-bottom: 1px solid;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* .box_right  div + .approve_box{
+        margin-top:-4px;
+        } */
+        .right_print {
+            position: relative;
+        }
+
+        .wrap_1 .title {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .wrap_1 .title p {
+                position: relative;
+                top: -6px;
+                left: 20px;
+            }
+
+                .wrap_1 .title p:last-child {
+                    position: relative;
+                    top: -6px;
+                    left: -4px;
+                }
+
+        .dev_tbl td:first-child {
+            width: 30px;
+        }
+
+        .dev_tbl td {
+            border: none !important;
+            vertical-align: bottom;
+        }
+        /* Custom checkbox */
+        .act_box {
+            display: flex;
+        }
+
+        .text_holder .input-container input[type=checkbox]:not(old) {
+            opacity: 0;
+            /* match the dimentsions of the custom label */
+            width: 13px;
+            height: 13px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            left: 11px;
+        }
+
+        .text_holder .input-container {
+            position: relative;
+        }
+
+            .text_holder .input-container label {
+                position: relative;
+            }
+
+                .text_holder .input-container label::after {
+                    content: "";
+                    position: absolute;
+                    /*top: -1px;
+                    left: -6px;
+                    width: 16px;
+                    height: 16px;*/
+                    top: -16px;
+                    left: 10px;
+                    width: 13px;
+                    height: 13px;
+                    /* border-radius: 3px; */
+                    /* background-color: blue; */
+                    border: 1px solid #333;
+                    transform: rotate(0);
+                    pointer-events: none;
+                    text-align: center;
+                    color: #000;
+                    font-size: 10px;
+                }
+
+            .text_holder .input-container.check input[type=checkbox]:checked + label:after {
+                content: "\2713";
+                font-weight: bold;
+            }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 100px 40px 40px 120px;
+            gap: 5px;
+            align-items: center;
+            max-width: 400px;
+        }
+
+        .grid-header {
+            display: contents;
+        }
+
+            .grid-header div {
+                font-size: 12px;
+                text-align: center;
+            }
+
+        .grid-container .label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .grid-container .checkbox-box {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+
+        .grid-container .input-box {
+            border: 1px solid #000;
+            height: 20px;
+            width: 100%;
+        }
+
+        .input-container input[type=checkbox]:not(old) {
+            opacity: 0;
+            /* match the dimentsions of the custom label */
+            width: 13px;
+            height: 13px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            left: 11px;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+            .input-container p {
+                position: relative;
+                left: 7px;
+            }
+
+            .input-container label {
+                position: relative;
+            }
+
+                .input-container label::after {
+                    content: "";
+                    position: absolute;
+                    top: -3px;
+                    left: -6px;
+                    width: 13px;
+                    height: 13px;
+                    /* border-radius: 3px; */
+                    /* background-color: blue; */
+                    border: 1px solid #333;
+                    transform: rotate(0);
+                    pointer-events: none;
+                    text-align: center;
+                    color: #000;
+                }
+
+            .input-container.check input[type=checkbox]:checked + label:after {
+                content: "\2713";
+                font-weight: bold;
+            }
+
+        .fabric_check .input-container label::after {
+            width: 15px;
+            height: 15px;
+        }
+
+        .fabric_check .input-container.check input[type=checkbox]:checked + label:after {
+            font-size: 12px;
+        }
+
+        .fabric_check {
+            display: flex;
+            grid-gap: 10px;
+        }
+
+            .fabric_check p {
+                font-size: 9px;
+                position: relative;
+                top: 16px;
+            }
+        /* .input-container.check input[type=checkbox]:checked + label:after {
+        content: "\2716";
+        }*/
+
+        .right_print table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .right_print table th, .right_print table td {
+                border: none;
+                font-size: 9px;
+                line-height: 10px;
+            }
+
+            .right_print table tr:nth-child(2) td {
+                font-size: 8px;
+            }
+
+            .right_print table td {
+                text-align: center;
+                vertical-align: bottom;
+            }
+
+                .right_print table td:nth-child(1) {
+                    border-bottom: 1px solid #000;
+                    width: 130px;
+                    text-align: left;
+                    padding-left: 12px;
+                }
+
+                .right_print table td:nth-child(3) {
+                    width: 70px;
+                }
+
+        .comments {
+            padding-top: 8px;
+        }
+
+            .comments .label {
+                font-weight: bold;
+                border-bottom: 1px solid #333;
+                font-size: 11px;
+                width: 120px;
+            }
+
+        @media print {
+            * {
+                box-sizing: border-box;
+                margin: 0;
+            }
+
+            ::placeholder {
+                color: #333;
+            }
+
+            h1, h2, h3 {
+                /*font-size: 11px;*/
+                font-size: 3mm;
+            }
+
+            input[type="text"], input[type="date"] {
+                border: none;
+            }
+
+                input[type="date"]::-webkit-calendar-picker-indicator {
+                    display: none;
+                    -webkit-appearance: none;
+                }
+
+            .pattern_check table input[type="text"] {
+                border: 1px solid #333;
+            }
+            /*  .pattern_check table:nth-child(2) td:first-child {
+                border: 1px solid #333;
+            }*/
+            .left_print .btn_left, .right_print .btn_left {
+                display: none;
+            }
+
+
+            .print_btn {
+                display: none;
+            }
+
+            #div_print_box {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        var $331 = $.noConflict(true);
+    </script>
+</head>
+<body>
+
+    <div class="main_wrap">
+        <div class="left_print box" id="div_Left_print_box">
+            <div class="print_box">
+                <div class="header" style="display:flex;justify-content:space-between">
+                    <div class="logo">
+                        <img src="Zara Acc.png" width="167px" height="50px">
+                    </div>
+                    <div style="width: 200px;">
+                        <table border="1" style="border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="width:90px;">SAMPLE DATE</td>
+                                    <td><input type="date" id="sample_date" value="new Date()"></td>
+                                </tr>
+                                <tr>
+                                    <td>ORDER H/O DATE</td>
+                                    <td><input type="date"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <table>
+                    <tbody><tr>
+                        <td>SUPPLIER NAME</td>
+                        <td colspan="3"><input type="text" id="txtsupplier" value="MASCO Group"></td>
+                        <td>SEASON</td>
+                        <td><input type="text" id="txtSeason"></td>
+                    </tr>
+                    <tr>
+                        <td>BUYER/DESIGNER</td>
+                        <td colspan="5"><input type="text" id="txtBuyer"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>DEPARTMENT</td>
+                        <td><input type="text" id="txtDept"></td>
+                        <td colspan="2">ARTICLE/MQC</td>
+                        <td colspan="2"><input type="text"></td>
+
+                    </tr>
+                    <tr style="height:35px"> 
+                        <td>STYLE</td> 
+                        <td style="width:80px; height:35px"> 
+                            <textarea id="txtStyle" style="font-size:9px; height:35px; width:90px; resize:none; overflow:hidden; overflow-wrap:break-word;"></textarea> 
+                        </td> 
+                        <td style="width:25px; height:35px">SIZE</td> 
+                        <td style="width:40px; height:35px"> 
+                            <input style="height:35px; font-size: 8px; " type="text" id="txtSize"> 
+                        </td> 
+                        <td style="width:25px; height:35px">COLOR</td> 
+                        <td> 
+                            <textarea id="txtColor" style="font-size: 9px; height:35px; width:70px; resize:none; overflow:hidden; overflow-wrap:break-word;"></textarea> 
+                        </td> 
+                    </tr> 
+                    <tr style="height:35px"> 
+                        <td>COMPOSITION</td> 
+                        <td colspan="3"> 
+                            <textarea style="font-size:11px; height:35px; width:160px; resize:none; overflow:hidden; overflow-wrap:break-word;" id="txtCompo"> </textarea> 
+                        </td> 
+                        <td>GSM</td> 
+                        <td><input type="text" id="txtGsm" style="height:35px"></td> 
+                    </tr>
+                </tbody>
+            </table>
+                <table>
+                    <tbody><tr>
+                        <td style="width:110px;">FABRIC CONSTRUCTION</td>
+                        <td><input type="text" id="txtConstruction"></td>
+                        <td>GAUGE</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><span style="font-size:8px;">Yarn 1 Count &amp; Composition</span></td>
+                        <td><span style="font-size:8px;">Yarn 2 Count &amp; Composition</span></td>
+                        <td colspan="2"><span style="font-size:8px;">Yarn 3 Count &amp; Composition</span></td>
+
+                    </tr>
+                    <tr>
+                        <td> <input type="text"></td>
+                        <td><input type="text"></td>
+                        <td colspan="2"><input type="text"></td>
+
+                    </tr>
+                </tbody></table>
+                <table>
+                    <tbody><tr>
+                        <td style="width:100px;">Submission No</td>
+                        <td style="border:none; display:flex;grid-gap:10px;">
+                            <div class="input-container check">
+                                <p>1st</p>
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </div>
+                            <div class="input-container check">
+                                <p>2nd</p>
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </div>
+                            <div class="input-container check">
+                                <p>3rd</p>
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </div>
+                            <div class="input-container check">
+                                <p>4th</p>
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div style="display:flex;">
+                    <div class="" style="width:230px;">
+                        <table class="dev_tbl">
+                            <tbody><tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkDEVELOPMENT" id="chkDEVELOPMENT">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>DEVELOPMENT SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkSIZESET" id="chkSIZESET">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td> SIZE SET SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkCOLOR" id="chkCOLOR">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>COLOR SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkPP" id="chkPP">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>PP SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkPP" id="chkSHPP">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>SHOOTING SAMPLE</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="chkPP" id="chkPH">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>PRODUCTION/SHIPPING SAMPLE</td>
+                            </tr>
+                        </tbody></table>
+                        <div class="fabric_check">
+                            <p>FABRIC NOMINATION</p>
+                            <div>
+                                <span style="text-align:center;font-size:10px;">Yes</span> <br>
+                                <span class="input-container check" style="position: relative;left: -7px;">
+                                    <input type="checkbox" value="1" name="">
+                                    <label for="customCheckboxInput"></label>
+                                </span>
+                            </div>
+                            <div>
+                                <span style="text-align:center;font-size:10px;">No</span> <br>
+                                <span class="input-container check" style="position: relative;left: -7px;">
+                                    <input type="checkbox" value="1" name="">
+                                    <label for="customCheckboxInput"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pattern_check">
+
+                        <table>
+                            <tbody><tr>
+                                <td></td>
+                                <td>SUPPLIER</td>
+                                <td>INDITEX</td>
+                                <td>DATE</td>
+                            </tr>
+                            <tr>
+                                <td>PATTERN</td>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>SPEC</td>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="input-container check">
+                                        <input type="checkbox" value="1" name="">
+                                        <label for="customCheckboxInput"></label>
+                                    </span>
+                                </td>
+                                <td><input type="text"></td>
+                            </tr>
+                        </tbody></table>
+                        <table style="padding-top: 15px;">
+                            <tbody><tr>
+                                <td style="border:1px solid #333;">LICENSE NAME</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:100px;border:1px solid #333;">FABRIC MILL NAME</td>
+                                <td><input type="text"></td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #333;">FABRIC REFERENCE</td>
+                                <td><input type="text"></td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+
+                <div class="title" style="max-width: fit-content;">
+                    COMMENTS NEEDED ON
+                    <hr>
+                </div>
+
+                <div class="comments-needed" style="display:flex;">
+                    <div style="position:relative;">
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> STYLING</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> WORKMANSHIP</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> TRIMMINGS</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> HANDFEEL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> WASHING</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> MATERIALS</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> SHADE BAND</span>
+                        </div>
+                        <div class="text_holder">
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                            <span> OTHERS</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button class="btn_left print_btn" onclick="Left_print_btn()">Print</button>
+        </div>
+        <div class="right_print box" id="div_right_print_box">
+            <div class="print_box">
+                <div class="header">  
+                    <img src="Zara Acc.png" width="167px" height="50px">
+                </div>
+
+                <table>
+                    <tbody><tr>
+                        <th><p style="border-bottom:1px solid #333;width:100px;">REMARKS</p></th>
+                        <td colspan="2"><p style="border-bottom:1px dotted #333;width:100px;">QUALITY</p></td>
+                        <td colspan="2"><p style="border-bottom:1px dotted #333;width:100px;">COLOUR</p></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;border-bottom:0;">Fill in the <br> COMPONENTS DETAILS</td>
+                        <td>AVAILABLE</td>
+                        <td>FOR APPROVAL</td>
+                        <td>AVAILABLE</td>
+                        <td>FOR APPROVAL</td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="padding-left:17px;">FABRIC</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="padding-left:17px;">LINING</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="padding-left:17px;">FILLING</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style=" border: none;padding-left: 0px;">
+                            <b style="padding-top: 20px;display: block;width: 100px;border-bottom: 1px dotted #000;">TRIMMINGS</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Buttons</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Zippers</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Snaps</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Stoppers</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Rivets</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Thread</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Interlinings</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Shoulderpads</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Labels</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Patch</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Cord</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Elastic</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Print</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Embroidery</td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="input-container check">
+                                <input type="checkbox" value="1" name="">
+                                <label for="customCheckboxInput"></label>
+                            </span>
+                        </td>
+                    </tr>
+                    <!--       </tbody> -->
+                </tbody>
+                </table>
+                <div class="comments">
+                    <div class="label" >Additional Comments</div>
+                    <input type="text" name="name" value="" style="border-bottom: 1px dashed rgb(67, 66, 66);">
+                    <input type="text" name="name" value="" style="border-bottom: 1px dashed rgb(67, 66, 66);">
+                    <input type="text" name="name" value="" style="border-bottom: 1px dashed rgb(67, 66, 66);">
+                    <input type="text" name="name" value="" style="border-bottom: 1px dashed rgb(67, 66, 66);">
+                    <input type="text" name="name" value="" style="border-bottom: 1px dashed rgb(67, 66, 66);">
+                    
+                </div>
+            </div>
+
+            <button class="btn_left print_btn" onclick="Right_print_btn()">Print</button>
+        </div>
+
+    </div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        debugger
+        // To parse the data back from the URL
+        const params = new URLSearchParams(window.location.search);
+        try {
+            const rawData = params.get('data');
+            if (!rawData) {
+                throw new Error("Missing 'data' parameter in URL");
+            }
+            const decodedData = decodeURIComponent(rawData);
+            const receivedData = JSON.parse(decodedData);
+            console.log(receivedData); // Prints the original JSON object
+            let construction = receivedData.construction.replace(/aaa/g, "%")
+            let composition = receivedData.composition.replace(/aaa/g, "%")
+            $("#txtBuyer").val(receivedData.buyer);
+            $("#txtStyle").val(receivedData.style);
+            $("#txtSeason").val(receivedData.seson);
+            $("#txtDept").val(receivedData.dept);
+            $("#txtColor").val(receivedData.color);
+            $("#txtConstruction").val(construction);
+            $("#txtCompo").val(composition);
+            $("#txtGsm").val(receivedData.gSM);
+            $("#txtSize").val(receivedData.size);
+
+
+            if (receivedData.stage == 'Development Sample') {
+                $('#chkDEVELOPMENT').prop('checked', true);
+            } else {
+                $('#chkDEVELOPMENT').prop('checked', false);
+            }
+
+            if (receivedData.stage == 'Size Set Sample') {
+                $('#chkSIZESET').prop('checked', true);
+            } else {
+                $('#chkSIZESET').prop('checked', false);
+            }
+
+            if (receivedData.stage == 'Color Sample') {
+                $('#chkCOLOR').prop('checked', true);
+            } else {
+                $('#chkCOLOR').prop('checked', false);
+            }
+
+            if (receivedData.stage == 'PP Sample') {
+                $('#chkPP').prop('checked', true);
+            } else {
+                $('#chkPP').prop('checked', false);
+            }
+            /*        $(".lblstage").text("New Dynamic Text");*/
+        } catch (error) {
+            console.error("Failed to process 'data' parameter:", error.message);
+        }
+
+    });
+
+    $('#sample_date').val(new Date().toISOString().split('T')[0]);
+
+
+    function Left_print_btn() {
+        $("#div_right_print_box").hide();
+        setTimeout(function () {
+            window.print();
+        }, 400);
+
+        setTimeout(function () {
+            $("#div_right_print_box").show();
+        }, 3000);
+    }
+
+    function Right_print_btn() {
+        $("#div_Left_print_box").hide();
+        setTimeout(function () {
+            window.print();
+        }, 400);
+
+        setTimeout(function () {
+            $("#div_Left_print_box").show();
+        }, 3000);
+    }
+
+
+</script>
+
+</body></html>
